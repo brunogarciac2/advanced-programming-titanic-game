@@ -11,58 +11,58 @@
             "task": "Out of the following 6 passenger cards, which one is statistically impossible?",
             "passenger_cards": [
                 {
-                    "name": "Carter, Rev. Ernest Courtenay",
+                    "name": "West, Mrs. Edwy Arthur (Ada Mary Worth)",
                     "Pclass": 2,
-                    "Age": 54.0,
-                    "Sex": "male",
-                    "Fare": 270.29,
-                    "Embarked": "S",
-                    "_is_fake": true
-                },
-                {
-                    "name": "Andersson, Mr. Anders Johan",
-                    "Pclass": 3,
-                    "Age": 39.0,
-                    "Sex": "male",
-                    "Fare": 31.27,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Tikkanen, Mr. Juho",
-                    "Pclass": 3,
-                    "Age": 32.0,
-                    "Sex": "male",
-                    "Fare": 7.92,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Carr, Miss. Helen \"Ellen\"",
-                    "Pclass": 3,
-                    "Age": 16.0,
+                    "Age": 33.0,
                     "Sex": "female",
-                    "Fare": 7.75,
+                    "Fare": 27.75,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Charters, Mr. David",
+                    "Pclass": 3,
+                    "Age": 21.0,
+                    "Sex": "male",
+                    "Fare": 7.73,
                     "Embarked": "Q"
                 },
                 {
-                    "name": "Bishop, Mr. Dickinson H",
-                    "Pclass": 1,
-                    "Age": 25.0,
-                    "Sex": "male",
-                    "Fare": 91.08,
-                    "Embarked": "C"
+                    "name": "Asplund, Miss. Lillian Gertrud",
+                    "Pclass": 3,
+                    "Age": 5.0,
+                    "Sex": "female",
+                    "Fare": 31.39,
+                    "Embarked": "S"
                 },
                 {
-                    "name": "Berriman, Mr. William John",
-                    "Pclass": 2,
-                    "Age": 23.0,
+                    "name": "Rice, Master. Eugene",
+                    "Pclass": 3,
+                    "Age": 2.0,
                     "Sex": "male",
-                    "Fare": 13.0,
+                    "Fare": 29.12,
+                    "Embarked": "Q"
+                },
+                {
+                    "name": "Maisner, Mr. Simon",
+                    "Pclass": 3,
+                    "Age": NaN,
+                    "Sex": "male",
+                    "Fare": 8.05,
                     "Embarked": "S"
+                },
+                {
+                    "name": "Ryerson, Miss. Emily Borie",
+                    "Pclass": 2,
+                    "Age": 18.0,
+                    "Sex": "female",
+                    "Fare": 100.76,
+                    "Embarked": "C",
+                    "_is_fake": true
                 }
             ],
             "hint": "GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.",
             "hint_chart": "hint\\challenge_1_boxplot.png",
-            "answer": "The forged card: 2nd class (Pclass=2) but paying £270.29, which doesn't match typical 2nd class fares (£10.50-73.50)."
+            "answer": "The forged card: 2nd class (Pclass=2) but paying £100.76, which is much higher than typical 2nd class fares (£10.50-73.50)."
         },
         {
             "id": 3,
@@ -71,35 +71,35 @@
             "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
             "passengers": [
                 {
-                    "Name": "Reeves, Mr. David",
+                    "Name": "Fox, Mr. Stanley Hubert",
                     "Pclass": 2,
                     "Age": 36,
                     "Sex": "male",
-                    "Fare": 10.5,
+                    "Fare": 13.0,
                     "Embarked": "S"
                 },
                 {
-                    "Name": "Foo, Mr. Choong",
+                    "Name": "Goldsmith, Mrs. Frank John (Emily Alice Brown)",
                     "Pclass": 3,
-                    "Age": 50,
-                    "Sex": "male",
-                    "Fare": 56.5,
-                    "Embarked": "S"
-                },
-                {
-                    "Name": "Zabour, Miss. Thamine",
-                    "Pclass": 3,
-                    "Age": 22,
+                    "Age": 31,
                     "Sex": "female",
-                    "Fare": 14.45,
+                    "Fare": 20.52,
+                    "Embarked": "S"
+                },
+                {
+                    "Name": "Warren, Mrs. Frank Manley (Anna Sophia Atkinson)",
+                    "Pclass": 1,
+                    "Age": 60,
+                    "Sex": "female",
+                    "Fare": 75.25,
                     "Embarked": "C"
                 },
                 {
-                    "Name": "Lobb, Mrs. William Arthur (Cordelia K Stanlick)",
-                    "Pclass": 3,
-                    "Age": 26,
+                    "Name": "Nye, Mrs. (Elizabeth Ramell)",
+                    "Pclass": 2,
+                    "Age": 29,
                     "Sex": "female",
-                    "Fare": 16.1,
+                    "Fare": 10.5,
                     "Embarked": "S"
                 }
             ],
@@ -117,7 +117,15 @@
                 "hint\\challenge_3_sex_pclass.png",
                 "hint\\challenge_3_age_group.png"
             ],
-            "correct_code": "0100"
+            "correct_code": "0111"
+        },
+        {
+            "id": 4,
+            "title": "Letters from a Stowaway",
+            "story": "\n    \n    The Captain has called you and your group to the deck of the ship with an \n    urgent mission. Telegrams have been intercepted from the ship's Marconi machine\n    and it appears there is a stowaway on board! Unfortunately, the dastardly \n    stowaway has managed to scramble one of the telegrams using a mysterious code. \n    The Captain has created a list of 10 suspects. Can you decipher the letter and\n    obtain the identity of the suspect before they get away?!\n    \n    ",
+            "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
+            "intercepted_letter": "   \nR.M.S. TITANIC  \nMARCONI WIRELESS SERVICE  \nAPRIL 12, 1912\nTo Mr. David Smith\nGood afternoon, I have snuck aboard this mighty vessel. \nNow time to implement my darstardly plan!\nYours Sincerely,\n\nA Guest of the Deep",
+            "ciphertext_letter": "\nc.s.r. yfytbfd  \nstcdibf lfckhkrr rkcufdk  \ntecfh 12, 1912\nsq rkdcky thftr fr sc jtskr sictb\n\nt mxkry ia yvk okke"
         }
     ]
 }

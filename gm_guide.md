@@ -16,64 +16,64 @@
 
 **Card 1**
 ```
-name: Carter, Rev. Ernest Courtenay
+name: West, Mrs. Edwy Arthur (Ada Mary Worth)
 Pclass: 2
-Age: 54.0
-Sex: male
-Fare: 270.29
+Age: 33.0
+Sex: female
+Fare: 27.75
 Embarked: S
 ```
 **Card 2**
 ```
-name: Andersson, Mr. Anders Johan
+name: Charters, Mr. David
 Pclass: 3
-Age: 39.0
+Age: 21.0
 Sex: male
-Fare: 31.27
-Embarked: S
+Fare: 7.73
+Embarked: Q
 ```
 **Card 3**
 ```
-name: Tikkanen, Mr. Juho
+name: Asplund, Miss. Lillian Gertrud
 Pclass: 3
-Age: 32.0
-Sex: male
-Fare: 7.92
+Age: 5.0
+Sex: female
+Fare: 31.39
 Embarked: S
 ```
 **Card 4**
 ```
-name: Carr, Miss. Helen "Ellen"
+name: Rice, Master. Eugene
 Pclass: 3
-Age: 16.0
-Sex: female
-Fare: 7.75
+Age: 2.0
+Sex: male
+Fare: 29.12
 Embarked: Q
 ```
 **Card 5**
 ```
-name: Bishop, Mr. Dickinson H
-Pclass: 1
-Age: 25.0
+name: Maisner, Mr. Simon
+Pclass: 3
+Age: nan
 Sex: male
-Fare: 91.08
-Embarked: C
+Fare: 8.05
+Embarked: S
 ```
 **Card 6**
 ```
-name: Berriman, Mr. William John
+name: Ryerson, Miss. Emily Borie
 Pclass: 2
-Age: 23.0
-Sex: male
-Fare: 13.0
-Embarked: S
+Age: 18.0
+Sex: female
+Fare: 100.76
+Embarked: C
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £270.29, which doesn't match typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 1)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £100.76, which is much higher than typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 6)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -91,38 +91,38 @@ Embarked: S
 
 **Card 1**
 ```
-Name: Reeves, Mr. David
+Name: Fox, Mr. Stanley Hubert
 Pclass: 2
 Age: 36
 Sex: male
-Fare: 10.5
+Fare: 13.0
 Embarked: S
 ```
 **Card 2**
 ```
-Name: Foo, Mr. Choong
+Name: Goldsmith, Mrs. Frank John (Emily Alice Brown)
 Pclass: 3
-Age: 50
-Sex: male
-Fare: 56.5
+Age: 31
+Sex: female
+Fare: 20.52
 Embarked: S
 ```
 **Card 3**
 ```
-Name: Zabour, Miss. Thamine
-Pclass: 3
-Age: 22
+Name: Warren, Mrs. Frank Manley (Anna Sophia Atkinson)
+Pclass: 1
+Age: 60
 Sex: female
-Fare: 14.45
+Fare: 75.25
 Embarked: C
 ```
 **Card 4**
 ```
-Name: Lobb, Mrs. William Arthur (Cordelia K Stanlick)
-Pclass: 3
-Age: 26
+Name: Nye, Mrs. (Elizabeth Ramell)
+Pclass: 2
+Age: 29
 Sex: female
-Fare: 16.1
+Fare: 10.5
 Embarked: S
 ```
 
@@ -130,8 +130,47 @@ Embarked: S
 ### GM Guide
 
 > **Hint:** Use the survival charts above to infer the 4-digit lifeboat code.
-> **Answer:** [[REVEAL_ANSWER]]0100[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]0111[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
+
+---
+## Letters from a Stowaway
+
+**Story:** 
+    
+    The Captain has called you and your group to the deck of the ship with an 
+    urgent mission. Telegrams have been intercepted from the ship's Marconi machine
+    and it appears there is a stowaway on board! Unfortunately, the dastardly 
+    stowaway has managed to scramble one of the telegrams using a mysterious code. 
+    The Captain has created a list of 10 suspects. Can you decipher the letter and
+    obtain the identity of the suspect before they get away?!
+    
+    
+
+**Task:** Decode the encrypted letter and select the name from the list of suspects.
+
+### Letters from the Stowaway 
+
+**Plaintext Letter**```   
+R.M.S. TITANIC  
+MARCONI WIRELESS SERVICE  
+APRIL 12, 1912
+To Mr. David Smith
+Good afternoon, I have snuck aboard this mighty vessel. 
+Now time to implement my darstardly plan!
+Yours Sincerely,
+
+A Guest of the Deep
+```
+**Encrypted Letter**```
+c.s.r. yfytbfd  
+stcdibf lfckhkrr rkcufdk  
+tecfh 12, 1912
+sq rkdcky thftr fr sc jtskr sictb
+
+t mxkry ia yvk okke
+```
+### Possible suspects 
 
 ---
 ## Game End
