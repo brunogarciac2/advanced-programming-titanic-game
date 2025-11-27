@@ -139,7 +139,7 @@ def encrypt(plain_text, key):
             cipher_text += key[pos]
         else:
             cipher_text += char
-        
+
     return cipher_text
 
 # Decryption algorithm for monoalphabetic substitution cipher
@@ -358,30 +358,7 @@ def generate_challenge_3(df):
     return challenge_data
 
 def generate_challenge_4(df):
-    """Generate challenge 4 - Letters from a Stowaway"""
-    stowaway = df.sample(1)
-
-    cipher_key = generate_key()
-
-    # Intercepted letter is not to be encrypted as it is to be used to help decrypt the other letter
-    intercepted_letter = """   
-R.M.S. TITANIC  
-MARCONI WIRELESS SERVICE  
-APRIL 12, 1912
-To Mr. David Smith
-Good afternoon, I have snuck aboard this mighty vessel. 
-Now time to implement my darstardly plan!
-Yours Sincerely,
-
-A Guest of the Deep"""
-    # Plaintext letter should not contain numbers.
-    plaintext_letter = """
-R.M.S. TITANIC  
-MARCONI WIRELESS SERVICE  
-APRIL 12, 1912
-My secret alias is Mr James Moran
-
-A Guest of the Deep"""
+    # Generate challenge 4 - Guest of the Deep
 
     story_text = """
     
@@ -394,13 +371,64 @@ A Guest of the Deep"""
     
     """
 
-    ciphertext_letter = encrypt(plaintext_letter, cipher_key)
+    suspects = df.sample(n=20)
+    stowaway = suspects.sample(1)
 
+    # Get the stowaway passenger class and convert to int
+    stowaway_class = int(stowaway["Pclass"].iloc[0])
+
+    suspects_list = suspects[["Name", "Pclass", "Sex", "Age", "Survived"]]
+    suspects_list = suspects_list.to_markdown(index=True).split("\n")
+
+    print(suspects_list)
+
+    # Generate stowaway line
+    if stowaway_class == 1:
+        stowaway_class_line = "It's quite comfortable here in first class!"
+    elif stowaway_class == 2:
+        stowaway_class_line = "I like it here in second class!"
+    elif stowaway_class == 3:
+        stowaway_class_line = "It's a bit cramped here in third class!"
+    else:
+        print("Error generating stowaway line")
+        stowaway_class_line = "Error generating stowaway line"
+
+    cipher_key = generate_key()
+
+    # Intercepted letter is not to be encrypted as it is to be used to help decrypt the other letter
+    intercepted_letter = """
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
+APRIL 12, 1912
+
+Good afternoon, I have snuck aboard this mighty vessel.
+Now time to implement my darstardly plan!
+Yours Sincerely,
+
+A Guest of the Deep"""
+
+    # Plaintext letter should not contain numbers.
+    plaintext_letter = f"""
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
+APRIL 12, 1912
+
+My secret alias is Mr James Moran. {stowaway_class_line}
+
+A Guest of the Deep"""
+    
+    # Encrypt the letter
+    ciphertext_letter = encrypt(plaintext_letter, cipher_key)
+    # While testing don't encrypt.
+    ciphertext_letter = plaintext_letter
+
+    # Challenge data to be added to the markdown file
     challenge_data = {
         "id": 4,
-        "title": "Letters from a Stowaway",
+        "title": "Guest from the Deep",
         "story": story_text,
         "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
+        "suspects_list": suspects_list,
         "intercepted_letter" : intercepted_letter,
         "ciphertext_letter" : ciphertext_letter
     }

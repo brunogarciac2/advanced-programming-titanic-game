@@ -16,64 +16,64 @@
 
 **Card 1**
 ```
-name: Holverson, Mrs. Alexander Oskar (Mary Aline Towner)
-Pclass: 1
-Age: 35.0
+name: Turja, Miss. Anna Sofia
+Pclass: 3
+Age: 18.0
 Sex: female
-Fare: 52.0
+Fare: 9.84
 Embarked: S
 ```
 **Card 2**
 ```
-name: Duff Gordon, Lady. (Lucille Christiana Sutherland) ("Mrs Morgan")
-Pclass: 1
-Age: 48.0
-Sex: female
-Fare: 39.6
-Embarked: C
+name: Slemen, Mr. Richard James
+Pclass: 2
+Age: 35.0
+Sex: male
+Fare: 10.5
+Embarked: S
 ```
 **Card 3**
 ```
-name: Elsbury, Mr. William James
+name: Markun, Mr. Johann
 Pclass: 3
-Age: 47.0
+Age: 33.0
 Sex: male
-Fare: 7.25
+Fare: 7.9
 Embarked: S
 ```
 **Card 4**
 ```
-name: Andersson, Miss. Erna Alexandra
+name: Hagland, Mr. Konrad Mathias Reiersen
 Pclass: 3
-Age: 17.0
-Sex: female
-Fare: 7.92
+Age: nan
+Sex: male
+Fare: 19.97
 Embarked: S
 ```
 **Card 5**
 ```
-name: Sage, Mr. Douglas Bullen
+name: Dean, Master. Bertram Vere
 Pclass: 1
-Age: nan
+Age: 1.0
 Sex: male
-Fare: 2.87
+Fare: 9.29
 Embarked: S
 ```
 **Card 6**
 ```
-name: Hampe, Mr. Leon
-Pclass: 3
-Age: 20.0
+name: Uruchurtu, Don. Manuel E
+Pclass: 1
+Age: 40.0
 Sex: male
-Fare: 9.5
-Embarked: S
+Fare: 27.72
+Embarked: C
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £2.87, which is much lower than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 5)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £9.29, which is much lower than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 5)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -83,58 +83,54 @@ Embarked: S
 
 **Task:** Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.
 
-![Hint Chart 1](hint/challenge_3_sex_pclass.png)
-
-![Hint Chart 2](hint/challenge_3_age_group.png)
-
 ### Passenger Cards (Show to Players)
 
 **Card 1**
 ```
-Name: Palsson, Mrs. Nils (Alma Cornelia Berglund)
-Pclass: 3
-Age: 29
-Sex: female
-Fare: 21.07
-Embarked: S
-```
-**Card 2**
-```
-Name: Brown, Miss. Amelia "Mildred"
+Name: Webber, Miss. Susan
 Pclass: 2
-Age: 24
+Age: 32
 Sex: female
 Fare: 13.0
 Embarked: S
 ```
+**Card 2**
+```
+Name: Rugg, Miss. Emily
+Pclass: 2
+Age: 21
+Sex: female
+Fare: 10.5
+Embarked: S
+```
 **Card 3**
 ```
-Name: Reuchlin, Jonkheer. John George
-Pclass: 1
-Age: 38
-Sex: male
-Fare: 0.0
+Name: Clarke, Mrs. Charles V (Ada Maria Winfield)
+Pclass: 2
+Age: 28
+Sex: female
+Fare: 26.0
 Embarked: S
 ```
 **Card 4**
 ```
-Name: Laleff, Mr. Kristo
-Pclass: 3
-Age: 28
+Name: Baxter, Mr. Quigg Edmond
+Pclass: 1
+Age: 24
 Sex: male
-Fare: 7.9
-Embarked: S
+Fare: 247.52
+Embarked: C
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** Use the survival charts above to infer the 4-digit lifeboat code.
-> **Answer:** [[REVEAL_ANSWER]]0100[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]1110[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
-## Letters from a Stowaway
+## Guest from the Deep
 
 **Story:** 
     
@@ -151,26 +147,73 @@ Embarked: S
 
 ### Letters from the Stowaway 
 
-**Plaintext Letter**```   
-R.M.S. TITANIC  
-MARCONI WIRELESS SERVICE  
+**Plaintext Letter**```
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
 APRIL 12, 1912
-To Mr. David Smith
-Good afternoon, I have snuck aboard this mighty vessel. 
+
+Good afternoon, I have snuck aboard this mighty vessel.
 Now time to implement my darstardly plan!
 Yours Sincerely,
 
 A Guest of the Deep
 ```
 **Encrypted Letter**```
-c.p.x. mkmuhkr  
-pucrshk qkctntxx xtcfkrt  
-ulckn 12, 1912
-pi xtrctm unkux kx pc vuptx pscuh
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
+APRIL 12, 1912
 
-u aytxm sb met dttl
+My secret alias is Mr James Moran. It's a bit cramped here in third class!
+
+A Guest of the Deep
 ```
 ### Possible suspects 
+
+|     | Name                                                     |   Pclass | Sex    |   Age |   Survived |
+
+|----:|:---------------------------------------------------------|---------:|:-------|------:|-----------:|
+
+| 590 | Rintamaki, Mr. Matti                                     |        3 | male   |  35   |          0 |
+
+| 319 | Spedden, Mrs. Frederic Oakley (Margaretta Corning Stone) |        1 | female |  40   |          1 |
+
+| 507 | Bradley, Mr. George ("George Arthur Brayton")            |        1 | male   | nan   |          1 |
+
+| 748 | Marvin, Mr. Daniel Warner                                |        1 | male   |  19   |          0 |
+
+| 156 | Gilnagh, Miss. Katherine "Katie"                         |        3 | female |  16   |          1 |
+
+| 148 | Navratil, Mr. Michel ("Louis M Hoffman")                 |        2 | male   |  36.5 |          0 |
+
+| 541 | Andersson, Miss. Ingeborg Constanzia                     |        3 | female |   9   |          0 |
+
+| 173 | Sivola, Mr. Antti Wilhelm                                |        3 | male   |  21   |          0 |
+
+| 279 | Abbott, Mrs. Stanton (Rosa Hunt)                         |        3 | female |  35   |          1 |
+
+| 701 | Silverthorne, Mr. Spencer Victor                         |        1 | male   |  35   |          1 |
+
+| 657 | Bourke, Mrs. John (Catherine)                            |        3 | female |  32   |          0 |
+
+| 474 | Strandberg, Miss. Ida Sofia                              |        3 | female |  22   |          0 |
+
+| 652 | Kalvik, Mr. Johannes Halvorsen                           |        3 | male   |  21   |          0 |
+
+| 843 | Lemberopolous, Mr. Peter L                               |        3 | male   |  34.5 |          0 |
+
+| 713 | Larsson, Mr. August Viktor                               |        3 | male   |  29   |          0 |
+
+| 480 | Goodwin, Master. Harold Victor                           |        3 | male   |   9   |          0 |
+
+| 292 | Levy, Mr. Rene Jacques                                   |        2 | male   |  36   |          0 |
+
+| 304 | Williams, Mr. Howard Hugh "Harry"                        |        3 | male   | nan   |          0 |
+
+| 233 | Asplund, Miss. Lillian Gertrud                           |        3 | female |   5   |          1 |
+
+| 253 | Lobb, Mr. William Arthur                                 |        3 | male   |  30   |          0 |
+
+###  
 
 ---
 ## Game End
