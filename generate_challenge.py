@@ -488,7 +488,8 @@ A Guest of the Deep"""
         "intercepted_letter" : intercepted_letter,
         "ciphertext_letter" : ciphertext_letter,
         "bill_cipher_img_path" : bill_cipher_img_path,
-        "alpha_img_path" : alpha_img_path
+        "alpha_img_path" : alpha_img_path, 
+        "sound_file" : "sound.mp3"
     }
 
     return challenge_data

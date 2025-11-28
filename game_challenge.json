@@ -11,58 +11,58 @@
             "task": "Out of the following 6 passenger cards, which one is statistically impossible?",
             "passenger_cards": [
                 {
-                    "name": "Cacic, Miss. Marija",
+                    "name": "Flynn, Mr. John",
                     "Pclass": 3,
-                    "Age": 30.0,
-                    "Sex": "female",
-                    "Fare": 8.66,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Funk, Miss. Annie Clemmer",
-                    "Pclass": 2,
-                    "Age": 38.0,
-                    "Sex": "female",
-                    "Fare": 13.0,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Partner, Mr. Austen",
-                    "Pclass": 3,
-                    "Age": 45.5,
+                    "Age": NaN,
                     "Sex": "male",
-                    "Fare": 177.16,
+                    "Fare": 6.95,
+                    "Embarked": "Q"
+                },
+                {
+                    "name": "Pavlovic, Mr. Stefo",
+                    "Pclass": 3,
+                    "Age": 32.0,
+                    "Sex": "male",
+                    "Fare": 7.9,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Braund, Mr. Owen Harris",
+                    "Pclass": 3,
+                    "Age": 22.0,
+                    "Sex": "male",
+                    "Fare": 513.59,
                     "Embarked": "S",
                     "_is_fake": true
                 },
                 {
-                    "name": "Chapman, Mr. Charles Henry",
-                    "Pclass": 2,
-                    "Age": 52.0,
-                    "Sex": "male",
-                    "Fare": 13.5,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Bonnell, Miss. Elizabeth",
+                    "name": "Pears, Mrs. Thomas (Edith Wearne)",
                     "Pclass": 1,
-                    "Age": 58.0,
+                    "Age": 22.0,
                     "Sex": "female",
-                    "Fare": 26.55,
+                    "Fare": 66.6,
                     "Embarked": "S"
                 },
                 {
-                    "name": "Mamee, Mr. Hanna",
+                    "name": "Denkoff, Mr. Mitto",
                     "Pclass": 3,
                     "Age": NaN,
                     "Sex": "male",
-                    "Fare": 7.23,
-                    "Embarked": "C"
+                    "Fare": 7.9,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Caldwell, Mrs. Albert Francis (Sylvia Mae Harbaugh)",
+                    "Pclass": 2,
+                    "Age": 22.0,
+                    "Sex": "female",
+                    "Fare": 29.0,
+                    "Embarked": "S"
                 }
             ],
             "hint": "GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.",
             "hint_chart": "hint\\challenge_1_boxplot.png",
-            "answer": "The forged card: 3rd class (Pclass=3) but paying £177.16, which is much higher than typical 3rd class fares (£4.01-69.55)."
+            "answer": "The forged card: 3rd class (Pclass=3) but paying £513.59, which is much higher than typical 3rd class fares (£4.01-69.55)."
         },
         {
             "id": 3,
@@ -71,35 +71,35 @@
             "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
             "passengers": [
                 {
-                    "Name": "Daniel, Mr. Robert Williams",
-                    "Pclass": 1,
-                    "Age": 27,
+                    "Name": "Doharr, Mr. Tannous",
+                    "Pclass": 3,
+                    "Age": 50,
                     "Sex": "male",
-                    "Fare": 30.5,
+                    "Fare": 7.23,
+                    "Embarked": "C"
+                },
+                {
+                    "Name": "Moen, Mr. Sigurd Hansen",
+                    "Pclass": 3,
+                    "Age": 25,
+                    "Sex": "male",
+                    "Fare": 7.65,
                     "Embarked": "S"
                 },
                 {
-                    "Name": "Drazenoic, Mr. Jozef",
+                    "Name": "Vovk, Mr. Janko",
                     "Pclass": 3,
-                    "Age": 33,
+                    "Age": 22,
                     "Sex": "male",
                     "Fare": 7.9,
-                    "Embarked": "C"
+                    "Embarked": "S"
                 },
                 {
-                    "Name": "Foreman, Mr. Benjamin Laventall",
-                    "Pclass": 1,
-                    "Age": 30,
-                    "Sex": "male",
-                    "Fare": 27.75,
-                    "Embarked": "C"
-                },
-                {
-                    "Name": "Adams, Mr. John",
+                    "Name": "Backstrom, Mrs. Karl Alfred (Maria Mathilda Gustafsson)",
                     "Pclass": 3,
-                    "Age": 26,
-                    "Sex": "male",
-                    "Fare": 8.05,
+                    "Age": 33,
+                    "Sex": "female",
+                    "Fare": 15.85,
                     "Embarked": "S"
                 }
             ],
@@ -117,7 +117,7 @@
                 "hint\\challenge_3_sex_pclass.png",
                 "hint\\challenge_3_age_group.png"
             ],
-            "correct_code": "1000"
+            "correct_code": "0001"
         },
         {
             "id": 4,
@@ -125,33 +125,34 @@
             "story": "\n    \n    The Captain has called you and your group to the deck of the ship with an \n    urgent mission. Telegrams have been intercepted from the ship's Marconi machine\n    and it appears there is a stowaway on board! Unfortunately, the dastardly \n    stowaway has managed to scramble one of the telegrams using a mysterious code. \n    The Captain has created a list of 10 suspects. Can you decipher the letter and\n    obtain the identity of the suspect before they get away?!\n    \n    ",
             "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
             "suspects_list": [
-                "|     | Name                                           |   Pclass | Sex    |   Age |   Survived |",
-                "|----:|:-----------------------------------------------|---------:|:-------|------:|-----------:|",
-                "| 878 | Laleff, Mr. Kristo                             |        3 | male   | nan   |          0 |",
-                "| 303 | Keane, Miss. Nora A                            |        2 | female | nan   |          1 |",
-                "| 643 | Foo, Mr. Choong                                |        3 | male   | nan   |          1 |",
-                "|  82 | McDermott, Miss. Brigdet Delia                 |        3 | female | nan   |          1 |",
-                "|   6 | McCarthy, Mr. Timothy J                        |        1 | male   |  54   |          0 |",
-                "| 612 | Murphy, Miss. Margaret Jane                    |        3 | female | nan   |          1 |",
-                "| 203 | Youseff, Mr. Gerious                           |        3 | male   |  45.5 |          0 |",
-                "|  40 | Ahlin, Mrs. Johan (Johanna Persdotter Larsson) |        3 | female |  40   |          0 |",
-                "| 863 | Sage, Miss. Dorothy Edith \"Dolly\"              |        3 | female | nan   |          0 |",
-                "| 177 | Isham, Miss. Ann Elizabeth                     |        1 | female |  50   |          0 |",
-                "|  32 | Glynn, Miss. Mary Agatha                       |        3 | female | nan   |          1 |",
-                "| 312 | Lahtinen, Mrs. William (Anna Sylfven)          |        2 | female |  26   |          0 |",
-                "| 402 | Jussila, Miss. Mari Aina                       |        3 | female |  21   |          0 |",
-                "| 715 | Soholt, Mr. Peter Andreas Lauritz Andersen     |        3 | male   |  19   |          0 |",
-                "|  80 | Waelens, Mr. Achille                           |        3 | male   |  22   |          0 |",
-                "| 115 | Pekoniemi, Mr. Edvard                          |        3 | male   |  21   |          0 |",
-                "| 215 | Newell, Miss. Madeleine                        |        1 | female |  31   |          1 |",
-                "| 201 | Sage, Mr. Frederick                            |        3 | male   | nan   |          0 |",
-                "| 567 | Palsson, Mrs. Nils (Alma Cornelia Berglund)    |        3 | female |  29   |          0 |",
-                "| 276 | Lindblom, Miss. Augusta Charlotta              |        3 | female |  45   |          0 |"
+                "|     | Name                                            |   Pclass | Sex    |   Age |   Survived |",
+                "|----:|:------------------------------------------------|---------:|:-------|------:|-----------:|",
+                "| 532 | Elias, Mr. Joseph Jr                            |        3 | male   |    17 |          0 |",
+                "| 109 | Moran, Miss. Bertha                             |        3 | female |   nan |          1 |",
+                "| 342 | Collander, Mr. Erik Gustaf                      |        2 | male   |    28 |          0 |",
+                "| 589 | Murdlin, Mr. Joseph                             |        3 | male   |   nan |          0 |",
+                "| 376 | Landergren, Miss. Aurora Adelia                 |        3 | female |    22 |          1 |",
+                "| 246 | Lindahl, Miss. Agda Thorilda Viktoria           |        3 | female |    25 |          0 |",
+                "|  68 | Andersson, Miss. Erna Alexandra                 |        3 | female |    17 |          1 |",
+                "| 626 | Kirkland, Rev. Charles Leonard                  |        2 | male   |    57 |          0 |",
+                "| 231 | Larsson, Mr. Bengt Edvin                        |        3 | male   |    29 |          0 |",
+                "|  11 | Bonnell, Miss. Elizabeth                        |        1 | female |    58 |          1 |",
+                "| 338 | Dahl, Mr. Karl Edwart                           |        3 | male   |    45 |          1 |",
+                "| 145 | Nicholls, Mr. Joseph Charles                    |        2 | male   |    19 |          0 |",
+                "| 194 | Brown, Mrs. James Joseph (Margaret Tobin)       |        1 | female |    44 |          1 |",
+                "| 719 | Johnson, Mr. Malkolm Joackim                    |        3 | male   |    33 |          0 |",
+                "| 866 | Duran y More, Miss. Asuncion                    |        2 | female |    27 |          1 |",
+                "| 512 | McGough, Mr. James Robert                       |        1 | male   |    36 |          1 |",
+                "| 617 | Lobb, Mrs. William Arthur (Cordelia K Stanlick) |        3 | female |    26 |          0 |",
+                "| 533 | Peter, Mrs. Catherine (Catherine Rizk)          |        3 | female |   nan |          1 |",
+                "| 258 | Ward, Miss. Anna                                |        1 | female |    35 |          1 |",
+                "|  77 | Moutal, Mr. Rahamin Haim                        |        3 | male   |   nan |          0 |"
             ],
             "intercepted_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nGood afternoon, I have snuck aboard this mighty vessel.\nNow time to implement my darstardly plan!\nYours Sincerely,\n\nA Guest of the Deep",
-            "ciphertext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nMy secret alias is Mr James Moran. It's quite comfortable here in first class!\n\nA Guest of the Deep",
+            "ciphertext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nMy secret alias is Mr James Moran. It's a bit cramped here in third class!\n\nA Guest of the Deep",
             "bill_cipher_img_path": "./challenge_4_puzzle_images\\bill_cipher_img.png",
-            "alpha_img_path": "./challenge_4_puzzle_images\\alpha_cipher_img.png"
+            "alpha_img_path": "./challenge_4_puzzle_images\\alpha_cipher_img.png",
+            "sound_file": "sound.mp3"
         }
     ]
 }
