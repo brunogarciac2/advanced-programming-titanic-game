@@ -16,56 +16,56 @@
 
 **Card 1**
 ```
-name: West, Mrs. Edwy Arthur (Ada Mary Worth)
+name: Ponesell, Mr. Martin
 Pclass: 2
-Age: 33.0
-Sex: female
-Fare: 27.75
+Age: 34.0
+Sex: male
+Fare: 13.0
 Embarked: S
 ```
 **Card 2**
 ```
-name: Charters, Mr. David
-Pclass: 3
-Age: 21.0
+name: Stewart, Mr. Albert A
+Pclass: 1
+Age: nan
 Sex: male
-Fare: 7.73
-Embarked: Q
+Fare: 27.72
+Embarked: C
 ```
 **Card 3**
 ```
-name: Asplund, Miss. Lillian Gertrud
-Pclass: 3
-Age: 5.0
+name: Bissette, Miss. Amelia
+Pclass: 1
+Age: 35.0
 Sex: female
-Fare: 31.39
+Fare: 135.63
 Embarked: S
 ```
 **Card 4**
 ```
-name: Rice, Master. Eugene
-Pclass: 3
-Age: 2.0
-Sex: male
-Fare: 29.12
-Embarked: Q
+name: Ward, Miss. Anna
+Pclass: 1
+Age: 35.0
+Sex: female
+Fare: 512.33
+Embarked: C
 ```
 **Card 5**
 ```
-name: Maisner, Mr. Simon
-Pclass: 3
-Age: nan
-Sex: male
-Fare: 8.05
+name: Hewlett, Mrs. (Mary D Kingcome) 
+Pclass: 2
+Age: 55.0
+Sex: female
+Fare: 16.0
 Embarked: S
 ```
 **Card 6**
 ```
-name: Ryerson, Miss. Emily Borie
-Pclass: 2
-Age: 18.0
+name: Newell, Miss. Marjorie
+Pclass: 1
+Age: 23.0
 Sex: female
-Fare: 100.76
+Fare: 3.7
 Embarked: C
 ```
 
@@ -73,7 +73,7 @@ Embarked: C
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £100.76, which is much higher than typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 6)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £3.70, which is much lower than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 6)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -91,38 +91,38 @@ Embarked: C
 
 **Card 1**
 ```
-Name: Fox, Mr. Stanley Hubert
-Pclass: 2
-Age: 36
+Name: Taussig, Mr. Emil
+Pclass: 1
+Age: 52
 Sex: male
-Fare: 13.0
+Fare: 79.65
 Embarked: S
 ```
 **Card 2**
 ```
-Name: Goldsmith, Mrs. Frank John (Emily Alice Brown)
-Pclass: 3
-Age: 31
-Sex: female
-Fare: 20.52
-Embarked: S
+Name: Frolicher-Stehli, Mr. Maxmillian
+Pclass: 1
+Age: 60
+Sex: male
+Fare: 79.2
+Embarked: C
 ```
 **Card 3**
 ```
-Name: Warren, Mrs. Frank Manley (Anna Sophia Atkinson)
-Pclass: 1
-Age: 60
+Name: Glynn, Miss. Mary Agatha
+Pclass: 3
+Age: 30
 Sex: female
-Fare: 75.25
-Embarked: C
+Fare: 7.75
+Embarked: Q
 ```
 **Card 4**
 ```
-Name: Nye, Mrs. (Elizabeth Ramell)
-Pclass: 2
-Age: 29
+Name: Frauenthal, Mrs. Henry William (Clara Heinsheimer)
+Pclass: 1
+Age: 41
 Sex: female
-Fare: 10.5
+Fare: 133.65
 Embarked: S
 ```
 
@@ -134,7 +134,7 @@ Embarked: S
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
-## Letters from a Stowaway
+## Guest from the Deep
 
 **Story:** 
     
@@ -149,14 +149,18 @@ Embarked: S
 
 **Task:** Decode the encrypted letter and select the name from the list of suspects.
 
+### Possible suspects 
+
+![Suspect Table](./challenge_4_puzzle_images\suspect_table.png)
+
 ### Letters from the Stowaway 
 
-**Plaintext Letter**```   
-R.M.S. TITANIC  
-MARCONI WIRELESS SERVICE  
+**Plaintext Letter**```
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
 APRIL 12, 1912
-To Mr. David Smith
-Good afternoon, I have snuck aboard this mighty vessel. 
+
+Good afternoon, I have snuck aboard this mighty vessel.
 Now time to implement my darstardly plan!
 Yours Sincerely,
 
@@ -168,10 +172,20 @@ stcdibf lfckhkrr rkcufdk
 tecfh 12, 1912
 sq rkdcky thftr fr sc jtskr sictb
 
-t mxkry ia yvk okke
-```
-### Possible suspects 
+My secret alias is Mr James Moran. It's a bit cramped here in third class!
 
+A Guest of the Deep
+```
+### A Mysterious Code 
+
+![Alphabet Grid](./challenge_4_puzzle_images\alpha_cipher_img.png)
+
+![Puzzle Cipher](./challenge_4_puzzle_images\bill_cipher_img.png)
+
+### A Strange Sound 
+![Morse Alphabet](./challenge_4_puzzle_images\morse_code_alphabet.jpg)
+
+[[PLAY_SOUND]]sound.wav[[END_SOUND]]
 ---
 ## Game End
 

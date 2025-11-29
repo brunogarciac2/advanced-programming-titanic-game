@@ -3,6 +3,9 @@ import pandas as pd
 import random
 import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+from pydub import AudioSegment
+from pydub.playback import play
 import os
 
 
@@ -150,7 +153,6 @@ def generate_key():
     random.shuffle(letters)
 
     cipher_key = ''.join(letters)
-    print(cipher_key)
     return cipher_key
 
 # Encryption algorithm for monoalphabetic substitution cipher
@@ -165,13 +167,61 @@ def encrypt(plain_text, key):
             cipher_text += key[pos]
         else:
             cipher_text += char
-        
+
     return cipher_text
 
 # Decryption algorithm for monoalphabetic substitution cipher
 def decrypt(cipher_text, key):
     # Have to invert key to decrypt
     pass
+
+def convert_dataframe_to_table(df):
+    font_size = 20
+
+    num_rows = df.shape[0]
+    num_columns = df.shape[1]
+
+    fig, ax = plt.subplots(figsize=(num_rows, num_columns))
+    ax.axis("off")
+
+    # Add custom labels for the player
+    custom_labels = ["Name", "Class", "Sex", "Survival"]
+
+    # Create table
+    table = ax.table(
+        cellText=df.values,
+        colLabels=custom_labels,
+        loc="center"
+    )
+
+    # Set the category to be in bold
+    for (row, col), cell in table.get_celld().items():
+        if row == 0:
+            cell.set_text_props(weight='bold')
+
+    table.auto_set_column_width(col=list(range(len(df.columns))))
+
+    table.scale(xscale=1, yscale=2)
+
+    table.auto_set_font_size(True)
+    table.set_fontsize(font_size)
+
+    return fig
+
+def convert_to_morse(morse_component_dir, input_string):
+    # If directory doesn't exist then display while compiling
+    if not os.path.isdir(morse_component_dir):
+        print("[ERROR] 'challenge_4_morse_components' not found.")
+
+    output_message = AudioSegment.silent(duration=0)
+
+    for char in input_string:
+        char_path = morse_component_dir + f"/{char.upper()}_morse_code.wav"
+        print(char_path)
+        output_message += AudioSegment.from_wav(char_path)
+        output_message += AudioSegment.silent(duration=2000)
+
+    output_message.export("./sound.wav", format="wav")
 
 def generate_challenge_1(df):
     """Generate Challenge 1: Find the Anomaly"""
@@ -493,30 +543,7 @@ def generate_challenge_3(df):
     return challenge_data
 
 def generate_challenge_4(df):
-    """Generate challenge 4 - Letters from a Stowaway"""
-    stowaway = df.sample(1)
-
-    cipher_key = generate_key()
-
-    # Intercepted letter is not to be encrypted as it is to be used to help decrypt the other letter
-    intercepted_letter = """   
-R.M.S. TITANIC  
-MARCONI WIRELESS SERVICE  
-APRIL 12, 1912
-To Mr. David Smith
-Good afternoon, I have snuck aboard this mighty vessel. 
-Now time to implement my darstardly plan!
-Yours Sincerely,
-
-A Guest of the Deep"""
-    # Plaintext letter should not contain numbers.
-    plaintext_letter = """
-R.M.S. TITANIC  
-MARCONI WIRELESS SERVICE  
-APRIL 12, 1912
-My secret alias is Mr James Moran
-
-A Guest of the Deep"""
+    # Generate challenge 4 - Guest of the Deep
 
     story_text = """
     
@@ -529,15 +556,149 @@ A Guest of the Deep"""
     
     """
 
-    ciphertext_letter = encrypt(plaintext_letter, cipher_key)
+    puzzle_img_dir = "./challenge_4_puzzle_images"
 
+    suspects = df.sample(n=20)
+    stowaway = suspects.sample(1)
+
+    suspects = suspects[["Name", "Pclass", "Sex", "Survived"]]
+    suspects_markdown = suspects.to_markdown(index=True).split("\n")
+
+    # Remove anything in brackets from the name column - makes the names easier to display
+    suspects["Name"] = suspects["Name"].str.replace(r"\(.*?\)", "", regex=True)
+
+    # Replace 0 with deceased
+    suspects["Survived"] = suspects["Survived"].replace(0, "Deceased")
+
+    # Replace 1 with survived
+    suspects["Survived"] = suspects["Survived"].replace(1, "Survived")
+
+    # Generate suspect table
+    suspect_table = convert_dataframe_to_table(suspects)
+
+    # Save suspect table
+    suspect_table_img_path = os.path.join(puzzle_img_dir, "suspect_table.png")
+    suspect_table.savefig(suspect_table_img_path, dpi=300, bbox_inches="tight")
+
+    # Get the stowaway passenger class and convert to int
+    stowaway_class = int(stowaway["Pclass"].iloc[0])
+    stowaway_survival = int(stowaway["Survived"].iloc[0])
+
+    # Generate stowaway line
+    if stowaway_class == 1:
+        stowaway_class_line = "It's quite comfortable here in first class!"
+    elif stowaway_class == 2:
+        stowaway_class_line = "I like it here in second class!"
+    elif stowaway_class == 3:
+        stowaway_class_line = "It's a bit cramped here in third class!"
+    else:
+        print("Error generating stowaway line")
+        stowaway_class_line = "Error generating stowaway line"
+
+    cipher_key = generate_key()
+
+    # Intercepted letter is not to be encrypted as it is to be used to help decrypt the other letter
+    intercepted_letter = """
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
+APRIL 12, 1912
+
+Good afternoon, I have snuck aboard this mighty vessel.
+Now time to implement my darstardly plan!
+Yours Sincerely,
+
+A Guest of the Deep"""
+
+    # Plaintext letter should not contain numbers.
+    plaintext_letter = f"""
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
+APRIL 12, 1912
+
+My secret alias is Mr James Moran. {stowaway_class_line}
+
+A Guest of the Deep"""
+    
+    # Encrypt the letter
+    ciphertext_letter = encrypt(plaintext_letter, cipher_key)
+    # While testing don't encrypt.
+    ciphertext_letter = plaintext_letter
+
+    ### Bill Cipher 
+    if stowaway_survival == 1:
+        stowaway_survival_line = "survived"
+    elif stowaway_survival == 0:
+        stowaway_survival_line = "deceased"
+    else:
+        print("[ERROR] 'stowaway_survival' is neither 0 nor 1")
+
+    cipher_letters_dir = "./challenge_4_cipher_components"
+
+    # If directory doesn't exist then display while compiling
+    if not os.path.isdir(cipher_letters_dir):
+        print("[ERROR] 'challenge_4_cipher_components' not found.")
+
+    ### Creates alphabet sheet
+    alpha = "abcdefghijklmnopqrstuvwxyz"
+
+    alpha_fig, alpha_axes = plt.subplots(4, 6, figsize=(12, 6))
+
+    alpha_letters_dir_list = []
+    for letter in alpha:
+        alpha_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
+
+    # Flatten axes for easy iteration
+    alpha_axes = alpha_axes.ravel()
+
+    for i, ax in enumerate(alpha_axes):
+        letter_img = mpimg.imread(alpha_letters_dir_list[i])
+        ax.imshow(letter_img)
+        ax.axis("off")
+
+    plt.tight_layout()
+    plt.close()
+
+    alpha_img_path = os.path.join(puzzle_img_dir, "alpha_cipher_img.png")
+    alpha_fig.savefig(alpha_img_path, dpi=300, bbox_inches="tight")
+
+    ### Turns "survived" or "deceased" into an image of the puzzle
+    cipher_letters_dir_list = []
+    for letter in stowaway_survival_line:
+        cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
+
+    fig, axes = plt.subplots(1, len(stowaway_survival_line), figsize=(12, 6))
+
+    for i, ax in enumerate(axes):
+        coded_letter_img = mpimg.imread(cipher_letters_dir_list[i])
+        ax.imshow(coded_letter_img)
+        ax.axis("off")
+
+    plt.tight_layout()
+    plt.close()
+
+    bill_cipher_img_path = os.path.join(puzzle_img_dir, "bill_cipher_img.png")
+    fig.savefig(bill_cipher_img_path, dpi=300, bbox_inches="tight")
+
+    ### Morse code challenge
+    morse_components_dir = "./challenge_4_morse_components"
+    morse_alphabet_path = os.path.join(puzzle_img_dir, "morse_code_alphabet.jpg")
+
+    convert_to_morse(morse_components_dir, "Hello")
+
+    # Challenge data to be added to the markdown file
     challenge_data = {
         "id": 4,
-        "title": "Letters from a Stowaway",
+        "title": "Guest from the Deep",
         "story": story_text,
         "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
+        "suspects_list": suspects_markdown,
         "intercepted_letter" : intercepted_letter,
-        "ciphertext_letter" : ciphertext_letter
+        "ciphertext_letter" : ciphertext_letter,
+        "suspect_table_img_path" : suspect_table_img_path,
+        "bill_cipher_img_path" : bill_cipher_img_path,
+        "alpha_img_path" : alpha_img_path, 
+        "sound_file" : "sound.wav", 
+        "alpha_morse_img_path" : morse_alphabet_path, 
     }
 
     return challenge_data

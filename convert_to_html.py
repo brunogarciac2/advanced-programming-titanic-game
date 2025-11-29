@@ -1,6 +1,7 @@
 import json
 import re
 from generate_challenge import generate_game_data, save_game_data
+import tabulate
 
 
 def markdown_to_html(md_text):
@@ -21,6 +22,24 @@ def markdown_to_html(md_text):
     html = re.sub(
         r'\[\[REVEAL_ANSWER\]\](.*?)\[\[END_REVEAL\]\]',
         replace_reveal,
+        html,
+        flags=re.DOTALL
+    )
+
+    def replace_sound(m):
+        id = str(uuid.uuid4())[:8]
+        sound_src = m.group(1).strip() 
+        return (
+            ## Note can change the css to something else
+            f'<audio id="audio-{id}">'
+            f'<source src="{sound_src}" type="audio/wav">'
+            f'</audio>'
+            f'<button class="reveal-btn" onclick="playSound(\'{id}\')">Click to Play Message</button>'
+        )
+
+    html = re.sub(
+        r'\[\[PLAY_SOUND\]\](.*?)\[\[END_SOUND\]\]',
+        replace_sound,
         html,
         flags=re.DOTALL
     )
@@ -141,7 +160,7 @@ def format_challenge_3(data):
     md = f"## {data['title']}\n\n"
     md += f"**Story:** {data.get('story', '')}\n\n"
     md += f"**Task:** {data.get('instructions', data.get('task', ''))}\n\n"
-
+    
     # render hint charts
     if 'hint_chart' in data and data['hint_chart']:
         if isinstance(data['hint_chart'], list):
@@ -155,7 +174,7 @@ def format_challenge_3(data):
         md += "### Survival Clues\n\n"
         for clue in data['static_clues']:
             md += f"**{clue['heading']}**\n\n{clue['content']}\n\n"
-
+    
     md += "### Passenger Cards (Show to Players)\n\n"
     for i, card in enumerate(data['passengers']):
         md += f"**Card {i + 1}**\n"
@@ -179,6 +198,11 @@ def format_challenge_4(data):
     md += f"**Story:** {data.get('story', '')}\n\n"
     md += f"**Task:** {data.get('instructions', data.get('task', ''))}\n\n"
 
+    md += '### Possible suspects \n\n'
+
+    if "suspect_table_img_path" in data and data["suspect_table_img_path"]:
+        md += f"![Suspect Table]({data['suspect_table_img_path']})\n\n"
+
     md += "### Letters from the Stowaway \n\n"
 
     md += "**Plaintext Letter**"
@@ -191,7 +215,20 @@ def format_challenge_4(data):
     md += f"{data['ciphertext_letter']}\n"
     md += "```\n"
 
-    md += '### Possible suspects \n\n'
+    md += '### A Mysterious Code \n\n'
+
+    if "alpha_img_path" in data and data["alpha_img_path"]:
+        md += f"![Alphabet Grid]({data['alpha_img_path']})\n\n"
+
+    if "bill_cipher_img_path" in data and data["bill_cipher_img_path"]:
+        md += f"![Puzzle Cipher]({data['bill_cipher_img_path']})\n\n"
+
+    md += "### A Strange Sound \n"
+
+    if "alpha_morse_img_path" in data and data["alpha_morse_img_path"]:
+        md += f"![Morse Alphabet]({data['alpha_morse_img_path']})\n\n"
+
+    md += f"[[PLAY_SOUND]]{data['sound_file']}[[END_SOUND]]\n"
 
     return md
 
@@ -541,6 +578,13 @@ def get_html_template():
             btn.textContent = 'Click to Reveal Answer';
             btn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
         }
+    }
+
+    function playSound(id) {
+        const audio = document.getElementById('audio-' + id);
+        audio.pause();
+        audio.currentTime = 0;
+        audio.play();
     }
     
     async function captureScreenshot() {
