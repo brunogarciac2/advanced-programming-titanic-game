@@ -557,10 +557,27 @@ def generate_challenge_4(df):
 
     puzzle_img_dir = "./challenge_4_puzzle_images"
 
-    suspects = df.sample(n=20)
-    stowaway = suspects.sample(1)
+    # The columns to check for uniqueness
+    columns_to_check = ['Pclass', 'Sex', 'Survived']
 
+    # Randomly choose the stowaway
+    stowaway = df.sample(1)
+
+    # Find the indices in the relevant categories that don't match that of the stowaway
+    # So that the stowaway is unique from the clues presented
+    idx_not_same_as_stowaway = ~(df[columns_to_check].eq(stowaway[columns_to_check]).all(axis=1))
+
+    # Select rows that are not identical in these columns
+    possible_rows = df[idx_not_same_as_stowaway]
+
+    # Randomly pick 20 rows
+    suspects = possible_rows.sample(n=20)
+
+    suspects = pd.concat([suspects, stowaway]).sample(frac=1, ignore_index=True).reset_index(drop=True)
+
+    # Only interested in some of the categories
     suspects = suspects[["Name", "Pclass", "Sex", "Survived"]]
+    stowaway = stowaway[["Name", "Pclass", "Sex", "Survived"]]
     suspects_markdown = suspects.to_markdown(index=True).split("\n")
 
     # Remove anything in brackets from the name column - makes the names easier to display
@@ -614,7 +631,7 @@ R.M.S. TITANIC
 MARCONI WIRELESS SERVICE
 APRIL 12, 1912
 
-My secret alias is Mr James Moran. {stowaway_class_line}
+My secret alias is {stowaway.iloc[0, 0]}. {stowaway_class_line}
 
 A Guest of the Deep"""
     
