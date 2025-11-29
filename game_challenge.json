@@ -11,53 +11,53 @@
             "task": "Out of the following 6 passenger cards, which one is statistically impossible?",
             "passenger_cards": [
                 {
-                    "name": "Cacic, Miss. Marija",
-                    "Pclass": 3,
-                    "Age": 30.0,
-                    "Sex": "female",
-                    "Fare": 8.66,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Funk, Miss. Annie Clemmer",
+                    "name": "West, Mrs. Edwy Arthur (Ada Mary Worth)",
                     "Pclass": 2,
-                    "Age": 38.0,
+                    "Age": 33.0,
                     "Sex": "female",
-                    "Fare": 13.0,
+                    "Fare": 27.75,
                     "Embarked": "S"
                 },
                 {
-                    "name": "Partner, Mr. Austen",
+                    "name": "Charters, Mr. David",
                     "Pclass": 3,
-                    "Age": 45.5,
+                    "Age": 21.0,
                     "Sex": "male",
-                    "Fare": 177.16,
-                    "Embarked": "S",
-                    "_is_fake": true
+                    "Fare": 7.73,
+                    "Embarked": "Q"
                 },
                 {
-                    "name": "Chapman, Mr. Charles Henry",
-                    "Pclass": 2,
-                    "Age": 52.0,
-                    "Sex": "male",
-                    "Fare": 13.5,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Bonnell, Miss. Elizabeth",
-                    "Pclass": 1,
-                    "Age": 58.0,
+                    "name": "Asplund, Miss. Lillian Gertrud",
+                    "Pclass": 3,
+                    "Age": 5.0,
                     "Sex": "female",
-                    "Fare": 26.55,
+                    "Fare": 31.39,
                     "Embarked": "S"
                 },
                 {
-                    "name": "Mamee, Mr. Hanna",
+                    "name": "Rice, Master. Eugene",
+                    "Pclass": 3,
+                    "Age": 2.0,
+                    "Sex": "male",
+                    "Fare": 29.12,
+                    "Embarked": "Q"
+                },
+                {
+                    "name": "Maisner, Mr. Simon",
                     "Pclass": 3,
                     "Age": NaN,
                     "Sex": "male",
-                    "Fare": 7.23,
-                    "Embarked": "C"
+                    "Fare": 8.05,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Ryerson, Miss. Emily Borie",
+                    "Pclass": 2,
+                    "Age": 18.0,
+                    "Sex": "female",
+                    "Fare": 100.76,
+                    "Embarked": "C",
+                    "_is_fake": true
                 }
             ],
             "hint": "GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.",

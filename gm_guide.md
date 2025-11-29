@@ -16,56 +16,56 @@
 
 **Card 1**
 ```
-name: Cacic, Miss. Marija
-Pclass: 3
-Age: 30.0
+name: West, Mrs. Edwy Arthur (Ada Mary Worth)
+Pclass: 2
+Age: 33.0
 Sex: female
-Fare: 8.66
+Fare: 27.75
 Embarked: S
 ```
 **Card 2**
 ```
-name: Funk, Miss. Annie Clemmer
-Pclass: 2
-Age: 38.0
-Sex: female
-Fare: 13.0
-Embarked: S
+name: Charters, Mr. David
+Pclass: 3
+Age: 21.0
+Sex: male
+Fare: 7.73
+Embarked: Q
 ```
 **Card 3**
 ```
-name: Partner, Mr. Austen
+name: Asplund, Miss. Lillian Gertrud
 Pclass: 3
-Age: 45.5
-Sex: male
-Fare: 177.16
+Age: 5.0
+Sex: female
+Fare: 31.39
 Embarked: S
 ```
 **Card 4**
 ```
-name: Chapman, Mr. Charles Henry
-Pclass: 2
-Age: 52.0
+name: Rice, Master. Eugene
+Pclass: 3
+Age: 2.0
 Sex: male
-Fare: 13.5
-Embarked: S
+Fare: 29.12
+Embarked: Q
 ```
 **Card 5**
 ```
-name: Bonnell, Miss. Elizabeth
-Pclass: 1
-Age: 58.0
-Sex: female
-Fare: 26.55
+name: Maisner, Mr. Simon
+Pclass: 3
+Age: nan
+Sex: male
+Fare: 8.05
 Embarked: S
 ```
 **Card 6**
 ```
-name: Mamee, Mr. Hanna
-Pclass: 3
-Age: nan
-Sex: male
-Fare: 7.23
+name: Ryerson, Miss. Emily Borie
+Pclass: 2
+Age: 18.0
+Sex: female
+Fare: 100.76
 Embarked: C
 ```
 
@@ -73,7 +73,7 @@ Embarked: C
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 3rd class (Pclass=3) but paying £177.16, which is much higher than typical 3rd class fares (£4.01-69.55). **(In this game, this card is Card 3)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £100.76, which is much higher than typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 6)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -91,38 +91,38 @@ Embarked: C
 
 **Card 1**
 ```
-Name: Daniel, Mr. Robert Williams
-Pclass: 1
-Age: 27
+Name: Fox, Mr. Stanley Hubert
+Pclass: 2
+Age: 36
 Sex: male
-Fare: 30.5
+Fare: 13.0
 Embarked: S
 ```
 **Card 2**
 ```
-Name: Drazenoic, Mr. Jozef
+Name: Goldsmith, Mrs. Frank John (Emily Alice Brown)
 Pclass: 3
-Age: 33
-Sex: male
-Fare: 7.9
-Embarked: C
+Age: 31
+Sex: female
+Fare: 20.52
+Embarked: S
 ```
 **Card 3**
 ```
-Name: Foreman, Mr. Benjamin Laventall
+Name: Warren, Mrs. Frank Manley (Anna Sophia Atkinson)
 Pclass: 1
-Age: 30
-Sex: male
-Fare: 27.75
+Age: 60
+Sex: female
+Fare: 75.25
 Embarked: C
 ```
 **Card 4**
 ```
-Name: Adams, Mr. John
-Pclass: 3
-Age: 26
-Sex: male
-Fare: 8.05
+Name: Nye, Mrs. (Elizabeth Ramell)
+Pclass: 2
+Age: 29
+Sex: female
+Fare: 10.5
 Embarked: S
 ```
 
@@ -130,7 +130,7 @@ Embarked: S
 ### GM Guide
 
 > **Hint:** Use the survival charts above to infer the 4-digit lifeboat code.
-> **Answer:** [[REVEAL_ANSWER]]1000[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]0111[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
@@ -209,13 +209,12 @@ Yours Sincerely,
 A Guest of the Deep
 ```
 **Encrypted Letter**```
-R.M.S. TITANIC
-MARCONI WIRELESS SERVICE
-APRIL 12, 1912
+c.s.r. yfytbfd  
+stcdibf lfckhkrr rkcufdk  
+tecfh 12, 1912
+sq rkdcky thftr fr sc jtskr sictb
 
-My secret alias is Mr James Moran. It's quite comfortable here in first class!
-
-A Guest of the Deep
+t mxkry ia yvk okke
 ```
 ### A Mysterious Code 
 
