@@ -167,9 +167,10 @@ Yours Sincerely,
 A Guest of the Deep
 ```
 **Encrypted Letter**```
-R.M.S. TITANIC
-MARCONI WIRELESS SERVICE
-APRIL 12, 1912
+c.s.r. yfytbfd  
+stcdibf lfckhkrr rkcufdk  
+tecfh 12, 1912
+sq rkdcky thftr fr sc jtskr sictb
 
 My secret alias is Mr James Moran. It's a bit cramped here in third class!
 
