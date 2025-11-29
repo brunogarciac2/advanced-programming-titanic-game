@@ -32,9 +32,9 @@ def markdown_to_html(md_text):
         return (
             ## Note can change the css to something else
             f'<audio id="audio-{id}">'
-            f'<source src="{sound_src}" type="audio/mpeg">'
+            f'<source src="{sound_src}" type="audio/wav">'
             f'</audio>'
-            f'<button class="reveal-btn" onclick="playSound(\'{id}\')">Click to Reveal Answer</button>'
+            f'<button class="reveal-btn" onclick="playSound(\'{id}\')">Click to Play Message</button>'
         )
 
     html = re.sub(
@@ -199,6 +199,9 @@ def format_challenge_4(data):
         md += f"![Puzzle Cipher]({data['bill_cipher_img_path']})\n\n"
 
     md += "### A Strange Sound \n"
+
+    if "alpha_morse_img_path" in data and data["alpha_morse_img_path"]:
+        md += f"![Morse Alphabet]({data['alpha_morse_img_path']})\n\n"
 
     md += f"[[PLAY_SOUND]]{data['sound_file']}[[END_SOUND]]\n"
 

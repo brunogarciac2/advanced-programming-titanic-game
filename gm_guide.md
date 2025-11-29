@@ -16,64 +16,64 @@
 
 **Card 1**
 ```
-name: Flynn, Mr. John
-Pclass: 3
-Age: nan
+name: Ringhini, Mr. Sante
+Pclass: 1
+Age: 22.0
 Sex: male
-Fare: 6.95
-Embarked: Q
+Fare: 135.63
+Embarked: C
 ```
 **Card 2**
 ```
-name: Pavlovic, Mr. Stefo
-Pclass: 3
-Age: 32.0
+name: Givard, Mr. Hans Kristensen
+Pclass: 2
+Age: 30.0
 Sex: male
-Fare: 7.9
+Fare: 13.0
 Embarked: S
 ```
 **Card 3**
 ```
-name: Braund, Mr. Owen Harris
+name: Asplund, Mrs. Carl Oscar (Selma Augusta Emilia Johansson)
 Pclass: 3
-Age: 22.0
-Sex: male
-Fare: 513.59
+Age: 38.0
+Sex: female
+Fare: 31.39
 Embarked: S
 ```
 **Card 4**
 ```
-name: Pears, Mrs. Thomas (Edith Wearne)
-Pclass: 1
-Age: 22.0
+name: Salkjelsvik, Miss. Anna Kristine
+Pclass: 3
+Age: 21.0
 Sex: female
-Fare: 66.6
+Fare: 7.65
 Embarked: S
 ```
 **Card 5**
 ```
-name: Denkoff, Mr. Mitto
-Pclass: 3
+name: Jermyn, Miss. Annie
+Pclass: 2
 Age: nan
-Sex: male
-Fare: 7.9
-Embarked: S
+Sex: female
+Fare: 92.03
+Embarked: Q
 ```
 **Card 6**
 ```
-name: Caldwell, Mrs. Albert Francis (Sylvia Mae Harbaugh)
-Pclass: 2
-Age: 22.0
-Sex: female
-Fare: 29.0
-Embarked: S
+name: Kiernan, Mr. Philip
+Pclass: 3
+Age: nan
+Sex: male
+Fare: 7.75
+Embarked: Q
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 3rd class (Pclass=3) but paying £513.59, which is much higher than typical 3rd class fares (£4.01-69.55). **(In this game, this card is Card 3)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £92.03, which doesn't match typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 5)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -91,38 +91,38 @@ Embarked: S
 
 **Card 1**
 ```
-Name: Doharr, Mr. Tannous
-Pclass: 3
-Age: 50
+Name: Butt, Major. Archibald Willingham
+Pclass: 1
+Age: 45
 Sex: male
-Fare: 7.23
-Embarked: C
+Fare: 26.55
+Embarked: S
 ```
 **Card 2**
 ```
-Name: Moen, Mr. Sigurd Hansen
+Name: Madsen, Mr. Fridtjof Arne
 Pclass: 3
-Age: 25
+Age: 24
 Sex: male
-Fare: 7.65
+Fare: 7.14
 Embarked: S
 ```
 **Card 3**
 ```
-Name: Vovk, Mr. Janko
+Name: Coutts, Master. Eden Leslie "Neville"
 Pclass: 3
-Age: 22
+Age: 9
 Sex: male
-Fare: 7.9
+Fare: 15.9
 Embarked: S
 ```
 **Card 4**
 ```
-Name: Backstrom, Mrs. Karl Alfred (Maria Mathilda Gustafsson)
-Pclass: 3
-Age: 33
-Sex: female
-Fare: 15.85
+Name: Jarvis, Mr. John Denzil
+Pclass: 2
+Age: 47
+Sex: male
+Fare: 15.0
 Embarked: S
 ```
 
@@ -130,7 +130,7 @@ Embarked: S
 ### GM Guide
 
 > **Hint:** Use the survival charts above to infer the 4-digit lifeboat code.
-> **Answer:** [[REVEAL_ANSWER]]0001[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]0110[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
@@ -151,49 +151,49 @@ Embarked: S
 
 ### Possible suspects 
 
-|     | Name                                            |   Pclass | Sex    |   Age |   Survived |
+|     | Name                                                |   Pclass | Sex    |   Age |   Survived |
 
-|----:|:------------------------------------------------|---------:|:-------|------:|-----------:|
+|----:|:----------------------------------------------------|---------:|:-------|------:|-----------:|
 
-| 532 | Elias, Mr. Joseph Jr                            |        3 | male   |    17 |          0 |
+| 506 | Quick, Mrs. Frederick Charles (Jane Richards)       |        2 | female |    33 |          1 |
 
-| 109 | Moran, Miss. Bertha                             |        3 | female |   nan |          1 |
+| 886 | Montvila, Rev. Juozas                               |        2 | male   |    27 |          0 |
 
-| 342 | Collander, Mr. Erik Gustaf                      |        2 | male   |    28 |          0 |
+| 101 | Petroff, Mr. Pastcho ("Pentcho")                    |        3 | male   |   nan |          0 |
 
-| 589 | Murdlin, Mr. Joseph                             |        3 | male   |   nan |          0 |
+| 359 | Mockler, Miss. Helen Mary "Ellie"                   |        3 | female |   nan |          1 |
 
-| 376 | Landergren, Miss. Aurora Adelia                 |        3 | female |    22 |          1 |
+| 850 | Andersson, Master. Sigvard Harald Elias             |        3 | male   |     4 |          0 |
 
-| 246 | Lindahl, Miss. Agda Thorilda Viktoria           |        3 | female |    25 |          0 |
+| 515 | Walker, Mr. William Anderson                        |        1 | male   |    47 |          0 |
 
-|  68 | Andersson, Miss. Erna Alexandra                 |        3 | female |    17 |          1 |
+| 808 | Meyer, Mr. August                                   |        2 | male   |    39 |          0 |
 
-| 626 | Kirkland, Rev. Charles Leonard                  |        2 | male   |    57 |          0 |
+| 131 | Coelho, Mr. Domingos Fernandeo                      |        3 | male   |    20 |          0 |
 
-| 231 | Larsson, Mr. Bengt Edvin                        |        3 | male   |    29 |          0 |
+| 852 | Boulos, Miss. Nourelain                             |        3 | female |     9 |          0 |
 
-|  11 | Bonnell, Miss. Elizabeth                        |        1 | female |    58 |          1 |
+| 600 | Jacobsohn, Mrs. Sidney Samuel (Amy Frances Christy) |        2 | female |    24 |          1 |
 
-| 338 | Dahl, Mr. Karl Edwart                           |        3 | male   |    45 |          1 |
+| 611 | Jardin, Mr. Jose Neto                               |        3 | male   |   nan |          0 |
 
-| 145 | Nicholls, Mr. Joseph Charles                    |        2 | male   |    19 |          0 |
+| 275 | Andrews, Miss. Kornelia Theodosia                   |        1 | female |    63 |          1 |
 
-| 194 | Brown, Mrs. James Joseph (Margaret Tobin)       |        1 | female |    44 |          1 |
+| 562 | Norman, Mr. Robert Douglas                          |        2 | male   |    28 |          0 |
 
-| 719 | Johnson, Mr. Malkolm Joackim                    |        3 | male   |    33 |          0 |
+| 617 | Lobb, Mrs. William Arthur (Cordelia K Stanlick)     |        3 | female |    26 |          0 |
 
-| 866 | Duran y More, Miss. Asuncion                    |        2 | female |    27 |          1 |
+| 202 | Johanson, Mr. Jakob Alfred                          |        3 | male   |    34 |          0 |
 
-| 512 | McGough, Mr. James Robert                       |        1 | male   |    36 |          1 |
+| 636 | Leinonen, Mr. Antti Gustaf                          |        3 | male   |    32 |          0 |
 
-| 617 | Lobb, Mrs. William Arthur (Cordelia K Stanlick) |        3 | female |    26 |          0 |
+|  23 | Sloper, Mr. William Thompson                        |        1 | male   |    28 |          1 |
 
-| 533 | Peter, Mrs. Catherine (Catherine Rizk)          |        3 | female |   nan |          1 |
+| 723 | Hodges, Mr. Henry Price                             |        2 | male   |    50 |          0 |
 
-| 258 | Ward, Miss. Anna                                |        1 | female |    35 |          1 |
+| 257 | Cherry, Miss. Gladys                                |        1 | female |    30 |          1 |
 
-|  77 | Moutal, Mr. Rahamin Haim                        |        3 | male   |   nan |          0 |
+| 745 | Crosby, Capt. Edward Gifford                        |        1 | male   |    70 |          0 |
 
 ### Letters from the Stowaway 
 
@@ -224,7 +224,9 @@ A Guest of the Deep
 ![Puzzle Cipher](./challenge_4_puzzle_images\bill_cipher_img.png)
 
 ### A Strange Sound 
-[[PLAY_SOUND]]sound.mp3[[END_SOUND]]
+![Morse Alphabet](./challenge_4_puzzle_images\morse_code_alphabet.jpg)
+
+[[PLAY_SOUND]]sound.wav[[END_SOUND]]
 ---
 ## Game End
 

@@ -4,6 +4,8 @@ import random
 import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+from pydub import AudioSegment
+from pydub.playback import play
 import os
 
 
@@ -146,6 +148,28 @@ def encrypt(plain_text, key):
 def decrypt(cipher_text, key):
     # Have to invert key to decrypt
     pass
+
+def convert_to_morse(morse_component_dir, input_string):
+    # If directory doesn't exist then display while compiling
+    if not os.path.isdir(morse_component_dir):
+        print("[ERROR] 'challenge_4_morse_components' not found.")
+
+    output_message = AudioSegment.silent(duration=0)
+
+    sound1 = AudioSegment.from_wav("_The_Storming_of_El_Caney__by_Russell_Alexander.wav")
+    sound2 = AudioSegment.from_wav("A_morse_code.wav")
+
+    combined = sound2 + sound1
+
+    # play(sound)
+
+    for char in input_string:
+        char_path = morse_component_dir + f"/{char.upper()}_morse_code.wav"
+        print(char_path)
+        output_message += AudioSegment.from_wav(char_path)
+        output_message += AudioSegment.silent(duration=2000)
+
+    output_message.export("./sound.wav", format="wav")
 
 def generate_challenge_1(df):
     """Generate Challenge 1: Find the Anomaly"""
@@ -478,6 +502,12 @@ A Guest of the Deep"""
     bill_cipher_img_path = os.path.join(puzzle_img_dir, "bill_cipher_img.png")
     fig.savefig(bill_cipher_img_path, dpi=300, bbox_inches="tight")
 
+    ### Morse code challenge
+    morse_components_dir = "./challenge_4_morse_components"
+    morse_alphabet_path = os.path.join(puzzle_img_dir, "morse_code_alphabet.jpg")
+
+    convert_to_morse(morse_components_dir, "Hello")
+
     # Challenge data to be added to the markdown file
     challenge_data = {
         "id": 4,
@@ -489,7 +519,8 @@ A Guest of the Deep"""
         "ciphertext_letter" : ciphertext_letter,
         "bill_cipher_img_path" : bill_cipher_img_path,
         "alpha_img_path" : alpha_img_path, 
-        "sound_file" : "sound.mp3"
+        "sound_file" : "sound.wav", 
+        "alpha_morse_img_path" : morse_alphabet_path
     }
 
     return challenge_data
