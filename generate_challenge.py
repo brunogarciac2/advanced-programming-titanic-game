@@ -168,10 +168,9 @@ def convert_dataframe_to_table(df):
         loc="center"
     )
 
-    # Set the category to be in bold
-    for (row, col), cell in table.get_celld().items():
-        if row == 0:
-            cell.set_text_props(weight='bold')
+    # Bold header row
+    for col in range(len(df.columns)):
+        table[(0, col)].get_text().set_weight("bold")
 
     table.auto_set_column_width(col=list(range(len(df.columns))))
 
