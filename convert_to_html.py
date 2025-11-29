@@ -1,6 +1,7 @@
 import json
 import re
 from generate_challenge import generate_game_data, save_game_data
+import tabulate
 
 
 def markdown_to_html(md_text):
@@ -141,7 +142,7 @@ def format_challenge_3(data):
     md = f"## {data['title']}\n\n"
     md += f"**Story:** {data.get('story', '')}\n\n"
     md += f"**Task:** {data.get('instructions', data.get('task', ''))}\n\n"
-
+    
     # render hint charts
     if 'hint_chart' in data and data['hint_chart']:
         if isinstance(data['hint_chart'], list):
@@ -155,7 +156,7 @@ def format_challenge_3(data):
         md += "### Survival Clues\n\n"
         for clue in data['static_clues']:
             md += f"**{clue['heading']}**\n\n{clue['content']}\n\n"
-
+    
     md += "### Passenger Cards (Show to Players)\n\n"
     for i, card in enumerate(data['passengers']):
         md += f"**Card {i + 1}**\n"
@@ -179,6 +180,13 @@ def format_challenge_4(data):
     md += f"**Story:** {data.get('story', '')}\n\n"
     md += f"**Task:** {data.get('instructions', data.get('task', ''))}\n\n"
 
+    md += '### Possible suspects \n\n'
+
+    suspects_list = data.get('suspects_list')
+
+    for i in range(0, len(suspects_list)):
+        md += f"{suspects_list[i]}\n\n"
+
     md += "### Letters from the Stowaway \n\n"
 
     md += "**Plaintext Letter**"
@@ -191,7 +199,13 @@ def format_challenge_4(data):
     md += f"{data['ciphertext_letter']}\n"
     md += "```\n"
 
-    md += '### Possible suspects \n\n'
+    md += '### A Mysterious Code \n\n'
+
+    if "alpha_img_path" in data and data["alpha_img_path"]:
+        md += f"![Alphabet Grid]({data['alpha_img_path']})\n\n"
+
+    if "bill_cipher_img_path" in data and data["bill_cipher_img_path"]:
+        md += f"![Puzzle Cipher]({data['bill_cipher_img_path']})\n\n"
 
     return md
 

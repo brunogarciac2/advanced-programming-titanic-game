@@ -3,6 +3,7 @@ import pandas as pd
 import random
 import seaborn as sns
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
 import os
 
 
@@ -150,7 +151,6 @@ def generate_key():
     random.shuffle(letters)
 
     cipher_key = ''.join(letters)
-    print(cipher_key)
     return cipher_key
 
 # Encryption algorithm for monoalphabetic substitution cipher
@@ -165,7 +165,7 @@ def encrypt(plain_text, key):
             cipher_text += key[pos]
         else:
             cipher_text += char
-        
+
     return cipher_text
 
 # Decryption algorithm for monoalphabetic substitution cipher
@@ -493,30 +493,7 @@ def generate_challenge_3(df):
     return challenge_data
 
 def generate_challenge_4(df):
-    """Generate challenge 4 - Letters from a Stowaway"""
-    stowaway = df.sample(1)
-
-    cipher_key = generate_key()
-
-    # Intercepted letter is not to be encrypted as it is to be used to help decrypt the other letter
-    intercepted_letter = """   
-R.M.S. TITANIC  
-MARCONI WIRELESS SERVICE  
-APRIL 12, 1912
-To Mr. David Smith
-Good afternoon, I have snuck aboard this mighty vessel. 
-Now time to implement my darstardly plan!
-Yours Sincerely,
-
-A Guest of the Deep"""
-    # Plaintext letter should not contain numbers.
-    plaintext_letter = """
-R.M.S. TITANIC  
-MARCONI WIRELESS SERVICE  
-APRIL 12, 1912
-My secret alias is Mr James Moran
-
-A Guest of the Deep"""
+    # Generate challenge 4 - Guest of the Deep
 
     story_text = """
     
@@ -529,15 +506,124 @@ A Guest of the Deep"""
     
     """
 
-    ciphertext_letter = encrypt(plaintext_letter, cipher_key)
+    suspects = df.sample(n=20)
+    stowaway = suspects.sample(1)
 
+    # Get the stowaway passenger class and convert to int
+    stowaway_class = int(stowaway["Pclass"].iloc[0])
+    stowaway_survival = int(stowaway["Survived"].iloc[0])
+
+    suspects_list = suspects[["Name", "Pclass", "Sex", "Age", "Survived"]]
+    suspects_list = suspects_list.to_markdown(index=True).split("\n")
+
+    # Generate stowaway line
+    if stowaway_class == 1:
+        stowaway_class_line = "It's quite comfortable here in first class!"
+    elif stowaway_class == 2:
+        stowaway_class_line = "I like it here in second class!"
+    elif stowaway_class == 3:
+        stowaway_class_line = "It's a bit cramped here in third class!"
+    else:
+        print("Error generating stowaway line")
+        stowaway_class_line = "Error generating stowaway line"
+
+    cipher_key = generate_key()
+
+    # Intercepted letter is not to be encrypted as it is to be used to help decrypt the other letter
+    intercepted_letter = """
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
+APRIL 12, 1912
+
+Good afternoon, I have snuck aboard this mighty vessel.
+Now time to implement my darstardly plan!
+Yours Sincerely,
+
+A Guest of the Deep"""
+
+    # Plaintext letter should not contain numbers.
+    plaintext_letter = f"""
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
+APRIL 12, 1912
+
+My secret alias is Mr James Moran. {stowaway_class_line}
+
+A Guest of the Deep"""
+    
+    # Encrypt the letter
+    ciphertext_letter = encrypt(plaintext_letter, cipher_key)
+    # While testing don't encrypt.
+    ciphertext_letter = plaintext_letter
+
+    ### Bill Cipher 
+    if stowaway_survival == 1:
+        stowaway_survival_line = "survived"
+    elif stowaway_survival == 0:
+        stowaway_survival_line = "deceased"
+    else:
+        print("[ERROR] 'stowaway_survival' is neither 0 nor 1")
+
+    cipher_letters_dir = "./challenge_4_cipher_components"
+
+    # If directory doesn't exist then display while compiling
+    if not os.path.isdir(cipher_letters_dir):
+        print("[ERROR] 'challenge_4_cipher_components' not found.")
+
+    ### Creates alphabet sheet
+    alpha = "abcdefghijklmnopqrstuvwxyz"
+
+    alpha_fig, alpha_axes = plt.subplots(4, 6, figsize=(12, 6))
+
+    alpha_letters_dir_list = []
+    for letter in alpha:
+        alpha_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
+
+    # Flatten axes for easy iteration
+    alpha_axes = alpha_axes.ravel()
+
+    for i, ax in enumerate(alpha_axes):
+        letter_img = mpimg.imread(alpha_letters_dir_list[i])
+        ax.imshow(letter_img)
+        ax.axis("off")
+
+    plt.tight_layout()
+    plt.close()
+
+    puzzle_img_dir = "./challenge_4_puzzle_images"
+
+    alpha_img_path = os.path.join(puzzle_img_dir, "alpha_cipher_img.png")
+    alpha_fig.savefig(alpha_img_path, dpi=300, bbox_inches="tight")
+
+    ### Turns "survived" or "deceased" into an image of the puzzle
+    cipher_letters_dir_list = []
+    for letter in stowaway_survival_line:
+        cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
+
+    fig, axes = plt.subplots(1, len(stowaway_survival_line), figsize=(12, 6))
+
+    for i, ax in enumerate(axes):
+        coded_letter_img = mpimg.imread(cipher_letters_dir_list[i])
+        ax.imshow(coded_letter_img)
+        ax.axis("off")
+
+    plt.tight_layout()
+    plt.close()
+
+    bill_cipher_img_path = os.path.join(puzzle_img_dir, "bill_cipher_img.png")
+    fig.savefig(bill_cipher_img_path, dpi=300, bbox_inches="tight")
+
+    # Challenge data to be added to the markdown file
     challenge_data = {
         "id": 4,
-        "title": "Letters from a Stowaway",
+        "title": "Guest from the Deep",
         "story": story_text,
         "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
+        "suspects_list": suspects_list,
         "intercepted_letter" : intercepted_letter,
-        "ciphertext_letter" : ciphertext_letter
+        "ciphertext_letter" : ciphertext_letter,
+        "bill_cipher_img_path" : bill_cipher_img_path,
+        "alpha_img_path" : alpha_img_path
     }
 
     return challenge_data

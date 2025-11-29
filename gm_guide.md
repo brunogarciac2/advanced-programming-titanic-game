@@ -134,7 +134,7 @@ Embarked: S
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
-## Letters from a Stowaway
+## Guest from the Deep
 
 **Story:** 
     
@@ -149,14 +149,60 @@ Embarked: S
 
 **Task:** Decode the encrypted letter and select the name from the list of suspects.
 
+### Possible suspects 
+
+|     | Name                                           |   Pclass | Sex    |   Age |   Survived |
+
+|----:|:-----------------------------------------------|---------:|:-------|------:|-----------:|
+
+| 878 | Laleff, Mr. Kristo                             |        3 | male   | nan   |          0 |
+
+| 303 | Keane, Miss. Nora A                            |        2 | female | nan   |          1 |
+
+| 643 | Foo, Mr. Choong                                |        3 | male   | nan   |          1 |
+
+|  82 | McDermott, Miss. Brigdet Delia                 |        3 | female | nan   |          1 |
+
+|   6 | McCarthy, Mr. Timothy J                        |        1 | male   |  54   |          0 |
+
+| 612 | Murphy, Miss. Margaret Jane                    |        3 | female | nan   |          1 |
+
+| 203 | Youseff, Mr. Gerious                           |        3 | male   |  45.5 |          0 |
+
+|  40 | Ahlin, Mrs. Johan (Johanna Persdotter Larsson) |        3 | female |  40   |          0 |
+
+| 863 | Sage, Miss. Dorothy Edith "Dolly"              |        3 | female | nan   |          0 |
+
+| 177 | Isham, Miss. Ann Elizabeth                     |        1 | female |  50   |          0 |
+
+|  32 | Glynn, Miss. Mary Agatha                       |        3 | female | nan   |          1 |
+
+| 312 | Lahtinen, Mrs. William (Anna Sylfven)          |        2 | female |  26   |          0 |
+
+| 402 | Jussila, Miss. Mari Aina                       |        3 | female |  21   |          0 |
+
+| 715 | Soholt, Mr. Peter Andreas Lauritz Andersen     |        3 | male   |  19   |          0 |
+
+|  80 | Waelens, Mr. Achille                           |        3 | male   |  22   |          0 |
+
+| 115 | Pekoniemi, Mr. Edvard                          |        3 | male   |  21   |          0 |
+
+| 215 | Newell, Miss. Madeleine                        |        1 | female |  31   |          1 |
+
+| 201 | Sage, Mr. Frederick                            |        3 | male   | nan   |          0 |
+
+| 567 | Palsson, Mrs. Nils (Alma Cornelia Berglund)    |        3 | female |  29   |          0 |
+
+| 276 | Lindblom, Miss. Augusta Charlotta              |        3 | female |  45   |          0 |
+
 ### Letters from the Stowaway 
 
-**Plaintext Letter**```   
-R.M.S. TITANIC  
-MARCONI WIRELESS SERVICE  
+**Plaintext Letter**```
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
 APRIL 12, 1912
-To Mr. David Smith
-Good afternoon, I have snuck aboard this mighty vessel. 
+
+Good afternoon, I have snuck aboard this mighty vessel.
 Now time to implement my darstardly plan!
 Yours Sincerely,
 
@@ -170,7 +216,11 @@ sq rkdcky thftr fr sc jtskr sictb
 
 t mxkry ia yvk okke
 ```
-### Possible suspects 
+### A Mysterious Code 
+
+![Alphabet Grid](./challenge_4_puzzle_images\alpha_cipher_img.png)
+
+![Puzzle Cipher](./challenge_4_puzzle_images\bill_cipher_img.png)
 
 ---
 ## Game End
