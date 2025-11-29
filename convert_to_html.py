@@ -173,10 +173,8 @@ def format_challenge_4(data):
 
     md += '### Possible suspects \n\n'
 
-    suspects_list = data.get('suspects_list')
-
-    for i in range(0, len(suspects_list)):
-        md += f"{suspects_list[i]}\n\n"
+    if "suspect_table_img_path" in data and data["suspect_table_img_path"]:
+        md += f"![Suspect Table]({data['suspect_table_img_path']})\n\n"
 
     md += "### Letters from the Stowaway \n\n"
 

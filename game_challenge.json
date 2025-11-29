@@ -11,58 +11,58 @@
             "task": "Out of the following 6 passenger cards, which one is statistically impossible?",
             "passenger_cards": [
                 {
-                    "name": "Ringhini, Mr. Sante",
-                    "Pclass": 1,
-                    "Age": 22.0,
-                    "Sex": "male",
-                    "Fare": 135.63,
-                    "Embarked": "C"
-                },
-                {
-                    "name": "Givard, Mr. Hans Kristensen",
-                    "Pclass": 2,
-                    "Age": 30.0,
-                    "Sex": "male",
-                    "Fare": 13.0,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Asplund, Mrs. Carl Oscar (Selma Augusta Emilia Johansson)",
+                    "name": "Van Impe, Miss. Catharina",
                     "Pclass": 3,
-                    "Age": 38.0,
+                    "Age": 10.0,
                     "Sex": "female",
-                    "Fare": 31.39,
+                    "Fare": 24.15,
                     "Embarked": "S"
                 },
                 {
-                    "name": "Salkjelsvik, Miss. Anna Kristine",
+                    "name": "Lehmann, Miss. Bertha",
                     "Pclass": 3,
-                    "Age": 21.0,
+                    "Age": 17.0,
                     "Sex": "female",
-                    "Fare": 7.65,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Jermyn, Miss. Annie",
-                    "Pclass": 2,
-                    "Age": NaN,
-                    "Sex": "female",
-                    "Fare": 92.03,
-                    "Embarked": "Q",
+                    "Fare": 454.33,
+                    "Embarked": "C",
                     "_is_fake": true
                 },
                 {
-                    "name": "Kiernan, Mr. Philip",
-                    "Pclass": 3,
+                    "name": "Warren, Mrs. Frank Manley (Anna Sophia Atkinson)",
+                    "Pclass": 1,
+                    "Age": 60.0,
+                    "Sex": "female",
+                    "Fare": 75.25,
+                    "Embarked": "C"
+                },
+                {
+                    "name": "Woolner, Mr. Hugh",
+                    "Pclass": 1,
                     "Age": NaN,
                     "Sex": "male",
-                    "Fare": 7.75,
-                    "Embarked": "Q"
+                    "Fare": 35.5,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Ford, Miss. Doolina Margaret \"Daisy\"",
+                    "Pclass": 3,
+                    "Age": 21.0,
+                    "Sex": "female",
+                    "Fare": 34.38,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Futrelle, Mr. Jacques Heath",
+                    "Pclass": 1,
+                    "Age": 37.0,
+                    "Sex": "male",
+                    "Fare": 53.1,
+                    "Embarked": "S"
                 }
             ],
             "hint": "GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.",
             "hint_chart": "hint\\challenge_1_boxplot.png",
-            "answer": "The forged card: 2nd class (Pclass=2) but paying £92.03, which doesn't match typical 2nd class fares (£10.50-73.50)."
+            "answer": "The forged card: 3rd class (Pclass=3) but paying £454.33, which is much higher than typical 3rd class fares (£4.01-69.55)."
         },
         {
             "id": 3,
@@ -71,36 +71,36 @@
             "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
             "passengers": [
                 {
-                    "Name": "Butt, Major. Archibald Willingham",
-                    "Pclass": 1,
-                    "Age": 45,
-                    "Sex": "male",
-                    "Fare": 26.55,
-                    "Embarked": "S"
-                },
-                {
-                    "Name": "Madsen, Mr. Fridtjof Arne",
-                    "Pclass": 3,
-                    "Age": 24,
-                    "Sex": "male",
-                    "Fare": 7.14,
-                    "Embarked": "S"
-                },
-                {
-                    "Name": "Coutts, Master. Eden Leslie \"Neville\"",
-                    "Pclass": 3,
-                    "Age": 9,
-                    "Sex": "male",
-                    "Fare": 15.9,
-                    "Embarked": "S"
-                },
-                {
-                    "Name": "Jarvis, Mr. John Denzil",
+                    "Name": "Beane, Mr. Edward",
                     "Pclass": 2,
-                    "Age": 47,
+                    "Age": 32,
                     "Sex": "male",
-                    "Fare": 15.0,
+                    "Fare": 26.0,
                     "Embarked": "S"
+                },
+                {
+                    "Name": "Leitch, Miss. Jessie Wills",
+                    "Pclass": 2,
+                    "Age": 33,
+                    "Sex": "female",
+                    "Fare": 33.0,
+                    "Embarked": "S"
+                },
+                {
+                    "Name": "Dorking, Mr. Edward Arthur",
+                    "Pclass": 3,
+                    "Age": 19,
+                    "Sex": "male",
+                    "Fare": 8.05,
+                    "Embarked": "S"
+                },
+                {
+                    "Name": "Boulos, Mrs. Joseph (Sultana)",
+                    "Pclass": 3,
+                    "Age": 23,
+                    "Sex": "female",
+                    "Fare": 15.25,
+                    "Embarked": "C"
                 }
             ],
             "static_clues": [
@@ -117,7 +117,7 @@
                 "hint\\challenge_3_sex_pclass.png",
                 "hint\\challenge_3_age_group.png"
             ],
-            "correct_code": "0110"
+            "correct_code": "1110"
         },
         {
             "id": 4,
@@ -125,31 +125,32 @@
             "story": "\n    \n    The Captain has called you and your group to the deck of the ship with an \n    urgent mission. Telegrams have been intercepted from the ship's Marconi machine\n    and it appears there is a stowaway on board! Unfortunately, the dastardly \n    stowaway has managed to scramble one of the telegrams using a mysterious code. \n    The Captain has created a list of 10 suspects. Can you decipher the letter and\n    obtain the identity of the suspect before they get away?!\n    \n    ",
             "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
             "suspects_list": [
-                "|     | Name                                                |   Pclass | Sex    |   Age |   Survived |",
-                "|----:|:----------------------------------------------------|---------:|:-------|------:|-----------:|",
-                "| 506 | Quick, Mrs. Frederick Charles (Jane Richards)       |        2 | female |    33 |          1 |",
-                "| 886 | Montvila, Rev. Juozas                               |        2 | male   |    27 |          0 |",
-                "| 101 | Petroff, Mr. Pastcho (\"Pentcho\")                    |        3 | male   |   nan |          0 |",
-                "| 359 | Mockler, Miss. Helen Mary \"Ellie\"                   |        3 | female |   nan |          1 |",
-                "| 850 | Andersson, Master. Sigvard Harald Elias             |        3 | male   |     4 |          0 |",
-                "| 515 | Walker, Mr. William Anderson                        |        1 | male   |    47 |          0 |",
-                "| 808 | Meyer, Mr. August                                   |        2 | male   |    39 |          0 |",
-                "| 131 | Coelho, Mr. Domingos Fernandeo                      |        3 | male   |    20 |          0 |",
-                "| 852 | Boulos, Miss. Nourelain                             |        3 | female |     9 |          0 |",
-                "| 600 | Jacobsohn, Mrs. Sidney Samuel (Amy Frances Christy) |        2 | female |    24 |          1 |",
-                "| 611 | Jardin, Mr. Jose Neto                               |        3 | male   |   nan |          0 |",
-                "| 275 | Andrews, Miss. Kornelia Theodosia                   |        1 | female |    63 |          1 |",
-                "| 562 | Norman, Mr. Robert Douglas                          |        2 | male   |    28 |          0 |",
-                "| 617 | Lobb, Mrs. William Arthur (Cordelia K Stanlick)     |        3 | female |    26 |          0 |",
-                "| 202 | Johanson, Mr. Jakob Alfred                          |        3 | male   |    34 |          0 |",
-                "| 636 | Leinonen, Mr. Antti Gustaf                          |        3 | male   |    32 |          0 |",
-                "|  23 | Sloper, Mr. William Thompson                        |        1 | male   |    28 |          1 |",
-                "| 723 | Hodges, Mr. Henry Price                             |        2 | male   |    50 |          0 |",
-                "| 257 | Cherry, Miss. Gladys                                |        1 | female |    30 |          1 |",
-                "| 745 | Crosby, Capt. Edward Gifford                        |        1 | male   |    70 |          0 |"
+                "|     | Name                                             |   Pclass | Sex    |   Survived |",
+                "|----:|:-------------------------------------------------|---------:|:-------|-----------:|",
+                "| 230 | Harris, Mrs. Henry Birkhardt (Irene Wallach)     |        1 | female |          1 |",
+                "| 426 | Clarke, Mrs. Charles V (Ada Maria Winfield)      |        2 | female |          1 |",
+                "| 375 | Meyer, Mrs. Edgar Joseph (Leila Saks)            |        1 | female |          1 |",
+                "| 203 | Youseff, Mr. Gerious                             |        3 | male   |          0 |",
+                "| 667 | Rommetvedt, Mr. Knud Paust                       |        3 | male   |          0 |",
+                "| 541 | Andersson, Miss. Ingeborg Constanzia             |        3 | female |          0 |",
+                "| 675 | Edvardsson, Mr. Gustaf Hjalmar                   |        3 | male   |          0 |",
+                "|   4 | Allen, Mr. William Henry                         |        3 | male   |          0 |",
+                "| 706 | Kelly, Mrs. Florence \"Fannie\"                    |        2 | female |          1 |",
+                "| 775 | Myhrman, Mr. Pehr Fabian Oliver Malkolm          |        3 | male   |          0 |",
+                "| 753 | Jonkoff, Mr. Lalio                               |        3 | male   |          0 |",
+                "| 702 | Barbara, Miss. Saiide                            |        3 | female |          0 |",
+                "| 348 | Coutts, Master. William Loch \"William\"           |        3 | male   |          1 |",
+                "| 284 | Smith, Mr. Richard William                       |        1 | male   |          0 |",
+                "|  33 | Wheadon, Mr. Edward H                            |        2 | male   |          0 |",
+                "| 186 | O'Brien, Mrs. Thomas (Johanna \"Hannah\" Godfrey)  |        3 | female |          1 |",
+                "| 732 | Knight, Mr. Robert J                             |        2 | male   |          0 |",
+                "| 169 | Ling, Mr. Lee                                    |        3 | male   |          0 |",
+                "| 252 | Stead, Mr. William Thomas                        |        1 | male   |          0 |",
+                "| 710 | Mayne, Mlle. Berthe Antonine (\"Mrs de Villiers\") |        1 | female |          1 |"
             ],
             "intercepted_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nGood afternoon, I have snuck aboard this mighty vessel.\nNow time to implement my darstardly plan!\nYours Sincerely,\n\nA Guest of the Deep",
             "ciphertext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nMy secret alias is Mr James Moran. It's a bit cramped here in third class!\n\nA Guest of the Deep",
+            "suspect_table_img_path": "./challenge_4_puzzle_images\\suspect_table.png",
             "bill_cipher_img_path": "./challenge_4_puzzle_images\\bill_cipher_img.png",
             "alpha_img_path": "./challenge_4_puzzle_images\\alpha_cipher_img.png",
             "sound_file": "sound.wav",

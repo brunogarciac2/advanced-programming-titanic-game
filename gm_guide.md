@@ -16,64 +16,64 @@
 
 **Card 1**
 ```
-name: Ringhini, Mr. Sante
-Pclass: 1
-Age: 22.0
-Sex: male
-Fare: 135.63
-Embarked: C
-```
-**Card 2**
-```
-name: Givard, Mr. Hans Kristensen
+name: Ponesell, Mr. Martin
 Pclass: 2
-Age: 30.0
+Age: 34.0
 Sex: male
 Fare: 13.0
 Embarked: S
 ```
+**Card 2**
+```
+name: Stewart, Mr. Albert A
+Pclass: 1
+Age: nan
+Sex: male
+Fare: 27.72
+Embarked: C
+```
 **Card 3**
 ```
-name: Asplund, Mrs. Carl Oscar (Selma Augusta Emilia Johansson)
-Pclass: 3
-Age: 38.0
+name: Bissette, Miss. Amelia
+Pclass: 1
+Age: 35.0
 Sex: female
-Fare: 31.39
+Fare: 135.63
 Embarked: S
 ```
 **Card 4**
 ```
-name: Salkjelsvik, Miss. Anna Kristine
-Pclass: 3
-Age: 21.0
+name: Ward, Miss. Anna
+Pclass: 1
+Age: 35.0
 Sex: female
-Fare: 7.65
-Embarked: S
+Fare: 512.33
+Embarked: C
 ```
 **Card 5**
 ```
-name: Jermyn, Miss. Annie
+name: Hewlett, Mrs. (Mary D Kingcome) 
 Pclass: 2
-Age: nan
+Age: 55.0
 Sex: female
-Fare: 92.03
-Embarked: Q
+Fare: 16.0
+Embarked: S
 ```
 **Card 6**
 ```
-name: Kiernan, Mr. Philip
-Pclass: 3
-Age: nan
-Sex: male
-Fare: 7.75
-Embarked: Q
+name: Newell, Miss. Marjorie
+Pclass: 1
+Age: 23.0
+Sex: female
+Fare: 3.7
+Embarked: C
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £92.03, which doesn't match typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 5)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £3.70, which is much lower than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 6)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -91,38 +91,38 @@ Embarked: Q
 
 **Card 1**
 ```
-Name: Butt, Major. Archibald Willingham
+Name: Taussig, Mr. Emil
 Pclass: 1
-Age: 45
+Age: 52
 Sex: male
-Fare: 26.55
+Fare: 79.65
 Embarked: S
 ```
 **Card 2**
 ```
-Name: Madsen, Mr. Fridtjof Arne
-Pclass: 3
-Age: 24
+Name: Frolicher-Stehli, Mr. Maxmillian
+Pclass: 1
+Age: 60
 Sex: male
-Fare: 7.14
-Embarked: S
+Fare: 79.2
+Embarked: C
 ```
 **Card 3**
 ```
-Name: Coutts, Master. Eden Leslie "Neville"
+Name: Glynn, Miss. Mary Agatha
 Pclass: 3
-Age: 9
-Sex: male
-Fare: 15.9
-Embarked: S
+Age: 30
+Sex: female
+Fare: 7.75
+Embarked: Q
 ```
 **Card 4**
 ```
-Name: Jarvis, Mr. John Denzil
-Pclass: 2
-Age: 47
-Sex: male
-Fare: 15.0
+Name: Frauenthal, Mrs. Henry William (Clara Heinsheimer)
+Pclass: 1
+Age: 41
+Sex: female
+Fare: 133.65
 Embarked: S
 ```
 
@@ -130,7 +130,7 @@ Embarked: S
 ### GM Guide
 
 > **Hint:** Use the survival charts above to infer the 4-digit lifeboat code.
-> **Answer:** [[REVEAL_ANSWER]]0110[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]0111[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
@@ -151,49 +151,7 @@ Embarked: S
 
 ### Possible suspects 
 
-|     | Name                                                |   Pclass | Sex    |   Age |   Survived |
-
-|----:|:----------------------------------------------------|---------:|:-------|------:|-----------:|
-
-| 506 | Quick, Mrs. Frederick Charles (Jane Richards)       |        2 | female |    33 |          1 |
-
-| 886 | Montvila, Rev. Juozas                               |        2 | male   |    27 |          0 |
-
-| 101 | Petroff, Mr. Pastcho ("Pentcho")                    |        3 | male   |   nan |          0 |
-
-| 359 | Mockler, Miss. Helen Mary "Ellie"                   |        3 | female |   nan |          1 |
-
-| 850 | Andersson, Master. Sigvard Harald Elias             |        3 | male   |     4 |          0 |
-
-| 515 | Walker, Mr. William Anderson                        |        1 | male   |    47 |          0 |
-
-| 808 | Meyer, Mr. August                                   |        2 | male   |    39 |          0 |
-
-| 131 | Coelho, Mr. Domingos Fernandeo                      |        3 | male   |    20 |          0 |
-
-| 852 | Boulos, Miss. Nourelain                             |        3 | female |     9 |          0 |
-
-| 600 | Jacobsohn, Mrs. Sidney Samuel (Amy Frances Christy) |        2 | female |    24 |          1 |
-
-| 611 | Jardin, Mr. Jose Neto                               |        3 | male   |   nan |          0 |
-
-| 275 | Andrews, Miss. Kornelia Theodosia                   |        1 | female |    63 |          1 |
-
-| 562 | Norman, Mr. Robert Douglas                          |        2 | male   |    28 |          0 |
-
-| 617 | Lobb, Mrs. William Arthur (Cordelia K Stanlick)     |        3 | female |    26 |          0 |
-
-| 202 | Johanson, Mr. Jakob Alfred                          |        3 | male   |    34 |          0 |
-
-| 636 | Leinonen, Mr. Antti Gustaf                          |        3 | male   |    32 |          0 |
-
-|  23 | Sloper, Mr. William Thompson                        |        1 | male   |    28 |          1 |
-
-| 723 | Hodges, Mr. Henry Price                             |        2 | male   |    50 |          0 |
-
-| 257 | Cherry, Miss. Gladys                                |        1 | female |    30 |          1 |
-
-| 745 | Crosby, Capt. Edward Gifford                        |        1 | male   |    70 |          0 |
+![Suspect Table](./challenge_4_puzzle_images\suspect_table.png)
 
 ### Letters from the Stowaway 
 

@@ -149,19 +149,45 @@ def decrypt(cipher_text, key):
     # Have to invert key to decrypt
     pass
 
+def convert_dataframe_to_table(df):
+    font_size = 20
+
+    num_rows = df.shape[0]
+    num_columns = df.shape[1]
+
+    fig, ax = plt.subplots(figsize=(num_rows, num_columns))
+    ax.axis("off")
+
+    # Add custom labels for the player
+    custom_labels = ["Name", "Class", "Sex", "Survival"]
+
+    # Create table
+    table = ax.table(
+        cellText=df.values,
+        colLabels=custom_labels,
+        loc="center"
+    )
+
+    # Set the category to be in bold
+    for (row, col), cell in table.get_celld().items():
+        if row == 0:
+            cell.set_text_props(weight='bold')
+
+    table.auto_set_column_width(col=list(range(len(df.columns))))
+
+    table.scale(xscale=1, yscale=2)
+
+    table.auto_set_font_size(True)
+    table.set_fontsize(font_size)
+
+    return fig
+
 def convert_to_morse(morse_component_dir, input_string):
     # If directory doesn't exist then display while compiling
     if not os.path.isdir(morse_component_dir):
         print("[ERROR] 'challenge_4_morse_components' not found.")
 
     output_message = AudioSegment.silent(duration=0)
-
-    sound1 = AudioSegment.from_wav("_The_Storming_of_El_Caney__by_Russell_Alexander.wav")
-    sound2 = AudioSegment.from_wav("A_morse_code.wav")
-
-    combined = sound2 + sound1
-
-    # play(sound)
 
     for char in input_string:
         char_path = morse_component_dir + f"/{char.upper()}_morse_code.wav"
@@ -395,15 +421,33 @@ def generate_challenge_4(df):
     
     """
 
+    puzzle_img_dir = "./challenge_4_puzzle_images"
+
     suspects = df.sample(n=20)
     stowaway = suspects.sample(1)
+
+    suspects = suspects[["Name", "Pclass", "Sex", "Survived"]]
+    suspects_markdown = suspects.to_markdown(index=True).split("\n")
+
+    # Remove anything in brackets from the name column - makes the names easier to display
+    suspects["Name"] = suspects["Name"].str.replace(r"\(.*?\)", "", regex=True)
+
+    # Replace 0 with deceased
+    suspects["Survived"] = suspects["Survived"].replace(0, "Deceased")
+
+    # Replace 1 with survived
+    suspects["Survived"] = suspects["Survived"].replace(1, "Survived")
+
+    # Generate suspect table
+    suspect_table = convert_dataframe_to_table(suspects)
+
+    # Save suspect table
+    suspect_table_img_path = os.path.join(puzzle_img_dir, "suspect_table.png")
+    suspect_table.savefig(suspect_table_img_path, dpi=300, bbox_inches="tight")
 
     # Get the stowaway passenger class and convert to int
     stowaway_class = int(stowaway["Pclass"].iloc[0])
     stowaway_survival = int(stowaway["Survived"].iloc[0])
-
-    suspects_list = suspects[["Name", "Pclass", "Sex", "Age", "Survived"]]
-    suspects_list = suspects_list.to_markdown(index=True).split("\n")
 
     # Generate stowaway line
     if stowaway_class == 1:
@@ -479,8 +523,6 @@ A Guest of the Deep"""
     plt.tight_layout()
     plt.close()
 
-    puzzle_img_dir = "./challenge_4_puzzle_images"
-
     alpha_img_path = os.path.join(puzzle_img_dir, "alpha_cipher_img.png")
     alpha_fig.savefig(alpha_img_path, dpi=300, bbox_inches="tight")
 
@@ -514,13 +556,14 @@ A Guest of the Deep"""
         "title": "Guest from the Deep",
         "story": story_text,
         "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
-        "suspects_list": suspects_list,
+        "suspects_list": suspects_markdown,
         "intercepted_letter" : intercepted_letter,
         "ciphertext_letter" : ciphertext_letter,
+        "suspect_table_img_path" : suspect_table_img_path,
         "bill_cipher_img_path" : bill_cipher_img_path,
         "alpha_img_path" : alpha_img_path, 
         "sound_file" : "sound.wav", 
-        "alpha_morse_img_path" : morse_alphabet_path
+        "alpha_morse_img_path" : morse_alphabet_path, 
     }
 
     return challenge_data
