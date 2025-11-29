@@ -5,36 +5,36 @@
     "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
     "passengers": [
         {
-            "Name": "Tobin, Mr. Roger",
-            "Pclass": 3,
-            "Age": 33,
-            "Sex": "male",
-            "Fare": 7.75,
-            "Embarked": "Q"
-        },
-        {
-            "Name": "LeRoy, Miss. Bertha",
+            "Name": "Frauenthal, Dr. Henry William",
             "Pclass": 1,
-            "Age": 30,
+            "Age": 50,
+            "Sex": "male",
+            "Fare": 133.65,
+            "Embarked": "S"
+        },
+        {
+            "Name": "Weir, Col. John",
+            "Pclass": 1,
+            "Age": 60,
+            "Sex": "male",
+            "Fare": 26.55,
+            "Embarked": "S"
+        },
+        {
+            "Name": "Ford, Mrs. Edward (Margaret Ann Watson)",
+            "Pclass": 3,
+            "Age": 48,
             "Sex": "female",
-            "Fare": 106.42,
+            "Fare": 34.38,
+            "Embarked": "S"
+        },
+        {
+            "Name": "Duff Gordon, Lady. (Lucille Christiana Sutherland) (\"Mrs Morgan\")",
+            "Pclass": 1,
+            "Age": 48,
+            "Sex": "female",
+            "Fare": 39.6,
             "Embarked": "C"
-        },
-        {
-            "Name": "Carlsson, Mr. August Sigfrid",
-            "Pclass": 3,
-            "Age": 28,
-            "Sex": "male",
-            "Fare": 7.8,
-            "Embarked": "S"
-        },
-        {
-            "Name": "Vande Walle, Mr. Nestor Cyriel",
-            "Pclass": 3,
-            "Age": 28,
-            "Sex": "male",
-            "Fare": 9.5,
-            "Embarked": "S"
         }
     ],
     "static_clues": [
@@ -51,5 +51,5 @@
         "hint\\challenge_3_sex_pclass.png",
         "hint\\challenge_3_age_group.png"
     ],
-    "correct_code": "0100"
+    "correct_code": "1001"
 }

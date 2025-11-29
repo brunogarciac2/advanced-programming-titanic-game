@@ -16,64 +16,64 @@
 
 **Card 1**
 ```
-name: Ponesell, Mr. Martin
-Pclass: 2
-Age: 34.0
-Sex: male
-Fare: 13.0
+name: Ohman, Miss. Velin
+Pclass: 3
+Age: 22.0
+Sex: female
+Fare: 7.78
 Embarked: S
 ```
 **Card 2**
 ```
-name: Stewart, Mr. Albert A
-Pclass: 1
-Age: nan
+name: Johanson, Mr. Jakob Alfred
+Pclass: 3
+Age: 34.0
 Sex: male
-Fare: 27.72
-Embarked: C
+Fare: 6.5
+Embarked: S
 ```
 **Card 3**
 ```
-name: Bissette, Miss. Amelia
+name: Thayer, Mr. John Borland
 Pclass: 1
-Age: 35.0
-Sex: female
-Fare: 135.63
-Embarked: S
+Age: 49.0
+Sex: male
+Fare: 110.88
+Embarked: C
 ```
 **Card 4**
 ```
-name: Ward, Miss. Anna
-Pclass: 1
-Age: 35.0
-Sex: female
-Fare: 512.33
-Embarked: C
+name: Wiseman, Mr. Phillippe
+Pclass: 2
+Age: nan
+Sex: male
+Fare: 311.38
+Embarked: S
 ```
 **Card 5**
 ```
-name: Hewlett, Mrs. (Mary D Kingcome) 
-Pclass: 2
-Age: 55.0
-Sex: female
-Fare: 16.0
+name: Taussig, Mr. Emil
+Pclass: 1
+Age: 52.0
+Sex: male
+Fare: 79.65
 Embarked: S
 ```
 **Card 6**
 ```
-name: Newell, Miss. Marjorie
-Pclass: 1
-Age: 23.0
-Sex: female
-Fare: 3.7
-Embarked: C
+name: Moor, Master. Meier
+Pclass: 3
+Age: 6.0
+Sex: male
+Fare: 12.47
+Embarked: S
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £3.70, which is much lower than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 6)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £311.38, which doesn't match typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 4)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -91,46 +91,46 @@ Embarked: C
 
 **Card 1**
 ```
-Name: Taussig, Mr. Emil
+Name: Frauenthal, Dr. Henry William
 Pclass: 1
-Age: 52
+Age: 50
 Sex: male
-Fare: 79.65
+Fare: 133.65
 Embarked: S
 ```
 **Card 2**
 ```
-Name: Frolicher-Stehli, Mr. Maxmillian
+Name: Weir, Col. John
 Pclass: 1
 Age: 60
 Sex: male
-Fare: 79.2
-Embarked: C
+Fare: 26.55
+Embarked: S
 ```
 **Card 3**
 ```
-Name: Glynn, Miss. Mary Agatha
+Name: Ford, Mrs. Edward (Margaret Ann Watson)
 Pclass: 3
-Age: 30
+Age: 48
 Sex: female
-Fare: 7.75
-Embarked: Q
+Fare: 34.38
+Embarked: S
 ```
 **Card 4**
 ```
-Name: Frauenthal, Mrs. Henry William (Clara Heinsheimer)
+Name: Duff Gordon, Lady. (Lucille Christiana Sutherland) ("Mrs Morgan")
 Pclass: 1
-Age: 41
+Age: 48
 Sex: female
-Fare: 133.65
-Embarked: S
+Fare: 39.6
+Embarked: C
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** Use the survival charts above to infer the 4-digit lifeboat code.
-> **Answer:** [[REVEAL_ANSWER]]0111[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]1001[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
@@ -171,7 +171,7 @@ R.M.S. TITANIC
 MARCONI WIRELESS SERVICE
 APRIL 12, 1912
 
-My secret alias is Mr James Moran. It's a bit cramped here in third class!
+My secret alias is Mr James Moran. It's quite comfortable here in first class!
 
 A Guest of the Deep
 ```
