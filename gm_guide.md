@@ -16,56 +16,56 @@
 
 **Card 1**
 ```
-name: West, Mrs. Edwy Arthur (Ada Mary Worth)
+name: Ponesell, Mr. Martin
 Pclass: 2
-Age: 33.0
-Sex: female
-Fare: 27.75
+Age: 34.0
+Sex: male
+Fare: 13.0
 Embarked: S
 ```
 **Card 2**
 ```
-name: Charters, Mr. David
-Pclass: 3
-Age: 21.0
+name: Stewart, Mr. Albert A
+Pclass: 1
+Age: nan
 Sex: male
-Fare: 7.73
-Embarked: Q
+Fare: 27.72
+Embarked: C
 ```
 **Card 3**
 ```
-name: Asplund, Miss. Lillian Gertrud
-Pclass: 3
-Age: 5.0
+name: Bissette, Miss. Amelia
+Pclass: 1
+Age: 35.0
 Sex: female
-Fare: 31.39
+Fare: 135.63
 Embarked: S
 ```
 **Card 4**
 ```
-name: Rice, Master. Eugene
-Pclass: 3
-Age: 2.0
-Sex: male
-Fare: 29.12
-Embarked: Q
+name: Ward, Miss. Anna
+Pclass: 1
+Age: 35.0
+Sex: female
+Fare: 512.33
+Embarked: C
 ```
 **Card 5**
 ```
-name: Maisner, Mr. Simon
-Pclass: 3
-Age: nan
-Sex: male
-Fare: 8.05
+name: Hewlett, Mrs. (Mary D Kingcome) 
+Pclass: 2
+Age: 55.0
+Sex: female
+Fare: 16.0
 Embarked: S
 ```
 **Card 6**
 ```
-name: Ryerson, Miss. Emily Borie
-Pclass: 2
-Age: 18.0
+name: Newell, Miss. Marjorie
+Pclass: 1
+Age: 23.0
 Sex: female
-Fare: 100.76
+Fare: 3.7
 Embarked: C
 ```
 
@@ -73,7 +73,7 @@ Embarked: C
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £100.76, which is much higher than typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 6)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £3.70, which is much lower than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 6)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -91,38 +91,38 @@ Embarked: C
 
 **Card 1**
 ```
-Name: Fox, Mr. Stanley Hubert
-Pclass: 2
-Age: 36
+Name: Taussig, Mr. Emil
+Pclass: 1
+Age: 52
 Sex: male
-Fare: 13.0
+Fare: 79.65
 Embarked: S
 ```
 **Card 2**
 ```
-Name: Goldsmith, Mrs. Frank John (Emily Alice Brown)
-Pclass: 3
-Age: 31
-Sex: female
-Fare: 20.52
-Embarked: S
+Name: Frolicher-Stehli, Mr. Maxmillian
+Pclass: 1
+Age: 60
+Sex: male
+Fare: 79.2
+Embarked: C
 ```
 **Card 3**
 ```
-Name: Warren, Mrs. Frank Manley (Anna Sophia Atkinson)
-Pclass: 1
-Age: 60
+Name: Glynn, Miss. Mary Agatha
+Pclass: 3
+Age: 30
 Sex: female
-Fare: 75.25
-Embarked: C
+Fare: 7.75
+Embarked: Q
 ```
 **Card 4**
 ```
-Name: Nye, Mrs. (Elizabeth Ramell)
-Pclass: 2
-Age: 29
+Name: Frauenthal, Mrs. Henry William (Clara Heinsheimer)
+Pclass: 1
+Age: 41
 Sex: female
-Fare: 10.5
+Fare: 133.65
 Embarked: S
 ```
 
@@ -151,49 +151,7 @@ Embarked: S
 
 ### Possible suspects 
 
-|     | Name                                           |   Pclass | Sex    |   Age |   Survived |
-
-|----:|:-----------------------------------------------|---------:|:-------|------:|-----------:|
-
-| 878 | Laleff, Mr. Kristo                             |        3 | male   | nan   |          0 |
-
-| 303 | Keane, Miss. Nora A                            |        2 | female | nan   |          1 |
-
-| 643 | Foo, Mr. Choong                                |        3 | male   | nan   |          1 |
-
-|  82 | McDermott, Miss. Brigdet Delia                 |        3 | female | nan   |          1 |
-
-|   6 | McCarthy, Mr. Timothy J                        |        1 | male   |  54   |          0 |
-
-| 612 | Murphy, Miss. Margaret Jane                    |        3 | female | nan   |          1 |
-
-| 203 | Youseff, Mr. Gerious                           |        3 | male   |  45.5 |          0 |
-
-|  40 | Ahlin, Mrs. Johan (Johanna Persdotter Larsson) |        3 | female |  40   |          0 |
-
-| 863 | Sage, Miss. Dorothy Edith "Dolly"              |        3 | female | nan   |          0 |
-
-| 177 | Isham, Miss. Ann Elizabeth                     |        1 | female |  50   |          0 |
-
-|  32 | Glynn, Miss. Mary Agatha                       |        3 | female | nan   |          1 |
-
-| 312 | Lahtinen, Mrs. William (Anna Sylfven)          |        2 | female |  26   |          0 |
-
-| 402 | Jussila, Miss. Mari Aina                       |        3 | female |  21   |          0 |
-
-| 715 | Soholt, Mr. Peter Andreas Lauritz Andersen     |        3 | male   |  19   |          0 |
-
-|  80 | Waelens, Mr. Achille                           |        3 | male   |  22   |          0 |
-
-| 115 | Pekoniemi, Mr. Edvard                          |        3 | male   |  21   |          0 |
-
-| 215 | Newell, Miss. Madeleine                        |        1 | female |  31   |          1 |
-
-| 201 | Sage, Mr. Frederick                            |        3 | male   | nan   |          0 |
-
-| 567 | Palsson, Mrs. Nils (Alma Cornelia Berglund)    |        3 | female |  29   |          0 |
-
-| 276 | Lindblom, Miss. Augusta Charlotta              |        3 | female |  45   |          0 |
+![Suspect Table](./challenge_4_puzzle_images\suspect_table.png)
 
 ### Letters from the Stowaway 
 
@@ -214,7 +172,9 @@ stcdibf lfckhkrr rkcufdk
 tecfh 12, 1912
 sq rkdcky thftr fr sc jtskr sictb
 
-t mxkry ia yvk okke
+My secret alias is Mr James Moran. It's a bit cramped here in third class!
+
+A Guest of the Deep
 ```
 ### A Mysterious Code 
 
@@ -222,6 +182,10 @@ t mxkry ia yvk okke
 
 ![Puzzle Cipher](./challenge_4_puzzle_images\bill_cipher_img.png)
 
+### A Strange Sound 
+![Morse Alphabet](./challenge_4_puzzle_images\morse_code_alphabet.jpg)
+
+[[PLAY_SOUND]]sound.wav[[END_SOUND]]
 ---
 ## Game End
 
