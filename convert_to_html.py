@@ -128,6 +128,33 @@ def format_challenge_1(data):
     return md
 
 
+def format_challenge_2(data):
+    """Format Challenge 2 (Echoes of the Passengers) to Markdown"""
+    md = f"## {data['title']}\n\n"
+    md += f"**Story:** {data['story_intro']}\n\n"
+
+    if 'known_facts' in data and data['known_facts']:
+        md += "**Known Facts**\n"
+        for fact in data['known_facts']:
+            md += f"- {fact}\n"
+        md += "\n"
+
+    md += "### Echoes (Show to Players)\n\n"
+    for echo in data.get('echoes', []):
+        md += f"- Echo {echo['letter']}: {echo['text']}\n"
+    md += "\n"
+
+    md += f"**Task:** {data['task']}\n\n"
+
+    md += "---\n"
+    md += "### GM Guide\n\n"
+    solution_text = data.get('solution', '')
+    explanation = data.get('explanation', '')
+    md += f"> **Answer:** [[REVEAL_ANSWER]]Correct order: {solution_text}. {explanation}[[END_REVEAL]]\n"
+    md += "> **Obtain:** **Temporal Coordinate Fragment 2** revealed when the order is correct.\n\n"
+    return md
+
+
 def format_challenge_3(data):
     """Format Challenge 3 (Lifeboat Code) to Markdown"""
     md = f"## {data['title']}\n\n"
@@ -685,7 +712,7 @@ def main():
 
     # Save the JSON file for reference
     save_game_data(game_data)
-    
+
     # Start building Markdown
     md_output = f"# {game_data['story_background']['theme']}: GM Guide\n\n"
     md_output += f"**Player Role:** {game_data['story_background']['role']}\n"
@@ -695,6 +722,7 @@ def main():
     # Format function mapping
     format_functions = [
         format_challenge_1,
+        format_challenge_2,
         format_challenge_3,
         format_challenge_4
     ]
@@ -732,4 +760,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

@@ -40,6 +40,32 @@ def format_passenger(passenger_data) -> dict[str, object]:
     }
 
 
+def _last_name(full_name: str) -> str:
+    """Extract the passenger's last name (dataset uses 'Last, Title. First')."""
+    if not isinstance(full_name, str):
+        return "Passenger"
+    cleaned = full_name.strip()
+    if not cleaned:
+        return "Passenger"
+    if ',' in cleaned:
+        cleaned = cleaned.split(',', 1)[0]
+    parts = cleaned.split()
+    return parts[-1] if parts else "Passenger"
+
+
+def _pclass_to_text(pclass_value) -> str:
+    """Convert numeric passenger class to descriptive text."""
+    mapping = {
+        1: "first-class",
+        2: "second-class",
+        3: "third-class"
+    }
+    try:
+        return mapping[int(pclass_value)]
+    except (ValueError, TypeError, KeyError):
+        return "third-class"
+
+
 def generate_boxplot(df, challenge_name='challenge_1'):
     """Generate and save boxplot for fare distribution by class"""
     # Create hint directory if it doesn't exist
@@ -216,37 +242,68 @@ def generate_challenge_1(df):
     fake_template = valid_passengers.sample(1).iloc[0].copy()
     fake_name = fake_template['Name']
     
-    # Generate mismatched fare based on class
-    if fake_pclass == 3:
-        # 3rd class with unusually high fare
-        fake_fare = round(random.uniform(
-            fare_stats[1]['median'] * 0.8,  # Higher than 1st class median
-            fare_stats[1]['max'] * 1.2
-        ), 2)
-        expected_fare_range = f"£{fare_stats[3]['min']:.2f}-{fare_stats[3]['max']:.2f}"
-        actual_fare_range = f"£{fake_fare:.2f}"
-        anomaly_description = f"3rd class (Pclass={fake_pclass}) but paying {actual_fare_range}, which is much higher than typical 3rd class fares ({expected_fare_range})"
-    elif fake_pclass == 2:
-        # 2nd class with unusually high or low fare
-        if random.random() > 0.5:
-            # Too high for 2nd class
+    # Generate mismatched fare based on class and direction (high or low)
+    is_too_high = random.choice([True, False])  # Randomly choose high or low
+    
+    if fake_pclass == 1:
+        if is_too_high:
+            # 1st class with unusually HIGH fare (above maximum)
             fake_fare = round(random.uniform(
-                fare_stats[1]['median'] * 0.9,
-                fare_stats[1]['max'] * 1.1
+                fare_stats[1]['max'] + 10,      # £512.33 + 10 = £522.33
+                fare_stats[1]['max'] * 1.3      # Up to £666
             ), 2)
-            expected_range = f"£{fare_stats[2]['min']:.2f}-{fare_stats[2]['max']:.2f}"
+            direction = "higher"
         else:
-            # Too low for 2nd class
-            fake_fare = round(random.uniform(1, fare_stats[3]['min'] * 0.5), 2)
-            expected_range = f"£{fare_stats[2]['min']:.2f}-{fare_stats[2]['max']:.2f}"
-        actual_range = f"£{fake_fare:.2f}"
-        anomaly_description = f"2nd class (Pclass={fake_pclass}) but paying {actual_range}, which doesn't match typical 2nd class fares ({expected_range})"
-    else:  # Pclass == 1
-        # 1st class with unusually low fare
-        fake_fare = round(random.uniform(1, fare_stats[2]['median'] * 0.8), 2)
+            # 1st class with unusually LOW fare (below minimum)
+            fake_fare = round(random.uniform(
+                0.5,                            # Very low
+                fare_stats[1]['min'] - 0.5      # £5.00 - 0.5 = £4.50
+            ), 2)
+            direction = "lower"
+        
         expected_range = f"£{fare_stats[1]['min']:.2f}-{fare_stats[1]['max']:.2f}"
         actual_range = f"£{fake_fare:.2f}"
-        anomaly_description = f"1st class (Pclass={fake_pclass}) but paying {actual_range}, which is much lower than typical 1st class fares ({expected_range})"
+        anomaly_description = f"1st class (Pclass={fake_pclass}) but paying {actual_range}, which is much {direction} than typical 1st class fares ({expected_range})"
+    
+    elif fake_pclass == 2:
+        if is_too_high:
+            # 2nd class with unusually HIGH fare (above maximum)
+            fake_fare = round(random.uniform(
+                fare_stats[2]['max'] + 1,       # £73.50 + 1 = £74.50
+                fare_stats[2]['max'] * 1.5      # Up to £110
+            ), 2)
+            direction = "higher"
+        else:
+            # 2nd class with unusually LOW fare (below minimum)
+            fake_fare = round(random.uniform(
+                0.5,                            # Very low
+                fare_stats[2]['min'] - 0.5      # £10.50 - 0.5 = £10.00
+            ), 2)
+            direction = "lower"
+        
+        expected_range = f"£{fare_stats[2]['min']:.2f}-{fare_stats[2]['max']:.2f}"
+        actual_range = f"£{fake_fare:.2f}"
+        anomaly_description = f"2nd class (Pclass={fake_pclass}) but paying {actual_range}, which is much {direction} than typical 2nd class fares ({expected_range})"
+    
+    else:  # fake_pclass == 3
+        if is_too_high:
+            # 3rd class with unusually HIGH fare (above maximum)
+            fake_fare = round(random.uniform(
+                fare_stats[3]['max'] + 1,       # £69.55 + 1 = £70.55
+                fare_stats[3]['max'] * 1.3      # Up to £90.42
+            ), 2)
+            direction = "higher"
+        else:
+            # 3rd class with unusually LOW fare (below minimum)
+            fake_fare = round(random.uniform(
+                0.5,                            # Very low
+                fare_stats[3]['min'] - 0.5      # £4.01 - 0.5 = £3.51
+            ), 2)
+            direction = "lower"
+        
+        expected_range = f"£{fare_stats[3]['min']:.2f}-{fare_stats[3]['max']:.2f}"
+        actual_range = f"£{fake_fare:.2f}"
+        anomaly_description = f"3rd class (Pclass={fake_pclass}) but paying {actual_range}, which is much {direction} than typical 3rd class fares ({expected_range})"
     
     # Create fake card
     fake_card_data = {
@@ -268,6 +325,7 @@ def generate_challenge_1(df):
     chart_path = generate_boxplot(df, 'challenge_1')
     
     return {
+        "id": 1,
         "title": "Challenge 1: Purser's Office (Find the Anomaly)",
         "story": "You've just boarded and been caught as stowaways. On the desk is a stack of passenger registration cards. You must identify the 'forged' card among them.",
         "task": "Out of the following 6 passenger cards, which one is statistically impossible?",
@@ -275,6 +333,83 @@ def generate_challenge_1(df):
         "hint": "GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.",
         "hint_chart": chart_path,  # Add chart path
         "answer": f"The forged card: {anomaly_description}."
+    }
+
+
+def generate_challenge_2(df):
+    """Challenge 2: Echoes of the Passengers (Timeline Synchronization)"""
+    ports = ['S', 'C', 'Q']
+    port_groups = {p: df[df['Embarked'] == p] for p in ports}
+
+    def pick_by_port(port_code):
+        group = port_groups.get(port_code)
+        if group is not None and len(group) > 0:
+            return group.sample(1).iloc[0]
+        return df.sample(1).iloc[0]
+
+    s_row = pick_by_port('S')
+    c_row = pick_by_port('C')
+    q_row = pick_by_port('Q')
+
+    def boarding_text(row, port_label):
+        name = _last_name(row.get('Name', 'Unknown'))
+        pclass_txt = _pclass_to_text(row.get('Pclass', 3))
+        return (
+            f"{name} boards at {port_label} ({row.get('Embarked', '?')}); "
+            f"a {pclass_txt} ticket rustles in hand."
+        )
+
+    echo_board_s = {'stage': 'boarding', 'port': 'S', 'text': boarding_text(s_row, 'Southampton')}
+    echo_board_c = {'stage': 'boarding', 'port': 'C', 'text': boarding_text(c_row, 'Cherbourg')}
+    echo_board_q = {'stage': 'boarding', 'port': 'Q', 'text': boarding_text(q_row, 'Queenstown')}
+
+    post_row = df.sample(1).iloc[0]
+    post_text = (
+        f"Lanterns sway as the deck tilts; {_last_name(post_row.get('Name', 'A passenger'))} "
+        f"steadies a stranger amid rising alarm."
+    )
+    echo_post = {'stage': 'post_impact', 'port': None, 'text': post_text}
+
+    esc_row = df.sample(1).iloc[0]
+    esc_text = (
+        f"In the final chaos, {_last_name(esc_row.get('Name', 'A passenger'))} "
+        f"finds space in a lifeboat and slips into the night."
+    )
+    echo_escape = {'stage': 'escape', 'port': None, 'text': esc_text}
+
+    echoes = [echo_board_s, echo_board_c, echo_board_q, echo_post, echo_escape]
+    random.shuffle(echoes)
+    letters = ['A', 'B', 'C', 'D', 'E']
+    for idx, echo in enumerate(echoes):
+        echo['id'] = letters[idx]
+
+    stage_rank = {'boarding': 1, 'post_impact': 2, 'escape': 3}
+    port_rank = {'S': 1, 'C': 2, 'Q': 3, None: 0}
+    sorted_true = sorted(
+        echoes,
+        key=lambda e: (stage_rank.get(e['stage'], 99), port_rank.get(e.get('port'), 0))
+    )
+    solution_letters = [echo['id'] for echo in sorted_true]
+
+    known_facts = [
+        "Boarding order by port: Southampton (S) → Cherbourg (C) → Queenstown (Q).",
+        "Phrases like 'boarded at' are before the iceberg impact.",
+        "Words like 'tilted', 'helping', or 'chaos' are after impact but still onboard.",
+        "Mentions of 'escaped' or 'lifeboat' happen last."
+    ]
+
+    return {
+        "id": 2,
+        "title": "Challenge 2: Echoes of the Passengers (Timeline Synchronization)",
+        "story_intro": "Time ripples carry brief echoes of five travelers aboard the Titanic. Align their moments to restore the timeline.",
+        "echoes": [{"letter": echo['id'], "text": echo['text']} for echo in echoes],
+        "known_facts": known_facts,
+        "task": "Arrange the echoes (A–E) in correct chronological order.",
+        "solution": ", ".join(solution_letters),
+        "explanation": (
+            "Boarding echoes come first and follow port order S → C → Q; "
+            "post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last."
+        )
     }
 
 
@@ -577,6 +712,9 @@ def generate_game_data():
     # Pass the full DataFrame so it can generate the boxplot
     challenge_1 = generate_challenge_1(df)
     
+    print("Generating challenge 2...")
+    challenge_2 = generate_challenge_2(df)
+
     print("Generating challenge 3...")
     challenge_3 = generate_challenge_3(df)
 
@@ -591,6 +729,7 @@ def generate_game_data():
         },
         "challenges": [
             challenge_1,
+            challenge_2,
             challenge_3,
             challenge_4
         ]
@@ -611,4 +750,3 @@ if __name__ == '__main__':
     game_data = generate_game_data()
     save_game_data(game_data)
     print("\n[SUCCESS] Game data generated successfully!")
-
