@@ -215,6 +215,26 @@ def generate_alphabet_sheet(encrypted=True):
 
     return fig
 
+def generate_cipher_puzzle_fig(input_string):
+    ### Turns "survived" or "deceased" into an image of the puzzle
+    cipher_letters_dir = "./challenge_4_cipher_components"
+
+    cipher_letters_dir_list = []
+    for letter in input_string:
+        cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
+
+    fig, axes = plt.subplots(1, len(input_string), figsize=(12, 6))
+
+    for i, ax in enumerate(axes):
+        coded_letter_img = mpimg.imread(cipher_letters_dir_list[i])
+        ax.imshow(coded_letter_img)
+        ax.axis("off")
+
+    plt.tight_layout()
+    plt.close()
+
+    return fig
+
 def convert_dataframe_to_table(df):
     font_size = 20
 
@@ -645,9 +665,11 @@ def generate_challenge_4(df):
 
     # Replace 0 with deceased
     suspects["Survived"] = suspects["Survived"].replace(0, "Deceased")
+    stowaway["Survived"] = stowaway["Survived"].replace(0, "Deceased")
 
     # Replace 1 with survived
     suspects["Survived"] = suspects["Survived"].replace(1, "Survived")
+    stowaway["Survived"] = stowaway["Survived"].replace(1, "Survived")
 
     # Generate suspect table
     suspect_table = convert_dataframe_to_table(suspects)
@@ -659,7 +681,6 @@ def generate_challenge_4(df):
     ### Letters from a stowaway puzzle generation
     # Get the stowaway passenger class and convert to int
     stowaway_class = int(stowaway["Pclass"].iloc[0])
-    stowaway_survival = int(stowaway["Survived"].iloc[0])
 
     # Generate stowaway line
     if stowaway_class == 1:
@@ -701,15 +722,11 @@ A Guest of the Deep"""
     # While testing don't encrypt.
     ciphertext_letter = plaintext_letter
 
-    ### Bill Cipher puzzle generation
-    if stowaway_survival == 1:
-        stowaway_survival_line = "survived"
-    elif stowaway_survival == 0:
-        stowaway_survival_line = "deceased"
-    else:
-        print("[ERROR] 'stowaway_survival' is neither 0 nor 1")
-
-    cipher_letters_dir = "./challenge_4_cipher_components"
+    ### Bill Cipher challenge
+    # Generate encoded message
+    encoded_key_fig = generate_cipher_puzzle_fig(stowaway["Survived"].iloc[0])
+    encoded_key_img_path = os.path.join(puzzle_img_dir, "bill_cipher_img.png")
+    encoded_key_fig.savefig(encoded_key_img_path, dpi=300, bbox_inches="tight")
 
     # Generate encoded alphabet to display to the user as part of puzzle
     encoded_alphabet_fig = generate_alphabet_sheet(True)
@@ -720,24 +737,6 @@ A Guest of the Deep"""
     plaintext_alphabet_fig = generate_alphabet_sheet(False)
     plaintext_alphabet_img_path = os.path.join(puzzle_img_dir, "plaintext_alphabet_img.png")
     plaintext_alphabet_fig.savefig(plaintext_alphabet_img_path, dpi=300, bbox_inches="tight")
-
-    ### Turns "survived" or "deceased" into an image of the puzzle
-    cipher_letters_dir_list = []
-    for letter in stowaway_survival_line:
-        cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
-
-    fig, axes = plt.subplots(1, len(stowaway_survival_line), figsize=(12, 6))
-
-    for i, ax in enumerate(axes):
-        coded_letter_img = mpimg.imread(cipher_letters_dir_list[i])
-        ax.imshow(coded_letter_img)
-        ax.axis("off")
-
-    plt.tight_layout()
-    plt.close()
-
-    bill_cipher_img_path = os.path.join(puzzle_img_dir, "bill_cipher_img.png")
-    fig.savefig(bill_cipher_img_path, dpi=300, bbox_inches="tight")
 
     ### Morse code challenge
     morse_components_dir = "./challenge_4_morse_components"
@@ -759,7 +758,7 @@ A Guest of the Deep"""
         "suspect_table_img_path" : suspect_table_img_path,
         "intercepted_letter" : intercepted_letter,
         "ciphertext_letter" : ciphertext_letter,
-        "bill_cipher_img_path" : bill_cipher_img_path,
+        "encoded_key_img_path" : encoded_key_img_path,
         "plaintext_alphabet_img_path" : plaintext_alphabet_img_path,
         "encoded_alphabet_img_path" : encoded_alphabet_img_path,
         "alpha_morse_img_path" : morse_alphabet_path,

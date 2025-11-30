@@ -16,56 +16,56 @@
 
 **Card 1**
 ```
-name: Hanna, Mr. Mansour
+name: Beckwith, Mr. Richard Leonard
 Pclass: 3
-Age: 23.5
+Age: 37.0
 Sex: male
-Fare: 7.23
-Embarked: C
+Fare: 3.51
+Embarked: S
 ```
 **Card 2**
 ```
-name: Navratil, Mr. Michel ("Louis M Hoffman")
+name: Flynn, Mr. John Irwin ("Irving")
 Pclass: 1
-Age: 36.5
+Age: 36.0
 Sex: male
-Fare: 643.46
+Fare: 26.39
 Embarked: S
 ```
 **Card 3**
 ```
-name: Ali, Mr. William
+name: Ilmakangas, Miss. Pieta Sofia
 Pclass: 3
 Age: 25.0
-Sex: male
-Fare: 7.05
+Sex: female
+Fare: 7.92
 Embarked: S
 ```
 **Card 4**
 ```
-name: Eustis, Miss. Elizabeth Mussey
-Pclass: 1
-Age: 54.0
+name: Asplund, Miss. Lillian Gertrud
+Pclass: 3
+Age: 5.0
 Sex: female
-Fare: 78.27
-Embarked: C
+Fare: 31.39
+Embarked: S
 ```
 **Card 5**
 ```
-name: Harder, Mr. George Achilles
-Pclass: 1
-Age: 25.0
+name: Levy, Mr. Rene Jacques
+Pclass: 2
+Age: 36.0
 Sex: male
-Fare: 55.44
+Fare: 12.88
 Embarked: C
 ```
 **Card 6**
 ```
-name: Adams, Mr. John
-Pclass: 3
-Age: 26.0
-Sex: male
-Fare: 8.05
+name: Andrews, Miss. Kornelia Theodosia
+Pclass: 1
+Age: 63.0
+Sex: female
+Fare: 77.96
 Embarked: S
 ```
 
@@ -73,7 +73,7 @@ Embarked: S
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £643.46, which is much higher than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 2)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 3rd class (Pclass=3) but paying £3.51, which is much lower than typical 3rd class fares (£4.01-69.55). **(In this game, this card is Card 1)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -89,18 +89,18 @@ Embarked: S
 
 ### Echoes (Show to Players)
 
-- Echo A: Hassab boards at Cherbourg (C); a first-class ticket rustles in hand.
-- Echo B: Lanterns sway as the deck tilts; Turpin steadies a stranger amid rising alarm.
-- Echo C: In the final chaos, Moubarek finds space in a lifeboat and slips into the night.
-- Echo D: Ryan boards at Queenstown (Q); a third-class ticket rustles in hand.
-- Echo E: Goldsmith boards at Southampton (S); a third-class ticket rustles in hand.
+- Echo A: Lanterns sway as the deck tilts; Parrish steadies a stranger amid rising alarm.
+- Echo B: In the final chaos, Elias finds space in a lifeboat and slips into the night.
+- Echo C: O'Sullivan boards at Queenstown (Q); a third-class ticket rustles in hand.
+- Echo D: Sirayanian boards at Cherbourg (C); a third-class ticket rustles in hand.
+- Echo E: Giles boards at Southampton (S); a second-class ticket rustles in hand.
 
 **Task:** Arrange the echoes (A–E) in correct chronological order.
 
 ---
 ### GM Guide
 
-> **Answer:** [[REVEAL_ANSWER]]Correct order: E, A, D, B, C. Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last.[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]Correct order: E, D, C, A, B. Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last.[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 2** revealed when the order is correct.
 
 ---
@@ -118,46 +118,46 @@ Embarked: S
 
 **Card 1**
 ```
-Name: Doling, Miss. Elsie
-Pclass: 2
-Age: 18
-Sex: female
-Fare: 23.0
+Name: Goodwin, Master. Sidney Leonard
+Pclass: 3
+Age: 1
+Sex: male
+Fare: 46.9
 Embarked: S
 ```
 **Card 2**
 ```
-Name: Warren, Mrs. Frank Manley (Anna Sophia Atkinson)
+Name: Stahelin-Maeglin, Dr. Max
 Pclass: 1
-Age: 60
-Sex: female
-Fare: 75.25
+Age: 32
+Sex: male
+Fare: 30.5
 Embarked: C
 ```
 **Card 3**
 ```
-Name: Fry, Mr. Richard
+Name: Guggenheim, Mr. Benjamin
 Pclass: 1
-Age: 25
+Age: 46
 Sex: male
-Fare: 0.0
-Embarked: S
+Fare: 79.2
+Embarked: C
 ```
 **Card 4**
 ```
-Name: Angle, Mrs. William A (Florence "Mary" Agnes Hughes)
-Pclass: 2
-Age: 36
-Sex: female
-Fare: 26.0
-Embarked: S
+Name: Harper, Mr. Henry Sleeper
+Pclass: 1
+Age: 48
+Sex: male
+Fare: 76.73
+Embarked: C
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** Use the survival charts above to infer the 4-digit lifeboat code.
-> **Answer:** [[REVEAL_ANSWER]]1101[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]0101[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
@@ -198,7 +198,7 @@ R.M.S. TITANIC
 MARCONI WIRELESS SERVICE
 APRIL 12, 1912
 
-My secret alias is Stephenson, Mrs. Walter Bertram (Martha Eustis). It's quite comfortable here in first class!
+My secret alias is Lang, Mr. Fang. It's a bit cramped here in third class!
 
 A Guest of the Deep
 ```

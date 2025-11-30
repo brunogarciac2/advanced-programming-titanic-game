@@ -48,7 +48,7 @@ def markdown_to_html(md_text):
         reveal_id = str(uuid.uuid4())[:8]
         return (
             f'<div class="answer-reveal">'
-            f'<button class="reveal-btn" onclick="toggleAnswer(\'{reveal_id}\')">Click to Reveal Hint</button>'
+            f'<button class="reveal-btn" onclick="toggleHint(\'{reveal_id}\')">Click to Reveal Hint</button>'
             f'<div class="answer-content" id="answer-{reveal_id}" style="display:none;">'
             f'{m.group(1).strip()}</div></div>'
         )
@@ -236,8 +236,8 @@ def format_challenge_4(data):
     if "encoded_alphabet_img_path" in data and data["encoded_alphabet_img_path"]:
         md += f"![Encoded Alphabet Grid]({data['encoded_alphabet_img_path']})\n\n"
 
-    if "bill_cipher_img_path" in data and data["bill_cipher_img_path"]:
-        md += f"![Puzzle Cipher]({data['bill_cipher_img_path']})\n\n"
+    if "encoded_key_img_path" in data and data["encoded_key_img_path"]:
+        md += f"![Puzzle Cipher]({data['encoded_key_img_path']})\n\n"
 
     md += "### A Strange Sound \n"
 
@@ -595,6 +595,21 @@ def get_html_template():
         } else {
             answerDiv.style.display = 'none';
             btn.textContent = 'Click to Reveal Answer';
+            btn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+        }
+    }
+
+    function toggleHint(id) {
+        const answerDiv = document.getElementById('answer-' + id);
+        const btn = event.target;
+        
+        if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
+            answerDiv.style.display = 'block';
+            btn.textContent = 'Hide Hint';
+            btn.style.background = 'linear-gradient(135deg, #dc3545 0%, #c82333 100%)';
+        } else {
+            answerDiv.style.display = 'none';
+            btn.textContent = 'Click to Reveal Hint';
             btn.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
         }
     }
