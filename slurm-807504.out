@@ -1,0 +1,8 @@
+/var/spool/slurmd/job807504/slurm_script: line 13: plaintext_letter_llm_prompt.txt: command not found
+sbatch: error: This does not look like a batch script.  The first
+sbatch: error: line must start with #! followed by the path to an interpreter.
+sbatch: error: For instance: #!/bin/sh
+/var/spool/slurmd/job807504/slurm_script: line 14: encrypted_letter_llm_prompt.txt: command not found
+sbatch: error: This does not look like a batch script.  The first
+sbatch: error: line must start with #! followed by the path to an interpreter.
+sbatch: error: For instance: #!/bin/sh
