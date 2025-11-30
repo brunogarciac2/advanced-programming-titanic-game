@@ -5,35 +5,35 @@
     "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
     "passengers": [
         {
-            "Name": "Madigan, Miss. Margaret \"Maggie\"",
+            "Name": "Sandstrom, Miss. Marguerite Rut",
             "Pclass": 3,
-            "Age": 28,
+            "Age": 4,
             "Sex": "female",
-            "Fare": 7.75,
-            "Embarked": "Q"
-        },
-        {
-            "Name": "Moussa, Mrs. (Mantoura Boulos)",
-            "Pclass": 3,
-            "Age": 43,
-            "Sex": "female",
-            "Fare": 7.23,
-            "Embarked": "C"
-        },
-        {
-            "Name": "van Billiard, Mr. Austin Blyler",
-            "Pclass": 3,
-            "Age": 40,
-            "Sex": "male",
-            "Fare": 14.5,
+            "Fare": 16.7,
             "Embarked": "S"
         },
         {
-            "Name": "Cunningham, Mr. Alfred Fleming",
+            "Name": "Jarvis, Mr. John Denzil",
             "Pclass": 2,
-            "Age": 29,
+            "Age": 47,
             "Sex": "male",
-            "Fare": 0.0,
+            "Fare": 15.0,
+            "Embarked": "S"
+        },
+        {
+            "Name": "Toomey, Miss. Ellen",
+            "Pclass": 2,
+            "Age": 50,
+            "Sex": "female",
+            "Fare": 10.5,
+            "Embarked": "S"
+        },
+        {
+            "Name": "Hakkarainen, Mr. Pekka Pietari",
+            "Pclass": 3,
+            "Age": 28,
+            "Sex": "male",
+            "Fare": 15.85,
             "Embarked": "S"
         }
     ],
@@ -51,5 +51,5 @@
         "hint\\challenge_3_sex_pclass.png",
         "hint\\challenge_3_age_group.png"
     ],
-    "correct_code": "1100"
+    "correct_code": "1010"
 }

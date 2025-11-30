@@ -44,6 +44,22 @@ def markdown_to_html(md_text):
         flags=re.DOTALL
     )
 
+    def replace_reveal_hint(m):
+        reveal_id = str(uuid.uuid4())[:8]
+        return (
+            f'<div class="answer-reveal">'
+            f'<button class="reveal-btn" onclick="toggleAnswer(\'{reveal_id}\')">Click to Reveal Hint</button>'
+            f'<div class="answer-content" id="answer-{reveal_id}" style="display:none;">'
+            f'{m.group(1).strip()}</div></div>'
+        )
+
+    html = re.sub(
+        r'\[\[REVEAL_HINT\]\](.*?)\[\[END_HINT\]\]',
+        replace_reveal_hint,
+        html,
+        flags=re.DOTALL
+    )
+
     # Markdown → HTML replacements
     html = re.sub(r'^# (.+)$', r'<h1>\1</h1>', html, flags=re.MULTILINE)
     html = re.sub(r'^## (.+)$', r'<h2>\1</h2>', html, flags=re.MULTILINE)
@@ -217,8 +233,8 @@ def format_challenge_4(data):
 
     md += '### A Mysterious Code \n\n'
 
-    if "alpha_img_path" in data and data["alpha_img_path"]:
-        md += f"![Alphabet Grid]({data['alpha_img_path']})\n\n"
+    if "encoded_alphabet_img_path" in data and data["encoded_alphabet_img_path"]:
+        md += f"![Encoded Alphabet Grid]({data['encoded_alphabet_img_path']})\n\n"
 
     if "bill_cipher_img_path" in data and data["bill_cipher_img_path"]:
         md += f"![Puzzle Cipher]({data['bill_cipher_img_path']})\n\n"
@@ -229,6 +245,8 @@ def format_challenge_4(data):
         md += f"![Morse Alphabet]({data['alpha_morse_img_path']})\n\n"
 
     md += f"[[PLAY_SOUND]]{data['sound_file']}[[END_SOUND]]\n"
+
+    md += f"> **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid]({data['plaintext_alphabet_img_path']})[[END_HINT]]\n"
 
     return md
 

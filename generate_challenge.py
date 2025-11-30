@@ -175,6 +175,46 @@ def decrypt(cipher_text, key):
     # Have to invert key to decrypt
     pass
 
+# Function to create alphabet sheet, true is encrypted, false is plaintext
+def generate_alphabet_sheet(encrypted=True):
+    if encrypted:
+        letters_dir = "./challenge_4_cipher_components"
+    else:
+        letters_dir = "./challenge_4_alphabet_components"
+
+    # If directory doesn't exist then display while compiling
+    if not os.path.isdir(letters_dir):
+        print(f"[ERROR] '{letters_dir}' not found.")
+
+    # Creates alphabet sheet
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+    fig, axes = plt.subplots(4, 7, figsize=(12, 6))
+
+    letters_dir_list = []
+    for letter in alphabet:
+        letters_dir_list.append(letters_dir + f"/Letter_{letter}.png")
+
+    # Flatten axes for easy iteration
+    axes = axes.ravel()
+
+    num_letters = len(alphabet)
+
+    # Loop only through the alphabet
+    for i, ax in enumerate(axes[:num_letters]):
+        letter_img = mpimg.imread(letters_dir_list[i])
+        ax.imshow(letter_img)
+        ax.axis("off")
+
+    # Once images run out hide empty subplots
+    for ax in axes[num_letters:]:
+        ax.set_visible(False)
+
+    plt.tight_layout()
+    plt.close()
+
+    return fig
+
 def convert_dataframe_to_table(df):
     font_size = 20
 
@@ -596,6 +636,7 @@ def generate_challenge_4(df):
     suspect_table_img_path = os.path.join(puzzle_img_dir, "suspect_table.png")
     suspect_table.savefig(suspect_table_img_path, dpi=300, bbox_inches="tight")
 
+    ### Letters from a stowaway puzzle generation
     # Get the stowaway passenger class and convert to int
     stowaway_class = int(stowaway["Pclass"].iloc[0])
     stowaway_survival = int(stowaway["Survived"].iloc[0])
@@ -640,7 +681,7 @@ A Guest of the Deep"""
     # While testing don't encrypt.
     ciphertext_letter = plaintext_letter
 
-    ### Bill Cipher 
+    ### Bill Cipher puzzle generation
     if stowaway_survival == 1:
         stowaway_survival_line = "survived"
     elif stowaway_survival == 0:
@@ -650,32 +691,15 @@ A Guest of the Deep"""
 
     cipher_letters_dir = "./challenge_4_cipher_components"
 
-    # If directory doesn't exist then display while compiling
-    if not os.path.isdir(cipher_letters_dir):
-        print("[ERROR] 'challenge_4_cipher_components' not found.")
+    # Generate encoded alphabet to display to the user as part of puzzle
+    encoded_alphabet_fig = generate_alphabet_sheet(True)
+    encoded_alphabet_img_path = os.path.join(puzzle_img_dir, "encoded_alphabet_img.png")
+    encoded_alphabet_fig.savefig(encoded_alphabet_img_path, dpi=300, bbox_inches="tight")
 
-    ### Creates alphabet sheet
-    alpha = "abcdefghijklmnopqrstuvwxyz"
-
-    alpha_fig, alpha_axes = plt.subplots(4, 6, figsize=(12, 6))
-
-    alpha_letters_dir_list = []
-    for letter in alpha:
-        alpha_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
-
-    # Flatten axes for easy iteration
-    alpha_axes = alpha_axes.ravel()
-
-    for i, ax in enumerate(alpha_axes):
-        letter_img = mpimg.imread(alpha_letters_dir_list[i])
-        ax.imshow(letter_img)
-        ax.axis("off")
-
-    plt.tight_layout()
-    plt.close()
-
-    alpha_img_path = os.path.join(puzzle_img_dir, "alpha_cipher_img.png")
-    alpha_fig.savefig(alpha_img_path, dpi=300, bbox_inches="tight")
+    # Generate plaintext alphabet to show to user as a hint
+    plaintext_alphabet_fig = generate_alphabet_sheet(False)
+    plaintext_alphabet_img_path = os.path.join(puzzle_img_dir, "plaintext_alphabet_img.png")
+    plaintext_alphabet_fig.savefig(plaintext_alphabet_img_path, dpi=300, bbox_inches="tight")
 
     ### Turns "survived" or "deceased" into an image of the puzzle
     cipher_letters_dir_list = []
@@ -707,13 +731,13 @@ A Guest of the Deep"""
         "title": "Guest from the Deep",
         "story": story_text,
         "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
-        "suspects_list": suspects_markdown,
+        "suspect_table_img_path" : suspect_table_img_path,
         "intercepted_letter" : intercepted_letter,
         "ciphertext_letter" : ciphertext_letter,
-        "suspect_table_img_path" : suspect_table_img_path,
         "bill_cipher_img_path" : bill_cipher_img_path,
-        "alpha_img_path" : alpha_img_path, 
-        "sound_file" : "sound.wav", 
+        "plaintext_alphabet_img_path" : plaintext_alphabet_img_path,
+        "encoded_alphabet_img_path" : encoded_alphabet_img_path,
+        "sound_file" : "sound.wav",
         "alpha_morse_img_path" : morse_alphabet_path, 
     }
 

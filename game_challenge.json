@@ -12,58 +12,58 @@
             "task": "Out of the following 6 passenger cards, which one is statistically impossible?",
             "passenger_cards": [
                 {
-                    "name": "Wick, Miss. Mary Natalie",
-                    "Pclass": 1,
-                    "Age": 31.0,
-                    "Sex": "female",
-                    "Fare": 164.87,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Ford, Miss. Robina Maggie \"Ruby\"",
+                    "name": "Becker, Master. Richard F",
                     "Pclass": 3,
-                    "Age": 9.0,
-                    "Sex": "female",
-                    "Fare": 34.38,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Petroff, Mr. Pastcho (\"Pentcho\")",
-                    "Pclass": 3,
-                    "Age": NaN,
+                    "Age": 1.0,
                     "Sex": "male",
-                    "Fare": 7.9,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Holverson, Mrs. Alexander Oskar (Mary Aline Towner)",
-                    "Pclass": 1,
-                    "Age": 35.0,
-                    "Sex": "female",
-                    "Fare": 52.0,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Asim, Mr. Adola",
-                    "Pclass": 3,
-                    "Age": 35.0,
-                    "Sex": "male",
-                    "Fare": 7.05,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Parrish, Mrs. (Lutie Davis)",
-                    "Pclass": 3,
-                    "Age": 50.0,
-                    "Sex": "female",
-                    "Fare": 76.61,
+                    "Fare": 81.5,
                     "Embarked": "S",
                     "_is_fake": true
+                },
+                {
+                    "name": "Cavendish, Mr. Tyrell William",
+                    "Pclass": 1,
+                    "Age": 36.0,
+                    "Sex": "male",
+                    "Fare": 78.85,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Newsom, Miss. Helen Monypeny",
+                    "Pclass": 1,
+                    "Age": 19.0,
+                    "Sex": "female",
+                    "Fare": 26.28,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Goldschmidt, Mr. George B",
+                    "Pclass": 1,
+                    "Age": 71.0,
+                    "Sex": "male",
+                    "Fare": 34.65,
+                    "Embarked": "C"
+                },
+                {
+                    "name": "Kelly, Mrs. Florence \"Fannie\"",
+                    "Pclass": 2,
+                    "Age": 45.0,
+                    "Sex": "female",
+                    "Fare": 13.5,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Hippach, Mrs. Louis Albert (Ida Sophia Fischer)",
+                    "Pclass": 1,
+                    "Age": 44.0,
+                    "Sex": "female",
+                    "Fare": 57.98,
+                    "Embarked": "C"
                 }
             ],
             "hint": "GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.",
             "hint_chart": "hint\\challenge_1_boxplot.png",
-            "answer": "The forged card: 3rd class (Pclass=3) but paying £76.61, which is much higher than typical 3rd class fares (£4.01-69.55)."
+            "answer": "The forged card: 3rd class (Pclass=3) but paying £81.50, which is much higher than typical 3rd class fares (£4.01-69.55)."
         },
         {
             "id": 2,
@@ -72,23 +72,23 @@
             "echoes": [
                 {
                     "letter": "A",
-                    "text": "Yasbeck boards at Cherbourg (C); a third-class ticket rustles in hand."
+                    "text": "In the final chaos, Touma finds space in a lifeboat and slips into the night."
                 },
                 {
                     "letter": "B",
-                    "text": "O'Driscoll boards at Queenstown (Q); a third-class ticket rustles in hand."
+                    "text": "Lanterns sway as the deck tilts; Goodwin steadies a stranger amid rising alarm."
                 },
                 {
                     "letter": "C",
-                    "text": "Lanterns sway as the deck tilts; Moran steadies a stranger amid rising alarm."
+                    "text": "Simonius-Blumer boards at Cherbourg (C); a first-class ticket rustles in hand."
                 },
                 {
                     "letter": "D",
-                    "text": "In the final chaos, Ali finds space in a lifeboat and slips into the night."
+                    "text": "Yrois boards at Southampton (S); a second-class ticket rustles in hand."
                 },
                 {
                     "letter": "E",
-                    "text": "Asplund boards at Southampton (S); a third-class ticket rustles in hand."
+                    "text": "Henry boards at Queenstown (Q); a third-class ticket rustles in hand."
                 }
             ],
             "known_facts": [
@@ -98,7 +98,7 @@
                 "Mentions of 'escaped' or 'lifeboat' happen last."
             ],
             "task": "Arrange the echoes (A–E) in correct chronological order.",
-            "solution": "E, A, B, C, D",
+            "solution": "D, C, E, B, A",
             "explanation": "Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last."
         },
         {
@@ -108,35 +108,35 @@
             "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
             "passengers": [
                 {
-                    "Name": "Madigan, Miss. Margaret \"Maggie\"",
+                    "Name": "Sandstrom, Miss. Marguerite Rut",
                     "Pclass": 3,
-                    "Age": 28,
+                    "Age": 4,
                     "Sex": "female",
-                    "Fare": 7.75,
-                    "Embarked": "Q"
-                },
-                {
-                    "Name": "Moussa, Mrs. (Mantoura Boulos)",
-                    "Pclass": 3,
-                    "Age": 43,
-                    "Sex": "female",
-                    "Fare": 7.23,
-                    "Embarked": "C"
-                },
-                {
-                    "Name": "van Billiard, Mr. Austin Blyler",
-                    "Pclass": 3,
-                    "Age": 40,
-                    "Sex": "male",
-                    "Fare": 14.5,
+                    "Fare": 16.7,
                     "Embarked": "S"
                 },
                 {
-                    "Name": "Cunningham, Mr. Alfred Fleming",
+                    "Name": "Jarvis, Mr. John Denzil",
                     "Pclass": 2,
-                    "Age": 29,
+                    "Age": 47,
                     "Sex": "male",
-                    "Fare": 0.0,
+                    "Fare": 15.0,
+                    "Embarked": "S"
+                },
+                {
+                    "Name": "Toomey, Miss. Ellen",
+                    "Pclass": 2,
+                    "Age": 50,
+                    "Sex": "female",
+                    "Fare": 10.5,
+                    "Embarked": "S"
+                },
+                {
+                    "Name": "Hakkarainen, Mr. Pekka Pietari",
+                    "Pclass": 3,
+                    "Age": 28,
+                    "Sex": "male",
+                    "Fare": 15.85,
                     "Embarked": "S"
                 }
             ],
@@ -154,43 +154,19 @@
                 "hint\\challenge_3_sex_pclass.png",
                 "hint\\challenge_3_age_group.png"
             ],
-            "correct_code": "1100"
+            "correct_code": "1010"
         },
         {
             "id": 4,
             "title": "Guest from the Deep",
             "story": "\n    \n    The Captain has called you and your group to the deck of the ship with an \n    urgent mission. Telegrams have been intercepted from the ship's Marconi machine\n    and it appears there is a stowaway on board! Unfortunately, the dastardly \n    stowaway has managed to scramble one of the telegrams using a mysterious code. \n    The Captain has created a list of 10 suspects. Can you decipher the letter and\n    obtain the identity of the suspect before they get away?!\n    \n    ",
             "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
-            "suspects_list": [
-                "|    | Name                                            |   Pclass | Sex    |   Survived |",
-                "|---:|:------------------------------------------------|---------:|:-------|-----------:|",
-                "|  0 | West, Miss. Constance Mirium                    |        2 | female |          1 |",
-                "|  1 | Lobb, Mr. William Arthur                        |        3 | male   |          0 |",
-                "|  2 | Uruchurtu, Don. Manuel E                        |        1 | male   |          0 |",
-                "|  3 | Petroff, Mr. Nedelio                            |        3 | male   |          0 |",
-                "|  4 | Kvillner, Mr. Johan Henrik Johannesson          |        2 | male   |          0 |",
-                "|  5 | Palsson, Master. Gosta Leonard                  |        3 | male   |          0 |",
-                "|  6 | Daniel, Mr. Robert Williams                     |        1 | male   |          1 |",
-                "|  7 | Montvila, Rev. Juozas                           |        2 | male   |          0 |",
-                "|  8 | Duane, Mr. Frank                                |        3 | male   |          0 |",
-                "|  9 | Culumovic, Mr. Jeso                             |        3 | male   |          0 |",
-                "| 10 | Nilsson, Miss. Helmina Josefina                 |        3 | female |          1 |",
-                "| 11 | Meyer, Mr. Edgar Joseph                         |        1 | male   |          0 |",
-                "| 12 | Weir, Col. John                                 |        1 | male   |          0 |",
-                "| 13 | Sirayanian, Mr. Orsen                           |        3 | male   |          0 |",
-                "| 14 | Peter, Miss. Anna                               |        3 | female |          1 |",
-                "| 15 | Goodwin, Mrs. Frederick (Augusta Tyler)         |        3 | female |          0 |",
-                "| 16 | Gilinski, Mr. Eliezer                           |        3 | male   |          0 |",
-                "| 17 | Lindell, Mr. Edvard Bengtsson                   |        3 | male   |          0 |",
-                "| 18 | Rood, Mr. Hugh Roscoe                           |        1 | male   |          0 |",
-                "| 19 | Robbins, Mr. Victor                             |        1 | male   |          0 |",
-                "| 20 | Drew, Mrs. James Vivian (Lulu Thorne Christian) |        2 | female |          1 |"
-            ],
-            "intercepted_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nGood afternoon, I have snuck aboard this mighty vessel.\nNow time to implement my darstardly plan!\nYours Sincerely,\n\nA Guest of the Deep",
-            "ciphertext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nMy secret alias is Lobb, Mr. William Arthur. It's a bit cramped here in third class!\n\nA Guest of the Deep",
             "suspect_table_img_path": "./challenge_4_puzzle_images\\suspect_table.png",
+            "intercepted_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nGood afternoon, I have snuck aboard this mighty vessel.\nNow time to implement my darstardly plan!\nYours Sincerely,\n\nA Guest of the Deep",
+            "ciphertext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nMy secret alias is Kink-Heilmann, Miss. Luise Gretchen. It's a bit cramped here in third class!\n\nA Guest of the Deep",
             "bill_cipher_img_path": "./challenge_4_puzzle_images\\bill_cipher_img.png",
-            "alpha_img_path": "./challenge_4_puzzle_images\\alpha_cipher_img.png",
+            "plaintext_alphabet_img_path": "./challenge_4_puzzle_images\\plaintext_alphabet_img.png",
+            "encoded_alphabet_img_path": "./challenge_4_puzzle_images\\encoded_alphabet_img.png",
             "sound_file": "sound.wav",
             "alpha_morse_img_path": "./challenge_4_puzzle_images\\morse_code_alphabet.jpg"
         }
