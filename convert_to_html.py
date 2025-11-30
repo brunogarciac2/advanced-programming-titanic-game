@@ -244,9 +244,10 @@ def format_challenge_4(data):
     if "alpha_morse_img_path" in data and data["alpha_morse_img_path"]:
         md += f"![Morse Alphabet]({data['alpha_morse_img_path']})\n\n"
 
-    md += f"[[PLAY_SOUND]]{data['sound_file']}[[END_SOUND]]\n"
+    md += f"[[PLAY_SOUND]]{data['morse_wav_path']}[[END_SOUND]]\n"
 
     md += f"> **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid]({data['plaintext_alphabet_img_path']})[[END_HINT]]\n"
+    md += f"> **A Strange Sound Hint:** [[REVEAL_HINT]]{data['morse_text_hint']}[[END_HINT]]\n"
 
     return md
 

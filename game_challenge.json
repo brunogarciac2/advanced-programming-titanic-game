@@ -12,58 +12,58 @@
             "task": "Out of the following 6 passenger cards, which one is statistically impossible?",
             "passenger_cards": [
                 {
-                    "name": "Becker, Master. Richard F",
+                    "name": "Asplund, Master. Edvin Rojj Felix",
                     "Pclass": 3,
-                    "Age": 1.0,
+                    "Age": 3.0,
                     "Sex": "male",
-                    "Fare": 81.5,
-                    "Embarked": "S",
+                    "Fare": 31.39,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Peuchen, Major. Arthur Godfrey",
+                    "Pclass": 1,
+                    "Age": 52.0,
+                    "Sex": "male",
+                    "Fare": 30.5,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Connolly, Miss. Kate",
+                    "Pclass": 3,
+                    "Age": 22.0,
+                    "Sex": "female",
+                    "Fare": 7.75,
+                    "Embarked": "Q"
+                },
+                {
+                    "name": "Bowen, Mr. David John \"Dai\"",
+                    "Pclass": 3,
+                    "Age": 21.0,
+                    "Sex": "male",
+                    "Fare": 16.1,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Smith, Mr. Thomas",
+                    "Pclass": 2,
+                    "Age": NaN,
+                    "Sex": "male",
+                    "Fare": 4.45,
+                    "Embarked": "Q",
                     "_is_fake": true
                 },
                 {
-                    "name": "Cavendish, Mr. Tyrell William",
-                    "Pclass": 1,
-                    "Age": 36.0,
-                    "Sex": "male",
-                    "Fare": 78.85,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Newsom, Miss. Helen Monypeny",
-                    "Pclass": 1,
-                    "Age": 19.0,
-                    "Sex": "female",
-                    "Fare": 26.28,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Goldschmidt, Mr. George B",
-                    "Pclass": 1,
-                    "Age": 71.0,
-                    "Sex": "male",
-                    "Fare": 34.65,
-                    "Embarked": "C"
-                },
-                {
-                    "name": "Kelly, Mrs. Florence \"Fannie\"",
+                    "name": "Funk, Miss. Annie Clemmer",
                     "Pclass": 2,
-                    "Age": 45.0,
+                    "Age": 38.0,
                     "Sex": "female",
-                    "Fare": 13.5,
+                    "Fare": 13.0,
                     "Embarked": "S"
-                },
-                {
-                    "name": "Hippach, Mrs. Louis Albert (Ida Sophia Fischer)",
-                    "Pclass": 1,
-                    "Age": 44.0,
-                    "Sex": "female",
-                    "Fare": 57.98,
-                    "Embarked": "C"
                 }
             ],
             "hint": "GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.",
             "hint_chart": "hint\\challenge_1_boxplot.png",
-            "answer": "The forged card: 3rd class (Pclass=3) but paying £81.50, which is much higher than typical 3rd class fares (£4.01-69.55)."
+            "answer": "The forged card: 2nd class (Pclass=2) but paying £4.45, which is much lower than typical 2nd class fares (£10.50-73.50)."
         },
         {
             "id": 2,
@@ -72,23 +72,23 @@
             "echoes": [
                 {
                     "letter": "A",
-                    "text": "In the final chaos, Touma finds space in a lifeboat and slips into the night."
+                    "text": "In the final chaos, Becker finds space in a lifeboat and slips into the night."
                 },
                 {
                     "letter": "B",
-                    "text": "Lanterns sway as the deck tilts; Goodwin steadies a stranger amid rising alarm."
+                    "text": "Hegarty boards at Queenstown (Q); a third-class ticket rustles in hand."
                 },
                 {
                     "letter": "C",
-                    "text": "Simonius-Blumer boards at Cherbourg (C); a first-class ticket rustles in hand."
+                    "text": "Sage boards at Southampton (S); a third-class ticket rustles in hand."
                 },
                 {
                     "letter": "D",
-                    "text": "Yrois boards at Southampton (S); a second-class ticket rustles in hand."
+                    "text": "Brewe boards at Cherbourg (C); a first-class ticket rustles in hand."
                 },
                 {
                     "letter": "E",
-                    "text": "Henry boards at Queenstown (Q); a third-class ticket rustles in hand."
+                    "text": "Lanterns sway as the deck tilts; Asim steadies a stranger amid rising alarm."
                 }
             ],
             "known_facts": [
@@ -98,7 +98,7 @@
                 "Mentions of 'escaped' or 'lifeboat' happen last."
             ],
             "task": "Arrange the echoes (A–E) in correct chronological order.",
-            "solution": "D, C, E, B, A",
+            "solution": "C, D, B, E, A",
             "explanation": "Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last."
         },
         {
@@ -108,35 +108,35 @@
             "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
             "passengers": [
                 {
-                    "Name": "Sandstrom, Miss. Marguerite Rut",
-                    "Pclass": 3,
-                    "Age": 4,
+                    "Name": "Newell, Miss. Marjorie",
+                    "Pclass": 1,
+                    "Age": 23,
                     "Sex": "female",
-                    "Fare": 16.7,
-                    "Embarked": "S"
+                    "Fare": 113.28,
+                    "Embarked": "C"
                 },
                 {
-                    "Name": "Jarvis, Mr. John Denzil",
+                    "Name": "Faunthorpe, Mrs. Lizzie (Elizabeth Anne Wilkinson)",
                     "Pclass": 2,
-                    "Age": 47,
-                    "Sex": "male",
-                    "Fare": 15.0,
-                    "Embarked": "S"
-                },
-                {
-                    "Name": "Toomey, Miss. Ellen",
-                    "Pclass": 2,
-                    "Age": 50,
+                    "Age": 29,
                     "Sex": "female",
-                    "Fare": 10.5,
+                    "Fare": 26.0,
                     "Embarked": "S"
                 },
                 {
-                    "Name": "Hakkarainen, Mr. Pekka Pietari",
+                    "Name": "Jonkoff, Mr. Lalio",
                     "Pclass": 3,
-                    "Age": 28,
+                    "Age": 23,
                     "Sex": "male",
-                    "Fare": 15.85,
+                    "Fare": 7.9,
+                    "Embarked": "S"
+                },
+                {
+                    "Name": "Leitch, Miss. Jessie Wills",
+                    "Pclass": 2,
+                    "Age": 21,
+                    "Sex": "female",
+                    "Fare": 33.0,
                     "Embarked": "S"
                 }
             ],
@@ -154,7 +154,7 @@
                 "hint\\challenge_3_sex_pclass.png",
                 "hint\\challenge_3_age_group.png"
             ],
-            "correct_code": "1010"
+            "correct_code": "1101"
         },
         {
             "id": 4,
@@ -163,12 +163,13 @@
             "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
             "suspect_table_img_path": "./challenge_4_puzzle_images\\suspect_table.png",
             "intercepted_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nGood afternoon, I have snuck aboard this mighty vessel.\nNow time to implement my darstardly plan!\nYours Sincerely,\n\nA Guest of the Deep",
-            "ciphertext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nMy secret alias is Kink-Heilmann, Miss. Luise Gretchen. It's a bit cramped here in third class!\n\nA Guest of the Deep",
+            "ciphertext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\n\nMy secret alias is Johannesen-Bratthammer, Mr. Bernt. It's a bit cramped here in third class!\n\nA Guest of the Deep",
             "bill_cipher_img_path": "./challenge_4_puzzle_images\\bill_cipher_img.png",
             "plaintext_alphabet_img_path": "./challenge_4_puzzle_images\\plaintext_alphabet_img.png",
             "encoded_alphabet_img_path": "./challenge_4_puzzle_images\\encoded_alphabet_img.png",
-            "sound_file": "sound.wav",
-            "alpha_morse_img_path": "./challenge_4_puzzle_images\\morse_code_alphabet.jpg"
+            "alpha_morse_img_path": "./challenge_4_puzzle_images\\morse_code_alphabet.jpg",
+            "morse_wav_path": "morse.wav",
+            "morse_text_hint": "....   .   .-..   .-..   ---   "
         }
     ]
 }

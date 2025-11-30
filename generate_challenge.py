@@ -247,7 +247,8 @@ def convert_dataframe_to_table(df):
 
     return fig
 
-def convert_to_morse(morse_component_dir, input_string):
+# For challenge-4 (A Strange Sound) turn plaintext into morse audio segment
+def generate_morse_audio_segment(morse_component_dir, input_string):
     # If directory doesn't exist then display while compiling
     if not os.path.isdir(morse_component_dir):
         print("[ERROR] 'challenge_4_morse_components' not found.")
@@ -256,11 +257,29 @@ def convert_to_morse(morse_component_dir, input_string):
 
     for char in input_string:
         char_path = morse_component_dir + f"/{char.upper()}_morse_code.wav"
-        print(char_path)
         output_message += AudioSegment.from_wav(char_path)
         output_message += AudioSegment.silent(duration=2000)
 
-    output_message.export("./sound.wav", format="wav")
+    return output_message
+
+# For challenge-4 (A Strange Sound) hint turn plaintext into morse text
+def generate_morse_text(input_string):
+    morse_dict = {
+        "A": ".-",    "B": "-...",  "C": "-.-.",  "D": "-..",   "E": ".",
+        "F": "..-.",  "G": "--.",   "H": "....",  "I": "..",    "J": ".---",
+        "K": "-.-",   "L": ".-..",  "M": "--",    "N": "-.",    "O": "---",
+        "P": ".--.",  "Q": "--.-",  "R": ".-.",   "S": "...",   "T": "-",
+        "U": "..-",   "V": "...-",  "W": ".--",   "X": "-..-",  "Y": "-.--",
+        "Z": "--.."
+    }
+    output_morse = ""
+
+    for char in input_string:
+        output_morse += morse_dict[char.upper()]
+        output_morse += (' ' * 3)
+
+    print(output_morse)
+    return output_morse
 
 def generate_challenge_1(df):
     """Generate Challenge 1: Find the Anomaly"""
@@ -607,21 +626,22 @@ def generate_challenge_4(df):
     # So that the stowaway is unique from the clues presented
     idx_not_same_as_stowaway = ~(df[columns_to_check].eq(stowaway[columns_to_check]).all(axis=1))
 
-    # Select rows that are not identical in these columns
+    # Select rows that are not identical to the stowaway in the clue columns
     possible_rows = df[idx_not_same_as_stowaway]
 
-    # Randomly pick 20 rows
+    # Randomly pick 20 rows from these possible rows
     suspects = possible_rows.sample(n=20)
 
+    # Insert the stowaway randomly into the list of suspects
     suspects = pd.concat([suspects, stowaway]).sample(frac=1, ignore_index=True).reset_index(drop=True)
 
-    # Only interested in some of the categories
+    # Only interested in some of the features
     suspects = suspects[["Name", "Pclass", "Sex", "Survived"]]
     stowaway = stowaway[["Name", "Pclass", "Sex", "Survived"]]
-    suspects_markdown = suspects.to_markdown(index=True).split("\n")
 
     # Remove anything in brackets from the name column - makes the names easier to display
     suspects["Name"] = suspects["Name"].str.replace(r"\(.*?\)", "", regex=True)
+    stowaway["Name"] = stowaway["Name"].str.replace(r"\(.*?\)", "", regex=True)
 
     # Replace 0 with deceased
     suspects["Survived"] = suspects["Survived"].replace(0, "Deceased")
@@ -723,7 +743,12 @@ A Guest of the Deep"""
     morse_components_dir = "./challenge_4_morse_components"
     morse_alphabet_path = os.path.join(puzzle_img_dir, "morse_code_alphabet.jpg")
 
-    convert_to_morse(morse_components_dir, "Hello")
+    # Turn a string into a morse code wav file
+    morse_wav_audio = generate_morse_audio_segment(morse_components_dir, "Hello")
+    morse_wav_audio.export("./morse.wav", format="wav")
+
+    # For hint - Turn string into morse code dots and dashes
+    morse_text_hint = generate_morse_text("Hello")
 
     # Challenge data to be added to the markdown file
     challenge_data = {
@@ -737,8 +762,9 @@ A Guest of the Deep"""
         "bill_cipher_img_path" : bill_cipher_img_path,
         "plaintext_alphabet_img_path" : plaintext_alphabet_img_path,
         "encoded_alphabet_img_path" : encoded_alphabet_img_path,
-        "sound_file" : "sound.wav",
-        "alpha_morse_img_path" : morse_alphabet_path, 
+        "alpha_morse_img_path" : morse_alphabet_path,
+        "morse_wav_path" : "morse.wav",
+        "morse_text_hint" : morse_text_hint
     }
 
     return challenge_data
