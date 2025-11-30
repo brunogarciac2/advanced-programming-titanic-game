@@ -6,7 +6,7 @@
 #SBATCH --mem=16G
 #SBATCH -t 02:00:00
 #SBATCH --gres=gpu:turing:1
-#SBATCH --job-name=LLM_TESTING_HOST
+#SBATCH --job-name=Titanic-Escape-Room
 
 source /etc/profile
 
@@ -24,3 +24,14 @@ bash generate_challenge_4_llm_text.sh "$(cat plaintext_letter_llm_prompt.txt)" "
 bash generate_challenge_4_llm_text.sh "$(cat encrypted_letter_llm_prompt.txt)" "encrypted_letter_llm_response.json"
 
 echo "[SUCCESS] Text generated."
+
+echo "Installing Requirements..."
+pip install -r requirements.txt
+
+echo "Generating challenges..."
+
+python3.12 convert_to_html.py
+
+echo "Challenge generation complete."
+
+echo "Open 'gm_guide.html' with your preferred web browser to play!"
