@@ -16,7 +16,11 @@ echo "Running..."
 chmod +x generate_challenge_4_llm_text.sh
 chmod +r plaintext_letter_llm_prompt.txt
 
-echo "$(cat plaintext_letter_llm_prompt.txt)"
+singularity pull ollama.sif docker://ollama/ollama
 
-./generate_challenge_4_llm_text.sh "$(cat plaintext_letter_llm_prompt.txt)" "plaintext_letter_llm_response.json"
-./generate_challenge_4_llm_text.sh "$(cat encrypted_letter_llm_prompt.txt)" "encrypted_letter_llm_response.json"
+echo "Generating llm text for challenge 4..."
+
+bash generate_challenge_4_llm_text.sh "$(cat plaintext_letter_llm_prompt.txt)" "plaintext_letter_llm_response.json"
+bash generate_challenge_4_llm_text.sh "$(cat encrypted_letter_llm_prompt.txt)" "encrypted_letter_llm_response.json"
+
+echo "[SUCCESS] Text generated."
