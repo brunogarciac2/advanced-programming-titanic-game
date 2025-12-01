@@ -261,7 +261,7 @@ def convert_dataframe_to_table(df):
 def generate_morse_audio_segment(morse_component_dir, input_string):
     # If directory doesn't exist then display while compiling
     if not os.path.isdir(morse_component_dir):
-        print("[ERROR] 'challenge_4_morse_components' not found.")
+        print(f"[ERROR] '{morse_component_dir}' not found.")
 
     output_message = AudioSegment.silent(duration=0)
 
@@ -288,7 +288,6 @@ def generate_morse_text(input_string):
         output_morse += morse_dict[char.upper()]
         output_morse += (' ' * 3)
 
-    print(output_morse)
     return output_morse
 
 def generate_challenge_1(df):
@@ -624,7 +623,7 @@ def generate_challenge_4(df):
     
     """
 
-    puzzle_img_dir = "./assets/images"
+    images_dir = "./assets/images"
 
     # The columns to check for uniqueness
     columns_to_check = ['Pclass', 'Sex', 'Survived']
@@ -668,7 +667,7 @@ def generate_challenge_4(df):
     suspect_table = convert_dataframe_to_table(suspects)
 
     # Save suspect table
-    suspect_table_img_path = os.path.join(puzzle_img_dir, "suspect_table.png")
+    suspect_table_img_path = os.path.join(images_dir, "suspect_table.png")
     suspect_table.savefig(suspect_table_img_path, dpi=300, bbox_inches="tight")
 
     ### Letters from a stowaway puzzle generation
@@ -734,24 +733,24 @@ APRIL 12, 1912
 
     # Generate encoded message
     encoded_key_fig = generate_cipher_puzzle_fig(stowaway["Survived"].iloc[0], cipher_components_path)
-    encoded_key_img_path = os.path.join(puzzle_img_dir, "bill_cipher_img.png")
+    encoded_key_img_path = os.path.join(images_dir, "bill_cipher_img.png")
     encoded_key_fig.savefig(encoded_key_img_path, dpi=300, bbox_inches="tight")
 
     # Generate encoded alphabet to display to the user as part of puzzle
     encoded_alphabet_fig = generate_alphabet_sheet(cipher_components_path)
-    encoded_alphabet_img_path = os.path.join(puzzle_img_dir, "encoded_alphabet_img.png")
+    encoded_alphabet_img_path = os.path.join(images_dir, "encoded_alphabet_img.png")
     encoded_alphabet_fig.savefig(encoded_alphabet_img_path, dpi=300, bbox_inches="tight")
 
     # Generate plaintext alphabet to show to user as a hint
     plaintext_alphabet_fig = generate_alphabet_sheet(alphabet_components_path)
-    plaintext_alphabet_img_path = os.path.join(puzzle_img_dir, "plaintext_alphabet_img.png")
+    plaintext_alphabet_img_path = os.path.join(images_dir, "plaintext_alphabet_img.png")
     plaintext_alphabet_fig.savefig(plaintext_alphabet_img_path, dpi=300, bbox_inches="tight")
 
     ### Morse code challenge
     audio_path = "./assets/audio"
     morse_components_path = os.path.join(audio_path, "morse_components")
     print(morse_components_path)
-    morse_alphabet_path = os.path.join(puzzle_img_dir, "morse_code_alphabet.jpg")
+    morse_alphabet_path = os.path.join(images_dir, "morse_code_alphabet.jpg")
 
     # Turn the sex of the stowaway into morse
     morse_string = stowaway['Sex'].iloc[0]

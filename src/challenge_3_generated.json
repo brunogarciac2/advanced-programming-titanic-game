@@ -5,36 +5,36 @@
     "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
     "passengers": [
         {
-            "Name": "Bjornstrom-Steffansson, Mr. Mauritz Hakan",
+            "Name": "Spedden, Mrs. Frederic Oakley (Margaretta Corning Stone)",
             "Pclass": 1,
-            "Age": 28,
-            "Sex": "male",
-            "Fare": 26.55,
-            "Embarked": "S"
-        },
-        {
-            "Name": "Dick, Mr. Albert Adrian",
-            "Pclass": 1,
-            "Age": 31,
-            "Sex": "male",
-            "Fare": 57.0,
-            "Embarked": "S"
-        },
-        {
-            "Name": "Compton, Miss. Sara Rebecca",
-            "Pclass": 1,
-            "Age": 39,
+            "Age": 40,
             "Sex": "female",
-            "Fare": 83.16,
+            "Fare": 134.5,
             "Embarked": "C"
         },
         {
-            "Name": "Paulner, Mr. Uscher",
+            "Name": "Slocovski, Mr. Selman Francis",
             "Pclass": 3,
-            "Age": 48,
+            "Age": 50,
             "Sex": "male",
-            "Fare": 8.71,
-            "Embarked": "C"
+            "Fare": 8.05,
+            "Embarked": "S"
+        },
+        {
+            "Name": "Moutal, Mr. Rahamin Haim",
+            "Pclass": 3,
+            "Age": 23,
+            "Sex": "male",
+            "Fare": 8.05,
+            "Embarked": "S"
+        },
+        {
+            "Name": "Navratil, Mr. Michel (\"Louis M Hoffman\")",
+            "Pclass": 2,
+            "Age": 36,
+            "Sex": "male",
+            "Fare": 26.0,
+            "Embarked": "S"
         }
     ],
     "static_clues": [
@@ -51,5 +51,5 @@
         "hint\\challenge_3_sex_pclass.png",
         "hint\\challenge_3_age_group.png"
     ],
-    "correct_code": "1110"
+    "correct_code": "1000"
 }

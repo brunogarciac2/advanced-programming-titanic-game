@@ -12,32 +12,31 @@
             "task": "Out of the following 6 passenger cards, which one is statistically impossible?",
             "passenger_cards": [
                 {
-                    "name": "Mellinger, Mrs. (Elizabeth Anne Maidment)",
-                    "Pclass": 2,
-                    "Age": 41.0,
-                    "Sex": "female",
-                    "Fare": 19.5,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Allum, Mr. Owen George",
+                    "name": "Nicholson, Mr. Arthur Ernest",
                     "Pclass": 1,
-                    "Age": 18.0,
+                    "Age": 64.0,
                     "Sex": "male",
-                    "Fare": 3.21,
-                    "Embarked": "S",
-                    "_is_fake": true
-                },
-                {
-                    "name": "Quick, Mrs. Frederick Charles (Jane Richards)",
-                    "Pclass": 2,
-                    "Age": 33.0,
-                    "Sex": "female",
                     "Fare": 26.0,
                     "Embarked": "S"
                 },
                 {
-                    "name": "Sobey, Mr. Samuel James Hayden",
+                    "name": "O'Brien, Mr. Thomas",
+                    "Pclass": 3,
+                    "Age": NaN,
+                    "Sex": "male",
+                    "Fare": 15.5,
+                    "Embarked": "Q"
+                },
+                {
+                    "name": "Sutton, Mr. Frederick",
+                    "Pclass": 1,
+                    "Age": 61.0,
+                    "Sex": "male",
+                    "Fare": 32.32,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Sedgwick, Mr. Charles Frederick Waddington",
                     "Pclass": 2,
                     "Age": 25.0,
                     "Sex": "male",
@@ -45,25 +44,26 @@
                     "Embarked": "S"
                 },
                 {
-                    "name": "Clarke, Mrs. Charles V (Ada Maria Winfield)",
-                    "Pclass": 2,
-                    "Age": 28.0,
-                    "Sex": "female",
-                    "Fare": 26.0,
+                    "name": "Frauenthal, Dr. Henry William",
+                    "Pclass": 1,
+                    "Age": 50.0,
+                    "Sex": "male",
+                    "Fare": 133.65,
                     "Embarked": "S"
                 },
                 {
-                    "name": "Pinsky, Mrs. (Rosa)",
+                    "name": "Cook, Mr. Jacob",
                     "Pclass": 2,
-                    "Age": 32.0,
-                    "Sex": "female",
-                    "Fare": 13.0,
-                    "Embarked": "S"
+                    "Age": 43.0,
+                    "Sex": "male",
+                    "Fare": 75.69,
+                    "Embarked": "S",
+                    "_is_fake": true
                 }
             ],
             "hint": "GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.",
             "hint_chart": "hint\\challenge_1_boxplot.png",
-            "answer": "The forged card: 1st class (Pclass=1) but paying £3.21, which is much lower than typical 1st class fares (£5.00-512.33)."
+            "answer": "The forged card: 2nd class (Pclass=2) but paying £75.69, which is much higher than typical 2nd class fares (£10.50-73.50)."
         },
         {
             "id": 2,
@@ -72,23 +72,23 @@
             "echoes": [
                 {
                     "letter": "A",
-                    "text": "Behr boards at Cherbourg (C); a first-class ticket rustles in hand."
+                    "text": "Ostby boards at Cherbourg (C); a first-class ticket rustles in hand."
                 },
                 {
                     "letter": "B",
-                    "text": "In the final chaos, Pain finds space in a lifeboat and slips into the night."
+                    "text": "Flynn boards at Queenstown (Q); a third-class ticket rustles in hand."
                 },
                 {
                     "letter": "C",
-                    "text": "McGough boards at Southampton (S); a first-class ticket rustles in hand."
+                    "text": "Beane boards at Southampton (S); a second-class ticket rustles in hand."
                 },
                 {
                     "letter": "D",
-                    "text": "Smith boards at Queenstown (Q); a third-class ticket rustles in hand."
+                    "text": "In the final chaos, Leader finds space in a lifeboat and slips into the night."
                 },
                 {
                     "letter": "E",
-                    "text": "Lanterns sway as the deck tilts; Meo steadies a stranger amid rising alarm."
+                    "text": "Lanterns sway as the deck tilts; Willey steadies a stranger amid rising alarm."
                 }
             ],
             "known_facts": [
@@ -98,7 +98,7 @@
                 "Mentions of 'escaped' or 'lifeboat' happen last."
             ],
             "task": "Arrange the echoes (A–E) in correct chronological order.",
-            "solution": "C, A, D, E, B",
+            "solution": "C, A, B, E, D",
             "explanation": "Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last."
         },
         {
@@ -108,36 +108,36 @@
             "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
             "passengers": [
                 {
-                    "Name": "Bjornstrom-Steffansson, Mr. Mauritz Hakan",
+                    "Name": "Spedden, Mrs. Frederic Oakley (Margaretta Corning Stone)",
                     "Pclass": 1,
-                    "Age": 28,
-                    "Sex": "male",
-                    "Fare": 26.55,
-                    "Embarked": "S"
-                },
-                {
-                    "Name": "Dick, Mr. Albert Adrian",
-                    "Pclass": 1,
-                    "Age": 31,
-                    "Sex": "male",
-                    "Fare": 57.0,
-                    "Embarked": "S"
-                },
-                {
-                    "Name": "Compton, Miss. Sara Rebecca",
-                    "Pclass": 1,
-                    "Age": 39,
+                    "Age": 40,
                     "Sex": "female",
-                    "Fare": 83.16,
+                    "Fare": 134.5,
                     "Embarked": "C"
                 },
                 {
-                    "Name": "Paulner, Mr. Uscher",
+                    "Name": "Slocovski, Mr. Selman Francis",
                     "Pclass": 3,
-                    "Age": 48,
+                    "Age": 50,
                     "Sex": "male",
-                    "Fare": 8.71,
-                    "Embarked": "C"
+                    "Fare": 8.05,
+                    "Embarked": "S"
+                },
+                {
+                    "Name": "Moutal, Mr. Rahamin Haim",
+                    "Pclass": 3,
+                    "Age": 23,
+                    "Sex": "male",
+                    "Fare": 8.05,
+                    "Embarked": "S"
+                },
+                {
+                    "Name": "Navratil, Mr. Michel (\"Louis M Hoffman\")",
+                    "Pclass": 2,
+                    "Age": 36,
+                    "Sex": "male",
+                    "Fare": 26.0,
+                    "Embarked": "S"
                 }
             ],
             "static_clues": [
@@ -154,7 +154,7 @@
                 "hint\\challenge_3_sex_pclass.png",
                 "hint\\challenge_3_age_group.png"
             ],
-            "correct_code": "1110"
+            "correct_code": "1000"
         },
         {
             "id": 4,
@@ -163,15 +163,15 @@
             "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
             "suspect_table_img_path": "./assets/images\\suspect_table.png",
             "plaintext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\nDear Friend,\nLife aboard this magnificent ship feels like living in paradise.\nEach morning begins with breakfast served at elegant dining rooms where delectable cuisine awaits us all alongside delightful conversations over coffee breaks by the grand piano tunes echoing through our corridors.\n \nThe afternoon is filled to a brim, as we wander across decks adorned with stunning artwork and lush gardens. Gentle strolls on deck offer breathtaking views of endless ocean horizons.\nIn evenings comes relaxation time; warm firesides await where family stories are shared while children play games that captivate every heart aboard this grand vessel.\nLife here truly feels like floating through a luxurious dream as we sail across the great blue sea with nothing but wonder around us. \nWarmest regards,\nA Passenger on Board the Titanic",
-            "encrypted_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\nIt's a bit cramped here in third class! Dear Reader,\nI am aboard The Titanic today experiencing an extraordinary journey across the North Atlantic Ocean.\nLife onboard this magnificent vessel offers unparalleled luxury with grand dining rooms adorned in exquisite crystal chandeliers; spacious suites featuring marble bathrooms fitted with gold-plated fixtures, opulent bedrooms equipped to accommodate six people comfortably and elegantly furnished. \nThe ship is bustling as passengers excitedly explore every nook of The Titanic's vast facilities including the elegant lounge where one can indulge themselves while sipping champagne or enjoying a classic French meal prepared by our world-renowned chefs.\nWe also have access to an array of entertainment options such as opulent theaters, art galleries featuring renowned works and even indoor swimming pools with heated waters for relaxation. \nI cannot wait until we arrive in New York City on this majestic ship!\nSincerely,\nA Passenger aboard The Titanic",
-            "caeser_hint": "Caeser Cipher with key: 18",
+            "encrypted_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\nI like it here in second class! Dear Reader,\nI am aboard The Titanic today experiencing an extraordinary journey across the North Atlantic Ocean.\nLife onboard this magnificent vessel offers unparalleled luxury with grand dining rooms adorned in exquisite crystal chandeliers; spacious suites featuring marble bathrooms fitted with gold-plated fixtures, opulent bedrooms equipped to accommodate six people comfortably and elegantly furnished. \nThe ship is bustling as passengers excitedly explore every nook of The Titanic's vast facilities including the elegant lounge where one can indulge themselves while sipping champagne or enjoying a classic French meal prepared by our world-renowned chefs.\nWe also have access to an array of entertainment options such as opulent theaters, art galleries featuring renowned works and even indoor swimming pools with heated waters for relaxation. \nI cannot wait until we arrive in New York City on this majestic ship!\nSincerely,\nA Passenger aboard The Titanic",
+            "caeser_hint": "Caeser Cipher with key: 15",
             "encoded_key_img_path": "./assets/images\\bill_cipher_img.png",
             "plaintext_alphabet_img_path": "./assets/images\\plaintext_alphabet_img.png",
             "encoded_alphabet_img_path": "./assets/images\\encoded_alphabet_img.png",
             "alpha_morse_img_path": "./assets/images\\morse_code_alphabet.jpg",
             "morse_wav_path": "./assets/audio\\morse.wav",
             "morse_text_hint": "--   .-   .-..   .   ",
-            "stowaway_name": "Sivic, Mr. Husein"
+            "stowaway_name": "Harper, Rev. John"
         }
     ]
 }
