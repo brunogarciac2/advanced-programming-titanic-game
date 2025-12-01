@@ -7,6 +7,8 @@ import matplotlib.image as mpimg
 from pydub import AudioSegment
 from pydub.playback import play
 import os
+import re
+import json
 
 
 def load_data(filepath='./dataset/Titanic-Dataset.csv'):
@@ -149,26 +151,21 @@ def get_fare_statistics_by_class(df):
 
 # Generate a key for the substitution cipher
 def generate_key():
-    letters = list("abcdefhijklmnopqrstuvwxyz")
-    random.shuffle(letters)
+    return random.randint(1,25)
 
-    cipher_key = ''.join(letters)
-    return cipher_key
-
-# Encryption algorithm for monoalphabetic substitution cipher
-# Key is a string of 26 characters
+# Encryption algorithm for caeser cipher
+# Key is number between 1 and 25 (inc.)
 def encrypt(plain_text, key):
-    cipher_text = ""
+    encrypted_text = ""
     plain_text = plain_text.lower()
     for char in plain_text:
         if ord(char) >= ord('a') and ord(char) <= ord('z'):
-            # Get index of plain text within alphabet (start from 0)
-            pos = ord(char) - ord('a')
-            cipher_text += key[pos]
+            encrypted_char = chr((ord(char) - ord('a') + key) % 26 + ord('a'))
+            encrypted_text += encrypted_char
         else:
-            cipher_text += char
+            encrypted_text += char
 
-    return cipher_text
+    return encrypted_text
 
 # Decryption algorithm for monoalphabetic substitution cipher
 def decrypt(cipher_text, key):
@@ -629,7 +626,7 @@ def generate_challenge_4(df):
     urgent mission. Telegrams have been intercepted from the ship's Marconi machine
     and it appears there is a stowaway on board! Unfortunately, the dastardly 
     stowaway has managed to scramble one of the telegrams using a mysterious code. 
-    The Captain has created a list of 10 suspects. Can you decipher the letter and
+    The Captain has created a list of 20 suspects. Can you decipher the letter and
     obtain the identity of the suspect before they get away?!
     
     """
@@ -671,6 +668,9 @@ def generate_challenge_4(df):
     suspects["Survived"] = suspects["Survived"].replace(1, "Survived")
     stowaway["Survived"] = stowaway["Survived"].replace(1, "Survived")
 
+    # Final stowaway name for the user to guess
+    stowaway_name = stowaway['Name'].iloc[0]
+
     # Generate suspect table
     suspect_table = convert_dataframe_to_table(suspects)
 
@@ -684,43 +684,51 @@ def generate_challenge_4(df):
 
     # Generate stowaway line
     if stowaway_class == 1:
-        stowaway_class_line = "It's quite comfortable here in first class!"
+        stowaway_class_line = "It's quite comfortable here in first class! "
     elif stowaway_class == 2:
-        stowaway_class_line = "I like it here in second class!"
+        stowaway_class_line = "I like it here in second class! "
     elif stowaway_class == 3:
-        stowaway_class_line = "It's a bit cramped here in third class!"
+        stowaway_class_line = "It's a bit cramped here in third class! "
     else:
         print("Error generating stowaway line")
         stowaway_class_line = "Error generating stowaway line"
 
-    cipher_key = generate_key()
-
-    # Intercepted letter is not to be encrypted as it is to be used to help decrypt the other letter
-    intercepted_letter = """
+    header = """
 R.M.S. TITANIC
 MARCONI WIRELESS SERVICE
 APRIL 12, 1912
+"""
 
-Good afternoon, I have snuck aboard this mighty vessel.
-Now time to implement my darstardly plan!
-Yours Sincerely,
+    plaintext_letter_llm_response = "plaintext_letter_llm_response.json"
+    encrypted_letter_llm_response = "encrypted_letter_llm_response.json"
 
-A Guest of the Deep"""
+    try:
+        with open(plaintext_letter_llm_response, 'r') as file:
+            data = json.load(file)
+            plaintext_body = data.get('response')
+            # LLMs like to do \n\n replace with \n
+            plaintext_body = re.sub(r'\n+', '\n', plaintext_body)
+    except:
+        print(f"File '{encrypted_letter_llm_response}' not found.")
 
-    # Plaintext letter should not contain numbers.
-    plaintext_letter = f"""
-R.M.S. TITANIC
-MARCONI WIRELESS SERVICE
-APRIL 12, 1912
-
-My secret alias is {stowaway.iloc[0, 0]}. {stowaway_class_line}
-
-A Guest of the Deep"""
+    try:
+        with open(encrypted_letter_llm_response, 'r') as file:
+            data = json.load(file)
+            encrypted_body = data.get('response')
+            # LLMs like to do \n\n replace with \n
+            encrypted_body = re.sub(r'\n+', '\n', encrypted_body)
+    except:
+        print(f"File '{encrypted_letter_llm_response}' not found.")
+    
+    plaintext_letter = header + plaintext_body
+    encrypted_letter = header + stowaway_class_line + encrypted_body
     
     # Encrypt the letter
-    ciphertext_letter = encrypt(plaintext_letter, cipher_key)
-    # While testing don't encrypt.
-    ciphertext_letter = plaintext_letter
+    key = generate_key()
+    # Don't encrypt while testing
+    # encrypted_letter = encrypt(encrypted_letter, cipher_key)
+
+    caeser_hint = f"Caeser Cipher with key: {key}"
 
     ### Bill Cipher challenge
     # Generate encoded message
@@ -742,12 +750,15 @@ A Guest of the Deep"""
     morse_components_dir = "./challenge_4_morse_components"
     morse_alphabet_path = os.path.join(puzzle_img_dir, "morse_code_alphabet.jpg")
 
+    # Turn the sex of the stowaway into morse
+    morse_string = stowaway['Sex'].iloc[0]
+
     # Turn a string into a morse code wav file
-    morse_wav_audio = generate_morse_audio_segment(morse_components_dir, "Hello")
+    morse_wav_audio = generate_morse_audio_segment(morse_components_dir, morse_string)
     morse_wav_audio.export("./morse.wav", format="wav")
 
     # For hint - Turn string into morse code dots and dashes
-    morse_text_hint = generate_morse_text("Hello")
+    morse_text_hint = generate_morse_text(morse_string)
 
     # Challenge data to be added to the markdown file
     challenge_data = {
@@ -756,14 +767,16 @@ A Guest of the Deep"""
         "story": story_text,
         "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
         "suspect_table_img_path" : suspect_table_img_path,
-        "intercepted_letter" : intercepted_letter,
-        "ciphertext_letter" : ciphertext_letter,
+        "plaintext_letter" : plaintext_letter,
+        "encrypted_letter" : encrypted_letter,
+        "caeser_hint" : caeser_hint,
         "encoded_key_img_path" : encoded_key_img_path,
         "plaintext_alphabet_img_path" : plaintext_alphabet_img_path,
         "encoded_alphabet_img_path" : encoded_alphabet_img_path,
         "alpha_morse_img_path" : morse_alphabet_path,
         "morse_wav_path" : "morse.wav",
-        "morse_text_hint" : morse_text_hint
+        "morse_text_hint" : morse_text_hint,
+        "stowaway_name" : stowaway_name
     }
 
     return challenge_data

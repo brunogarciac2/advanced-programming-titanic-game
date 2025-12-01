@@ -1,4 +1,0 @@
-Running...
-Write a letter about someone on board a ship that has an evil plan.
-Running OLLAMA... [Port: 11796, Node: gpu5]
-FATAL:   could not open image /home3/bsvq48/COMP53115 - Advanced Programming/advanced-programming-titanic-game-challenge-two/ollama.sif: failed to retrieve path for /home3/bsvq48/COMP53115 - Advanced Programming/advanced-programming-titanic-game-challenge-two/ollama.sif: lstat /home3/bsvq48/COMP53115 - Advanced Programming/advanced-programming-titanic-game-challenge-two/ollama.sif: no such file or directory

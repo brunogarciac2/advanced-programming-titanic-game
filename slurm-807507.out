@@ -1,4 +1,0 @@
-/var/spool/slurmd/job807507/slurm_script: line 13: plaintext_letter_llm_prompt.txt: command not found
-sbatch: error: Batch job submission failed: No partition specified or system default partition
-/var/spool/slurmd/job807507/slurm_script: line 14: encrypted_letter_llm_prompt.txt: command not found
-sbatch: error: Batch job submission failed: No partition specified or system default partition

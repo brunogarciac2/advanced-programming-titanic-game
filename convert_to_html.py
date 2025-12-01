@@ -223,12 +223,12 @@ def format_challenge_4(data):
 
     md += "**Plaintext Letter**"
     md += "```"
-    md += f"{data['intercepted_letter']}\n"
+    md += f"{data['plaintext_letter']}"
     md += "```\n"
 
     md += "**Encrypted Letter**"
     md += "```"
-    md += f"{data['ciphertext_letter']}\n"
+    md += f"{data['encrypted_letter']}"
     md += "```\n"
 
     md += '### A Mysterious Code \n\n'
@@ -246,8 +246,11 @@ def format_challenge_4(data):
 
     md += f"[[PLAY_SOUND]]{data['morse_wav_path']}[[END_SOUND]]\n"
 
-    md += f"> **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid]({data['plaintext_alphabet_img_path']})[[END_HINT]]\n"
-    md += f"> **A Strange Sound Hint:** [[REVEAL_HINT]]{data['morse_text_hint']}[[END_HINT]]\n"
+    md += f"> **Letters from a Stowaway:** [[REVEAL_HINT]]{data['caeser_hint']}[[END_HINT]]"
+    md += f" **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid]({data['plaintext_alphabet_img_path']})[[END_HINT]]"
+    md += f" **A Strange Sound Hint:** [[REVEAL_HINT]]{data['morse_text_hint']}[[END_HINT]]\n"
+
+    md += f"> **Final Answer:** [[REVEAL_ANSWER]]The alias of the Guest from the Deep is: {data['stowaway_name']}[[END_REVEAL]]"
 
     return md
 
