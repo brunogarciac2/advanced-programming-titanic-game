@@ -13,9 +13,6 @@ def load_data(filepath='./dataset/Titanic-Dataset.csv'):
         print(f"{filepath} not found")
         exit()
 
-
-=======
->>>>>>> upstream
 def generate_game_data():
     from challenge1 import generate_challenge_1
     from challenge2 import generate_challenge_2
