@@ -23,11 +23,6 @@ def encrypt(plain_text, key):
 
     return encrypted_text
 
-# Decryption algorithm for monoalphabetic substitution cipher
-def decrypt(cipher_text, key):
-    # Have to invert key to decrypt
-    pass
-
 # Function to create alphabet sheet, pass the directory of the letters you want to use
 def generate_alphabet_sheet(letters_dir):
     # If directory doesn't exist then display while compiling
@@ -321,4 +316,3 @@ APRIL 12, 1912
     }
 
     return challenge_data
-

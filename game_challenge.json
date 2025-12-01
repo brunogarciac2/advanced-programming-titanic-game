@@ -12,58 +12,58 @@
             "task": "Out of the following 6 passenger cards, which one is statistically impossible?",
             "passenger_cards": [
                 {
-                    "name": "Nosworthy, Mr. Richard Cater",
-                    "Pclass": 1,
-                    "Age": 21.0,
-                    "Sex": "male",
-                    "Fare": 3.55,
-                    "Embarked": "S",
-                    "_is_fake": true
-                },
-                {
-                    "name": "Holm, Mr. John Fredrik Alexander",
+                    "name": "Andersson, Miss. Sigrid Elisabeth",
                     "Pclass": 3,
-                    "Age": 43.0,
-                    "Sex": "male",
-                    "Fare": 6.45,
+                    "Age": 11.0,
+                    "Sex": "female",
+                    "Fare": 31.27,
                     "Embarked": "S"
                 },
                 {
-                    "name": "Cor, Mr. Liudevit",
+                    "name": "Dorking, Mr. Edward Arthur",
                     "Pclass": 3,
                     "Age": 19.0,
                     "Sex": "male",
-                    "Fare": 7.9,
+                    "Fare": 8.05,
                     "Embarked": "S"
                 },
                 {
-                    "name": "Lulic, Mr. Nikola",
+                    "name": "Doharr, Mr. Tannous",
+                    "Pclass": 2,
+                    "Age": NaN,
+                    "Sex": "male",
+                    "Fare": 107.73,
+                    "Embarked": "C",
+                    "_is_fake": true
+                },
+                {
+                    "name": "Wick, Mrs. George Dennick (Mary Hitchcock)",
+                    "Pclass": 1,
+                    "Age": 45.0,
+                    "Sex": "female",
+                    "Fare": 164.87,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Nye, Mrs. (Elizabeth Ramell)",
+                    "Pclass": 2,
+                    "Age": 29.0,
+                    "Sex": "female",
+                    "Fare": 10.5,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Nicola-Yarred, Master. Elias",
                     "Pclass": 3,
-                    "Age": 27.0,
+                    "Age": 12.0,
                     "Sex": "male",
-                    "Fare": 8.66,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Butt, Major. Archibald Willingham",
-                    "Pclass": 1,
-                    "Age": 45.0,
-                    "Sex": "male",
-                    "Fare": 26.55,
-                    "Embarked": "S"
-                },
-                {
-                    "name": "Harris, Mr. Henry Birkhardt",
-                    "Pclass": 1,
-                    "Age": 45.0,
-                    "Sex": "male",
-                    "Fare": 83.47,
-                    "Embarked": "S"
+                    "Fare": 11.24,
+                    "Embarked": "C"
                 }
             ],
             "hint": "GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.",
             "hint_chart": "hint\\challenge_1_boxplot.png",
-            "answer": "The forged card: 1st class (Pclass=1) but paying £3.55, which is much lower than typical 1st class fares (£5.00-512.33)."
+            "answer": "The forged card: 2nd class (Pclass=2) but paying £107.73, which is much higher than typical 2nd class fares (£10.50-73.50)."
         },
         {
             "id": 2,
@@ -72,23 +72,23 @@
             "echoes": [
                 {
                     "letter": "A",
-                    "text": "Lanterns sway as the deck tilts; Moubarek steadies a stranger amid rising alarm."
+                    "text": "Lanterns sway as the deck tilts; O'Brien steadies a stranger amid rising alarm."
                 },
                 {
                     "letter": "B",
-                    "text": "Smith boards at Queenstown (Q); a third-class ticket rustles in hand."
+                    "text": "In the final chaos, Newell finds space in a lifeboat and slips into the night."
                 },
                 {
                     "letter": "C",
-                    "text": "Beesley boards at Southampton (S); a second-class ticket rustles in hand."
+                    "text": "Toomey boards at Southampton (S); a second-class ticket rustles in hand."
                 },
                 {
                     "letter": "D",
-                    "text": "In the final chaos, Heininen finds space in a lifeboat and slips into the night."
+                    "text": "Connolly boards at Queenstown (Q); a third-class ticket rustles in hand."
                 },
                 {
                     "letter": "E",
-                    "text": "Lurette boards at Cherbourg (C); a first-class ticket rustles in hand."
+                    "text": "Ross boards at Cherbourg (C); a first-class ticket rustles in hand."
                 }
             ],
             "known_facts": [
@@ -98,7 +98,7 @@
                 "Mentions of 'escaped' or 'lifeboat' happen last."
             ],
             "task": "Arrange the echoes (A–E) in correct chronological order.",
-            "solution": "C, E, B, A, D",
+            "solution": "C, E, D, A, B",
             "explanation": "Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last."
         },
         {
@@ -108,36 +108,36 @@
             "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
             "passengers": [
                 {
-                    "Name": "Emir, Mr. Farred Chehab",
+                    "Name": "de Pelsmaeker, Mr. Alfons",
                     "Pclass": 3,
-                    "Age": 32,
+                    "Age": 16,
                     "Sex": "male",
-                    "Fare": 7.22,
-                    "Embarked": "C"
+                    "Fare": 9.5,
+                    "Embarked": "S"
                 },
                 {
-                    "Name": "McCormack, Mr. Thomas Joseph",
+                    "Name": "Mernagh, Mr. Robert",
                     "Pclass": 3,
-                    "Age": 27,
+                    "Age": 33,
                     "Sex": "male",
                     "Fare": 7.75,
                     "Embarked": "Q"
                 },
                 {
-                    "Name": "Cumings, Mrs. John Bradley (Florence Briggs Thayer)",
+                    "Name": "Bissette, Miss. Amelia",
                     "Pclass": 1,
-                    "Age": 38,
+                    "Age": 35,
                     "Sex": "female",
-                    "Fare": 71.28,
-                    "Embarked": "C"
+                    "Fare": 135.63,
+                    "Embarked": "S"
                 },
                 {
-                    "Name": "Flynn, Mr. James",
+                    "Name": "Ford, Mr. William Neal",
                     "Pclass": 3,
-                    "Age": 48,
+                    "Age": 16,
                     "Sex": "male",
-                    "Fare": 7.75,
-                    "Embarked": "Q"
+                    "Fare": 34.38,
+                    "Embarked": "S"
                 }
             ],
             "static_clues": [
@@ -154,7 +154,7 @@
                 "hint\\challenge_3_sex_pclass.png",
                 "hint\\challenge_3_age_group.png"
             ],
-            "correct_code": "0110"
+            "correct_code": "0010"
         },
         {
             "id": 4,
@@ -164,14 +164,14 @@
             "suspect_table_img_path": "./assets/images\\suspect_table.png",
             "plaintext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\nDear Reader,\nLife aboard our magnificent vessel, The Titanic, was nothing less than extraordinary as we sailed through crystal-clear waters under an endless azure sky.\nOur daily routine included enjoying the lavish onboard amenities such as luxurious dining halls serving gourmet meals prepared by skilled chefs; elegant lounges filled with conversation and laughter echoing off polished floors. Families gathered in cozy suites while young travelers marveled at interactive exhibits designed to educate them about our journey across oceans, all surrounded by sumptuous decor that spoke of opulence.\nEvenings were reserved for entertainment as performers showcased stunning dances on decks adorned with glittering lights or captivated audiences during captivating plays told through vivid set designs. We also took time each day aboard the ship's swimming pool and gymnasium to maintain a healthy balance amidst our travels, all while basking in an atmosphere of comfort that made every moment feel like paradise.\nAs we sailed onward towards distant shores filled with promise for new adventures yet unknown, life on board The Titanic was nothing short of spectacular.",
             "encrypted_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\nIt's a bit cramped here in third class! Dear Friend,\nI hope this message finds you well.\nLife aboard The Titanic has been an extraordinary experience so far! From dawn until dusk we spend our days enjoying luxurious amenities that cater to every whimâ€”fine dining with delectable meals prepared by skilled chefs, relaxing in the opulent suites furnished with plush carpets and elegant decor. Guests can unwind at lavish spas offering massages or soak up sunrises on deck while taking advantage of state-of-the-art entertainment options like live performances.\nThe ship is equipped with modern conveniences including Wi-Fi throughout its vast corridors so passengers are always connected to friends, family members back home as well as the latest news and events. The staff go out of their way ensuring our comfort from room service attendants offering delicious meals at every meal all day long right up until midnight on certain nights.\nWe have also been treated with endless entertainment choices such as Broadway shows or exciting sports like tennis matches taking place just a few steps away! With so many activities to enjoy, itâ€™s easy not wanting even think about getting bored during our time aboard!\nLife onboard The Titanic is truly beyond anything I could ever imagine before arriving here. We are fortunate enough that we have access to such luxury and comfort while traveling across the world.\nWarm regards,\nSomeone on board The Titanic",
-            "caeser_hint": "Caeser Cipher with key: 4",
+            "caeser_hint": "Caeser Cipher with key: 17",
             "encoded_key_img_path": "./assets/images\\bill_cipher_img.png",
             "plaintext_alphabet_img_path": "./assets/images\\plaintext_alphabet_img.png",
             "encoded_alphabet_img_path": "./assets/images\\encoded_alphabet_img.png",
             "alpha_morse_img_path": "./assets/images\\morse_code_alphabet.jpg",
             "morse_wav_path": "./assets/audio\\morse.wav",
             "morse_text_hint": "--   .-   .-..   .   ",
-            "stowaway_name": "Allen, Mr. William Henry"
+            "stowaway_name": "Eklund, Mr. Hans Linus"
         }
     ]
 }
