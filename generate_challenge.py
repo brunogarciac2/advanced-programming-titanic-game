@@ -175,6 +175,66 @@ def decrypt(cipher_text, key):
     # Have to invert key to decrypt
     pass
 
+# Function to create alphabet sheet, true is encrypted, false is plaintext
+def generate_alphabet_sheet(encrypted=True):
+    if encrypted:
+        letters_dir = "./challenge_4_cipher_components"
+    else:
+        letters_dir = "./challenge_4_alphabet_components"
+
+    # If directory doesn't exist then display while compiling
+    if not os.path.isdir(letters_dir):
+        print(f"[ERROR] '{letters_dir}' not found.")
+
+    # Creates alphabet sheet
+    alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+    fig, axes = plt.subplots(4, 7, figsize=(12, 6))
+
+    letters_dir_list = []
+    for letter in alphabet:
+        letters_dir_list.append(letters_dir + f"/Letter_{letter}.png")
+
+    # Flatten axes for easy iteration
+    axes = axes.ravel()
+
+    num_letters = len(alphabet)
+
+    # Loop only through the alphabet
+    for i, ax in enumerate(axes[:num_letters]):
+        letter_img = mpimg.imread(letters_dir_list[i])
+        ax.imshow(letter_img)
+        ax.axis("off")
+
+    # Once images run out hide empty subplots
+    for ax in axes[num_letters:]:
+        ax.set_visible(False)
+
+    plt.tight_layout()
+    plt.close()
+
+    return fig
+
+def generate_cipher_puzzle_fig(input_string):
+    ### Turns "survived" or "deceased" into an image of the puzzle
+    cipher_letters_dir = "./challenge_4_cipher_components"
+
+    cipher_letters_dir_list = []
+    for letter in input_string:
+        cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
+
+    fig, axes = plt.subplots(1, len(input_string), figsize=(12, 6))
+
+    for i, ax in enumerate(axes):
+        coded_letter_img = mpimg.imread(cipher_letters_dir_list[i])
+        ax.imshow(coded_letter_img)
+        ax.axis("off")
+
+    plt.tight_layout()
+    plt.close()
+
+    return fig
+
 def convert_dataframe_to_table(df):
     font_size = 20
 
@@ -194,10 +254,9 @@ def convert_dataframe_to_table(df):
         loc="center"
     )
 
-    # Set the category to be in bold
-    for (row, col), cell in table.get_celld().items():
-        if row == 0:
-            cell.set_text_props(weight='bold')
+    # Bold header row
+    for col in range(len(df.columns)):
+        table[(0, col)].get_text().set_weight("bold")
 
     table.auto_set_column_width(col=list(range(len(df.columns))))
 
@@ -208,7 +267,8 @@ def convert_dataframe_to_table(df):
 
     return fig
 
-def convert_to_morse(morse_component_dir, input_string):
+# For challenge-4 (A Strange Sound) turn plaintext into morse audio segment
+def generate_morse_audio_segment(morse_component_dir, input_string):
     # If directory doesn't exist then display while compiling
     if not os.path.isdir(morse_component_dir):
         print("[ERROR] 'challenge_4_morse_components' not found.")
@@ -217,11 +277,29 @@ def convert_to_morse(morse_component_dir, input_string):
 
     for char in input_string:
         char_path = morse_component_dir + f"/{char.upper()}_morse_code.wav"
-        print(char_path)
         output_message += AudioSegment.from_wav(char_path)
         output_message += AudioSegment.silent(duration=2000)
 
-    output_message.export("./sound.wav", format="wav")
+    return output_message
+
+# For challenge-4 (A Strange Sound) hint turn plaintext into morse text
+def generate_morse_text(input_string):
+    morse_dict = {
+        "A": ".-",    "B": "-...",  "C": "-.-.",  "D": "-..",   "E": ".",
+        "F": "..-.",  "G": "--.",   "H": "....",  "I": "..",    "J": ".---",
+        "K": "-.-",   "L": ".-..",  "M": "--",    "N": "-.",    "O": "---",
+        "P": ".--.",  "Q": "--.-",  "R": ".-.",   "S": "...",   "T": "-",
+        "U": "..-",   "V": "...-",  "W": ".--",   "X": "-..-",  "Y": "-.--",
+        "Z": "--.."
+    }
+    output_morse = ""
+
+    for char in input_string:
+        output_morse += morse_dict[char.upper()]
+        output_morse += (' ' * 3)
+
+    print(output_morse)
+    return output_morse
 
 def generate_challenge_1(df):
     """Generate Challenge 1: Find the Anomaly"""
@@ -558,20 +636,40 @@ def generate_challenge_4(df):
 
     puzzle_img_dir = "./challenge_4_puzzle_images"
 
-    suspects = df.sample(n=20)
-    stowaway = suspects.sample(1)
+    # The columns to check for uniqueness
+    columns_to_check = ['Pclass', 'Sex', 'Survived']
 
+    # Randomly choose the stowaway
+    stowaway = df.sample(1)
+
+    # Find the indices in the relevant categories that don't match that of the stowaway
+    # So that the stowaway is unique from the clues presented
+    idx_not_same_as_stowaway = ~(df[columns_to_check].eq(stowaway[columns_to_check]).all(axis=1))
+
+    # Select rows that are not identical to the stowaway in the clue columns
+    possible_rows = df[idx_not_same_as_stowaway]
+
+    # Randomly pick 20 rows from these possible rows
+    suspects = possible_rows.sample(n=20)
+
+    # Insert the stowaway randomly into the list of suspects
+    suspects = pd.concat([suspects, stowaway]).sample(frac=1, ignore_index=True).reset_index(drop=True)
+
+    # Only interested in some of the features
     suspects = suspects[["Name", "Pclass", "Sex", "Survived"]]
-    suspects_markdown = suspects.to_markdown(index=True).split("\n")
+    stowaway = stowaway[["Name", "Pclass", "Sex", "Survived"]]
 
     # Remove anything in brackets from the name column - makes the names easier to display
     suspects["Name"] = suspects["Name"].str.replace(r"\(.*?\)", "", regex=True)
+    stowaway["Name"] = stowaway["Name"].str.replace(r"\(.*?\)", "", regex=True)
 
     # Replace 0 with deceased
     suspects["Survived"] = suspects["Survived"].replace(0, "Deceased")
+    stowaway["Survived"] = stowaway["Survived"].replace(0, "Deceased")
 
     # Replace 1 with survived
     suspects["Survived"] = suspects["Survived"].replace(1, "Survived")
+    stowaway["Survived"] = stowaway["Survived"].replace(1, "Survived")
 
     # Generate suspect table
     suspect_table = convert_dataframe_to_table(suspects)
@@ -580,9 +678,9 @@ def generate_challenge_4(df):
     suspect_table_img_path = os.path.join(puzzle_img_dir, "suspect_table.png")
     suspect_table.savefig(suspect_table_img_path, dpi=300, bbox_inches="tight")
 
+    ### Letters from a stowaway puzzle generation
     # Get the stowaway passenger class and convert to int
     stowaway_class = int(stowaway["Pclass"].iloc[0])
-    stowaway_survival = int(stowaway["Survived"].iloc[0])
 
     # Generate stowaway line
     if stowaway_class == 1:
@@ -615,7 +713,7 @@ R.M.S. TITANIC
 MARCONI WIRELESS SERVICE
 APRIL 12, 1912
 
-My secret alias is Mr James Moran. {stowaway_class_line}
+My secret alias is {stowaway.iloc[0, 0]}. {stowaway_class_line}
 
 A Guest of the Deep"""
     
@@ -624,66 +722,32 @@ A Guest of the Deep"""
     # While testing don't encrypt.
     ciphertext_letter = plaintext_letter
 
-    ### Bill Cipher 
-    if stowaway_survival == 1:
-        stowaway_survival_line = "survived"
-    elif stowaway_survival == 0:
-        stowaway_survival_line = "deceased"
-    else:
-        print("[ERROR] 'stowaway_survival' is neither 0 nor 1")
+    ### Bill Cipher challenge
+    # Generate encoded message
+    encoded_key_fig = generate_cipher_puzzle_fig(stowaway["Survived"].iloc[0])
+    encoded_key_img_path = os.path.join(puzzle_img_dir, "bill_cipher_img.png")
+    encoded_key_fig.savefig(encoded_key_img_path, dpi=300, bbox_inches="tight")
 
-    cipher_letters_dir = "./challenge_4_cipher_components"
+    # Generate encoded alphabet to display to the user as part of puzzle
+    encoded_alphabet_fig = generate_alphabet_sheet(True)
+    encoded_alphabet_img_path = os.path.join(puzzle_img_dir, "encoded_alphabet_img.png")
+    encoded_alphabet_fig.savefig(encoded_alphabet_img_path, dpi=300, bbox_inches="tight")
 
-    # If directory doesn't exist then display while compiling
-    if not os.path.isdir(cipher_letters_dir):
-        print("[ERROR] 'challenge_4_cipher_components' not found.")
-
-    ### Creates alphabet sheet
-    alpha = "abcdefghijklmnopqrstuvwxyz"
-
-    alpha_fig, alpha_axes = plt.subplots(4, 6, figsize=(12, 6))
-
-    alpha_letters_dir_list = []
-    for letter in alpha:
-        alpha_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
-
-    # Flatten axes for easy iteration
-    alpha_axes = alpha_axes.ravel()
-
-    for i, ax in enumerate(alpha_axes):
-        letter_img = mpimg.imread(alpha_letters_dir_list[i])
-        ax.imshow(letter_img)
-        ax.axis("off")
-
-    plt.tight_layout()
-    plt.close()
-
-    alpha_img_path = os.path.join(puzzle_img_dir, "alpha_cipher_img.png")
-    alpha_fig.savefig(alpha_img_path, dpi=300, bbox_inches="tight")
-
-    ### Turns "survived" or "deceased" into an image of the puzzle
-    cipher_letters_dir_list = []
-    for letter in stowaway_survival_line:
-        cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
-
-    fig, axes = plt.subplots(1, len(stowaway_survival_line), figsize=(12, 6))
-
-    for i, ax in enumerate(axes):
-        coded_letter_img = mpimg.imread(cipher_letters_dir_list[i])
-        ax.imshow(coded_letter_img)
-        ax.axis("off")
-
-    plt.tight_layout()
-    plt.close()
-
-    bill_cipher_img_path = os.path.join(puzzle_img_dir, "bill_cipher_img.png")
-    fig.savefig(bill_cipher_img_path, dpi=300, bbox_inches="tight")
+    # Generate plaintext alphabet to show to user as a hint
+    plaintext_alphabet_fig = generate_alphabet_sheet(False)
+    plaintext_alphabet_img_path = os.path.join(puzzle_img_dir, "plaintext_alphabet_img.png")
+    plaintext_alphabet_fig.savefig(plaintext_alphabet_img_path, dpi=300, bbox_inches="tight")
 
     ### Morse code challenge
     morse_components_dir = "./challenge_4_morse_components"
     morse_alphabet_path = os.path.join(puzzle_img_dir, "morse_code_alphabet.jpg")
 
-    convert_to_morse(morse_components_dir, "Hello")
+    # Turn a string into a morse code wav file
+    morse_wav_audio = generate_morse_audio_segment(morse_components_dir, "Hello")
+    morse_wav_audio.export("./morse.wav", format="wav")
+
+    # For hint - Turn string into morse code dots and dashes
+    morse_text_hint = generate_morse_text("Hello")
 
     # Challenge data to be added to the markdown file
     challenge_data = {
@@ -691,14 +755,15 @@ A Guest of the Deep"""
         "title": "Guest from the Deep",
         "story": story_text,
         "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
-        "suspects_list": suspects_markdown,
+        "suspect_table_img_path" : suspect_table_img_path,
         "intercepted_letter" : intercepted_letter,
         "ciphertext_letter" : ciphertext_letter,
-        "suspect_table_img_path" : suspect_table_img_path,
-        "bill_cipher_img_path" : bill_cipher_img_path,
-        "alpha_img_path" : alpha_img_path, 
-        "sound_file" : "sound.wav", 
-        "alpha_morse_img_path" : morse_alphabet_path, 
+        "encoded_key_img_path" : encoded_key_img_path,
+        "plaintext_alphabet_img_path" : plaintext_alphabet_img_path,
+        "encoded_alphabet_img_path" : encoded_alphabet_img_path,
+        "alpha_morse_img_path" : morse_alphabet_path,
+        "morse_wav_path" : "morse.wav",
+        "morse_text_hint" : morse_text_hint
     }
 
     return challenge_data
