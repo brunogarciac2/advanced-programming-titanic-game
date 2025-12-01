@@ -16,16 +16,24 @@ echo "Running..."
 chmod +x generate_challenge_4_llm_text.sh
 chmod +r plaintext_letter_llm_prompt.txt
 
+## Start ollama container
 singularity pull ollama.sif docker://ollama/ollama
 
 echo "Generating llm text for challenge 4..."
 
-bash generate_challenge_4_llm_text.sh "$(cat plaintext_letter_llm_prompt.txt)" "plaintext_letter_llm_response.json"
-bash generate_challenge_4_llm_text.sh "$(cat encrypted_letter_llm_prompt.txt)" "encrypted_letter_llm_response.json"
+$PLAINTEXT_LETTER_LLM_PROMPT_PATH="./assets/llm_prompts/plaintext_letter_llm_prompt.txt"
+$ENCRYPTED_LETTER_LLM_PROMPT_PATH="./assets/llm_prompts/encrypted_letter_llm_prompt.txt"
+
+$PLAINTEXT_LETTER_LLM_RESPONSE_PATH="./assets/llm_prompts/plaintext_letter_llm_response.json"
+$ENCRYPTED_LETTER_LLM_RESPONSE_PATH="./assets/llm_prompts/encrypted_letter_llm_response.json"
+
+bash generate_challenge_4_llm_text.sh "$(cat $PLAINTEXT_LETTER_LLM_PATH)" "plaintext_letter_llm_response.json"
+bash generate_challenge_4_llm_text.sh "$(cat $ENCRYPTED_LETTER_LLM_PATH)" "encrypted_letter_llm_response.json"
 
 echo "[SUCCESS] Text generated."
 
 echo "Installing Requirements..."
+
 pip install -r requirements.txt
 
 echo "Generating challenges..."
