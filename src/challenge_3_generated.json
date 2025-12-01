@@ -5,36 +5,36 @@
     "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
     "passengers": [
         {
-            "Name": "Goodwin, Master. Sidney Leonard",
-            "Pclass": 3,
-            "Age": 1,
+            "Name": "Bjornstrom-Steffansson, Mr. Mauritz Hakan",
+            "Pclass": 1,
+            "Age": 28,
             "Sex": "male",
-            "Fare": 46.9,
+            "Fare": 26.55,
             "Embarked": "S"
         },
         {
-            "Name": "Stahelin-Maeglin, Dr. Max",
-            "Pclass": 1,
-            "Age": 32,
-            "Sex": "male",
-            "Fare": 30.5,
-            "Embarked": "C"
+            "Name": "Pettersson, Miss. Ellen Natalia",
+            "Pclass": 3,
+            "Age": 18,
+            "Sex": "female",
+            "Fare": 7.78,
+            "Embarked": "S"
         },
         {
-            "Name": "Guggenheim, Mr. Benjamin",
-            "Pclass": 1,
-            "Age": 46,
+            "Name": "Nirva, Mr. Iisakki Antino Aijo",
+            "Pclass": 3,
+            "Age": 41,
             "Sex": "male",
-            "Fare": 79.2,
-            "Embarked": "C"
+            "Fare": 7.12,
+            "Embarked": "S"
         },
         {
-            "Name": "Harper, Mr. Henry Sleeper",
-            "Pclass": 1,
-            "Age": 48,
-            "Sex": "male",
-            "Fare": 76.73,
-            "Embarked": "C"
+            "Name": "Emanuel, Miss. Virginia Ethel",
+            "Pclass": 3,
+            "Age": 5,
+            "Sex": "female",
+            "Fare": 12.47,
+            "Embarked": "S"
         }
     ],
     "static_clues": [
@@ -51,5 +51,5 @@
         "hint\\challenge_3_sex_pclass.png",
         "hint\\challenge_3_age_group.png"
     ],
-    "correct_code": "0101"
+    "correct_code": "1001"
 }
