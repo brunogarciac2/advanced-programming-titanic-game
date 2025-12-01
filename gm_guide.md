@@ -16,64 +16,64 @@
 
 **Card 1**
 ```
-name: Smith, Mr. Thomas
+name: Johansson, Mr. Erik
 Pclass: 3
-Age: nan
+Age: 22.0
 Sex: male
-Fare: 7.75
-Embarked: Q
+Fare: 7.8
+Embarked: S
 ```
 **Card 2**
 ```
-name: Bailey, Mr. Percy Andrew
-Pclass: 2
-Age: 18.0
+name: Allen, Mr. William Henry
+Pclass: 3
+Age: 35.0
 Sex: male
-Fare: 11.5
+Fare: 8.05
 Embarked: S
 ```
 **Card 3**
 ```
-name: Bonnell, Miss. Elizabeth
+name: Allen, Miss. Elisabeth Walton
 Pclass: 1
-Age: 58.0
+Age: 29.0
 Sex: female
-Fare: 26.55
+Fare: 211.34
 Embarked: S
 ```
 **Card 4**
 ```
-name: Beane, Mrs. Edward (Ethel Clarke)
+name: Navratil, Master. Edmond Roger
 Pclass: 2
-Age: 19.0
-Sex: female
-Fare: 7.39
+Age: 2.0
+Sex: male
+Fare: 26.0
 Embarked: S
 ```
 **Card 5**
 ```
-name: Nicola-Yarred, Master. Elias
-Pclass: 3
-Age: 12.0
-Sex: male
-Fare: 11.24
-Embarked: C
+name: Dick, Mrs. Albert Adrian (Vera Gillespie)
+Pclass: 1
+Age: 17.0
+Sex: female
+Fare: 57.0
+Embarked: S
 ```
 **Card 6**
 ```
-name: Barton, Mr. David John
-Pclass: 3
-Age: 22.0
-Sex: male
-Fare: 8.05
-Embarked: S
+name: Baxter, Mrs. James (Helene DeLaudeniere Chaput)
+Pclass: 1
+Age: 50.0
+Sex: female
+Fare: 534.57
+Embarked: C
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £7.39, which is much lower than typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 4)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £534.57, which is much higher than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 6)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -89,18 +89,18 @@ Embarked: S
 
 ### Echoes (Show to Players)
 
-- Echo A: Lanterns sway as the deck tilts; Tornquist steadies a stranger amid rising alarm.
-- Echo B: Burke boards at Queenstown (Q); a third-class ticket rustles in hand.
-- Echo C: In the final chaos, Karun finds space in a lifeboat and slips into the night.
-- Echo D: Meyer boards at Southampton (S); a second-class ticket rustles in hand.
-- Echo E: Rothschild boards at Cherbourg (C); a first-class ticket rustles in hand.
+- Echo A: Drazenoic boards at Cherbourg (C); a third-class ticket rustles in hand.
+- Echo B: Rice boards at Queenstown (Q); a third-class ticket rustles in hand.
+- Echo C: Cacic boards at Southampton (S); a third-class ticket rustles in hand.
+- Echo D: In the final chaos, Collyer finds space in a lifeboat and slips into the night.
+- Echo E: Lanterns sway as the deck tilts; Buss steadies a stranger amid rising alarm.
 
 **Task:** Arrange the echoes (A–E) in correct chronological order.
 
 ---
 ### GM Guide
 
-> **Answer:** [[REVEAL_ANSWER]]Correct order: D, E, B, A, C. Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last.[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]Correct order: C, A, B, E, D. Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last.[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 2** revealed when the order is correct.
 
 ---
@@ -118,38 +118,38 @@ Embarked: S
 
 **Card 1**
 ```
-Name: Garside, Miss. Ethel
-Pclass: 2
-Age: 34
-Sex: female
-Fare: 13.0
+Name: Skoog, Master. Harald
+Pclass: 3
+Age: 4
+Sex: male
+Fare: 27.9
 Embarked: S
 ```
 **Card 2**
 ```
-Name: Bazzani, Miss. Albina
-Pclass: 1
-Age: 32
+Name: Nysten, Miss. Anna Sofia
+Pclass: 3
+Age: 22
 Sex: female
-Fare: 76.29
-Embarked: C
+Fare: 7.75
+Embarked: S
 ```
 **Card 3**
 ```
-Name: Hart, Miss. Eva Miriam
-Pclass: 2
-Age: 7
-Sex: female
-Fare: 26.25
+Name: Moss, Mr. Albert Johan
+Pclass: 3
+Age: 31
+Sex: male
+Fare: 7.78
 Embarked: S
 ```
 **Card 4**
 ```
-Name: Rekic, Mr. Tido
-Pclass: 3
-Age: 38
+Name: Wilhelms, Mr. Charles
+Pclass: 2
+Age: 31
 Sex: male
-Fare: 7.9
+Fare: 13.0
 Embarked: S
 ```
 
@@ -157,7 +157,7 @@ Embarked: S
 ### GM Guide
 
 > **Hint:** Use the survival charts above to infer the 4-digit lifeboat code.
-> **Answer:** [[REVEAL_ANSWER]]1110[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]0111[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
@@ -178,7 +178,7 @@ Embarked: S
 
 ### Possible suspects 
 
-![Suspect Table](./challenge_4_puzzle_images\suspect_table.png)
+![Suspect Table](./assets/images\suspect_table.png)
 
 ### Letters from the Stowaway 
 
@@ -209,16 +209,16 @@ Sincerely,
 A Passenger aboard The Titanic```
 ### A Mysterious Code 
 
-![Encoded Alphabet Grid](./challenge_4_puzzle_images\encoded_alphabet_img.png)
+![Encoded Alphabet Grid](./assets/images\encoded_alphabet_img.png)
 
-![Puzzle Cipher](./challenge_4_puzzle_images\bill_cipher_img.png)
+![Puzzle Cipher](./assets/images\bill_cipher_img.png)
 
 ### A Strange Sound 
-![Morse Alphabet](./challenge_4_puzzle_images\morse_code_alphabet.jpg)
+![Morse Alphabet](./assets/images\morse_code_alphabet.jpg)
 
-[[PLAY_SOUND]]morse.wav[[END_SOUND]]
-> **Letters from a Stowaway:** [[REVEAL_HINT]]Caeser Cipher with key: 11[[END_HINT]] **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid](./challenge_4_puzzle_images\plaintext_alphabet_img.png)[[END_HINT]] **A Strange Sound Hint:** [[REVEAL_HINT]]..-.   .   --   .-   .-..   .   [[END_HINT]]
-> **Final Answer:** [[REVEAL_ANSWER]]The alias of the Guest from the Deep is: McDermott, Miss. Brigdet Delia[[END_REVEAL]]---
+[[PLAY_SOUND]]./assets/audio\morse.wav[[END_SOUND]]
+> **Letters from a Stowaway:** [[REVEAL_HINT]]Caeser Cipher with key: 24[[END_HINT]] **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid](./assets/images\plaintext_alphabet_img.png)[[END_HINT]] **A Strange Sound Hint:** [[REVEAL_HINT]]--   .-   .-..   .   [[END_HINT]]
+> **Final Answer:** [[REVEAL_ANSWER]]The alias of the Guest from the Deep is: Saundercock, Mr. William Henry[[END_REVEAL]]---
 ## Game End
 
 Congratulations! You've collected all 5 coordinate fragments, restarted the time machine, and successfully escaped from 1912 at the moment the Titanic sank.

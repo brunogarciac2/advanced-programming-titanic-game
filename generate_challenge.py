@@ -172,13 +172,8 @@ def decrypt(cipher_text, key):
     # Have to invert key to decrypt
     pass
 
-# Function to create alphabet sheet, true is encrypted, false is plaintext
-def generate_alphabet_sheet(encrypted=True):
-    if encrypted:
-        letters_dir = "./challenge_4_cipher_components"
-    else:
-        letters_dir = "./challenge_4_alphabet_components"
-
+# Function to create alphabet sheet, pass the directory of the letters you want to use
+def generate_alphabet_sheet(letters_dir):
     # If directory doesn't exist then display while compiling
     if not os.path.isdir(letters_dir):
         print(f"[ERROR] '{letters_dir}' not found.")
@@ -212,10 +207,8 @@ def generate_alphabet_sheet(encrypted=True):
 
     return fig
 
-def generate_cipher_puzzle_fig(input_string):
+def generate_cipher_puzzle_fig(input_string, cipher_letters_dir):
     ### Turns "survived" or "deceased" into an image of the puzzle
-    cipher_letters_dir = "./challenge_4_cipher_components"
-
     cipher_letters_dir_list = []
     for letter in input_string:
         cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
@@ -631,7 +624,7 @@ def generate_challenge_4(df):
     
     """
 
-    puzzle_img_dir = "./challenge_4_puzzle_images"
+    puzzle_img_dir = "./assets/images"
 
     # The columns to check for uniqueness
     columns_to_check = ['Pclass', 'Sex', 'Survived']
@@ -699,26 +692,31 @@ MARCONI WIRELESS SERVICE
 APRIL 12, 1912
 """
 
-    plaintext_letter_llm_response = "plaintext_letter_llm_response.json"
-    encrypted_letter_llm_response = "encrypted_letter_llm_response.json"
+    llm_response_path = "./assets/llm_responses/"
+
+    plaintext_letter_llm_response_filename = "plaintext_letter_llm_response.json"
+    encrypted_letter_llm_response_filename = "encrypted_letter_llm_response.json"
+
+    plaintext_letter_llm_response_path = os.path.join(llm_response_path, plaintext_letter_llm_response_filename)
+    encrypted_letter_llm_response_path = os.path.join(llm_response_path, encrypted_letter_llm_response_filename)
 
     try:
-        with open(plaintext_letter_llm_response, 'r') as file:
+        with open(plaintext_letter_llm_response_path, 'r') as file:
             data = json.load(file)
             plaintext_body = data.get('response')
             # LLMs like to do \n\n replace with \n
             plaintext_body = re.sub(r'\n+', '\n', plaintext_body)
     except:
-        print(f"File '{encrypted_letter_llm_response}' not found.")
+        print(f"Path: '{plaintext_letter_llm_response_path}' not found.")
 
     try:
-        with open(encrypted_letter_llm_response, 'r') as file:
+        with open(encrypted_letter_llm_response_path, 'r') as file:
             data = json.load(file)
             encrypted_body = data.get('response')
             # LLMs like to do \n\n replace with \n
             encrypted_body = re.sub(r'\n+', '\n', encrypted_body)
     except:
-        print(f"File '{encrypted_letter_llm_response}' not found.")
+        print(f"Path: '{encrypted_letter_llm_response_path}' not found.")
     
     plaintext_letter = header + plaintext_body
     encrypted_letter = header + stowaway_class_line + encrypted_body
@@ -731,31 +729,37 @@ APRIL 12, 1912
     caeser_hint = f"Caeser Cipher with key: {key}"
 
     ### Bill Cipher challenge
+    alphabet_components_path = "./assets/images/alphabet_components"
+    cipher_components_path = "./assets/images/cipher_components"
+
     # Generate encoded message
-    encoded_key_fig = generate_cipher_puzzle_fig(stowaway["Survived"].iloc[0])
+    encoded_key_fig = generate_cipher_puzzle_fig(stowaway["Survived"].iloc[0], cipher_components_path)
     encoded_key_img_path = os.path.join(puzzle_img_dir, "bill_cipher_img.png")
     encoded_key_fig.savefig(encoded_key_img_path, dpi=300, bbox_inches="tight")
 
     # Generate encoded alphabet to display to the user as part of puzzle
-    encoded_alphabet_fig = generate_alphabet_sheet(True)
+    encoded_alphabet_fig = generate_alphabet_sheet(cipher_components_path)
     encoded_alphabet_img_path = os.path.join(puzzle_img_dir, "encoded_alphabet_img.png")
     encoded_alphabet_fig.savefig(encoded_alphabet_img_path, dpi=300, bbox_inches="tight")
 
     # Generate plaintext alphabet to show to user as a hint
-    plaintext_alphabet_fig = generate_alphabet_sheet(False)
+    plaintext_alphabet_fig = generate_alphabet_sheet(alphabet_components_path)
     plaintext_alphabet_img_path = os.path.join(puzzle_img_dir, "plaintext_alphabet_img.png")
     plaintext_alphabet_fig.savefig(plaintext_alphabet_img_path, dpi=300, bbox_inches="tight")
 
     ### Morse code challenge
-    morse_components_dir = "./challenge_4_morse_components"
+    audio_path = "./assets/audio"
+    morse_components_path = os.path.join(audio_path, "morse_components")
+    print(morse_components_path)
     morse_alphabet_path = os.path.join(puzzle_img_dir, "morse_code_alphabet.jpg")
 
     # Turn the sex of the stowaway into morse
     morse_string = stowaway['Sex'].iloc[0]
+    morse_wav_path = os.path.join(audio_path, "morse.wav")
 
     # Turn a string into a morse code wav file
-    morse_wav_audio = generate_morse_audio_segment(morse_components_dir, morse_string)
-    morse_wav_audio.export("./morse.wav", format="wav")
+    morse_wav_audio = generate_morse_audio_segment(morse_components_path, morse_string)
+    morse_wav_audio.export(morse_wav_path, format="wav")
 
     # For hint - Turn string into morse code dots and dashes
     morse_text_hint = generate_morse_text(morse_string)
@@ -774,7 +778,7 @@ APRIL 12, 1912
         "plaintext_alphabet_img_path" : plaintext_alphabet_img_path,
         "encoded_alphabet_img_path" : encoded_alphabet_img_path,
         "alpha_morse_img_path" : morse_alphabet_path,
-        "morse_wav_path" : "morse.wav",
+        "morse_wav_path" : morse_wav_path,
         "morse_text_hint" : morse_text_hint,
         "stowaway_name" : stowaway_name
     }

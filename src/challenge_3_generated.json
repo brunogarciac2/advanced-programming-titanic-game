@@ -13,28 +13,28 @@
             "Embarked": "S"
         },
         {
-            "Name": "Pettersson, Miss. Ellen Natalia",
-            "Pclass": 3,
-            "Age": 18,
-            "Sex": "female",
-            "Fare": 7.78,
-            "Embarked": "S"
-        },
-        {
-            "Name": "Nirva, Mr. Iisakki Antino Aijo",
-            "Pclass": 3,
-            "Age": 41,
+            "Name": "Dick, Mr. Albert Adrian",
+            "Pclass": 1,
+            "Age": 31,
             "Sex": "male",
-            "Fare": 7.12,
+            "Fare": 57.0,
             "Embarked": "S"
         },
         {
-            "Name": "Emanuel, Miss. Virginia Ethel",
-            "Pclass": 3,
-            "Age": 5,
+            "Name": "Compton, Miss. Sara Rebecca",
+            "Pclass": 1,
+            "Age": 39,
             "Sex": "female",
-            "Fare": 12.47,
-            "Embarked": "S"
+            "Fare": 83.16,
+            "Embarked": "C"
+        },
+        {
+            "Name": "Paulner, Mr. Uscher",
+            "Pclass": 3,
+            "Age": 48,
+            "Sex": "male",
+            "Fare": 8.71,
+            "Embarked": "C"
         }
     ],
     "static_clues": [
@@ -51,5 +51,5 @@
         "hint\\challenge_3_sex_pclass.png",
         "hint\\challenge_3_age_group.png"
     ],
-    "correct_code": "1001"
+    "correct_code": "1110"
 }
