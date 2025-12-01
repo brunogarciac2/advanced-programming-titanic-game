@@ -16,65 +16,92 @@
 
 **Card 1**
 ```
-name: Ponesell, Mr. Martin
-Pclass: 2
-Age: 34.0
+name: Beckwith, Mr. Richard Leonard
+Pclass: 3
+Age: 37.0
 Sex: male
-Fare: 13.0
+Fare: 3.51
 Embarked: S
 ```
 **Card 2**
 ```
-name: Stewart, Mr. Albert A
+name: Flynn, Mr. John Irwin ("Irving")
 Pclass: 1
-Age: nan
+Age: 36.0
 Sex: male
-Fare: 27.72
-Embarked: C
+Fare: 26.39
+Embarked: S
 ```
 **Card 3**
 ```
-name: Bissette, Miss. Amelia
-Pclass: 1
-Age: 35.0
+name: Ilmakangas, Miss. Pieta Sofia
+Pclass: 3
+Age: 25.0
 Sex: female
-Fare: 135.63
+Fare: 7.92
 Embarked: S
 ```
 **Card 4**
 ```
-name: Ward, Miss. Anna
-Pclass: 1
-Age: 35.0
+name: Asplund, Miss. Lillian Gertrud
+Pclass: 3
+Age: 5.0
 Sex: female
-Fare: 512.33
-Embarked: C
+Fare: 31.39
+Embarked: S
 ```
 **Card 5**
 ```
-name: Hewlett, Mrs. (Mary D Kingcome) 
+name: Levy, Mr. Rene Jacques
 Pclass: 2
-Age: 55.0
-Sex: female
-Fare: 16.0
-Embarked: S
+Age: 36.0
+Sex: male
+Fare: 12.88
+Embarked: C
 ```
 **Card 6**
 ```
-name: Newell, Miss. Marjorie
+name: Andrews, Miss. Kornelia Theodosia
 Pclass: 1
-Age: 23.0
+Age: 63.0
 Sex: female
-Fare: 3.7
-Embarked: C
+Fare: 77.96
+Embarked: S
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £3.70, which is much lower than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 6)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 3rd class (Pclass=3) but paying £3.51, which is much lower than typical 3rd class fares (£4.01-69.55). **(In this game, this card is Card 1)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
+
+---
+## Challenge 2: Echoes of the Passengers (Timeline Synchronization)
+
+**Story:** Time ripples carry brief echoes of five travelers aboard the Titanic. Align their moments to restore the timeline.
+
+**Known Facts**
+- Boarding order by port: Southampton (S) → Cherbourg (C) → Queenstown (Q).
+- Phrases like 'boarded at' are before the iceberg impact.
+- Words like 'tilted', 'helping', or 'chaos' are after impact but still onboard.
+- Mentions of 'escaped' or 'lifeboat' happen last.
+
+### Echoes (Show to Players)
+
+- Echo A: Lanterns sway as the deck tilts; Parrish steadies a stranger amid rising alarm.
+- Echo B: In the final chaos, Elias finds space in a lifeboat and slips into the night.
+- Echo C: O'Sullivan boards at Queenstown (Q); a third-class ticket rustles in hand.
+- Echo D: Sirayanian boards at Cherbourg (C); a third-class ticket rustles in hand.
+- Echo E: Giles boards at Southampton (S); a second-class ticket rustles in hand.
+
+**Task:** Arrange the echoes (A–E) in correct chronological order.
+
+---
+### GM Guide
+
+> **Answer:** [[REVEAL_ANSWER]]Correct order: E, D, C, A, B. Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last.[[END_REVEAL]]
+> **Obtain:** **Temporal Coordinate Fragment 2** revealed when the order is correct.
 
 ---
 ## Decipher the Lifeboat Code
@@ -91,46 +118,46 @@ Embarked: C
 
 **Card 1**
 ```
-Name: Taussig, Mr. Emil
-Pclass: 1
-Age: 52
+Name: Goodwin, Master. Sidney Leonard
+Pclass: 3
+Age: 1
 Sex: male
-Fare: 79.65
+Fare: 46.9
 Embarked: S
 ```
 **Card 2**
 ```
-Name: Frolicher-Stehli, Mr. Maxmillian
+Name: Stahelin-Maeglin, Dr. Max
 Pclass: 1
-Age: 60
+Age: 32
 Sex: male
-Fare: 79.2
+Fare: 30.5
 Embarked: C
 ```
 **Card 3**
 ```
-Name: Glynn, Miss. Mary Agatha
-Pclass: 3
-Age: 30
-Sex: female
-Fare: 7.75
-Embarked: Q
+Name: Guggenheim, Mr. Benjamin
+Pclass: 1
+Age: 46
+Sex: male
+Fare: 79.2
+Embarked: C
 ```
 **Card 4**
 ```
-Name: Frauenthal, Mrs. Henry William (Clara Heinsheimer)
+Name: Harper, Mr. Henry Sleeper
 Pclass: 1
-Age: 41
-Sex: female
-Fare: 133.65
-Embarked: S
+Age: 48
+Sex: male
+Fare: 76.73
+Embarked: C
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** Use the survival charts above to infer the 4-digit lifeboat code.
-> **Answer:** [[REVEAL_ANSWER]]0111[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]0101[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
@@ -167,25 +194,26 @@ Yours Sincerely,
 A Guest of the Deep
 ```
 **Encrypted Letter**```
-c.s.r. yfytbfd  
-stcdibf lfckhkrr rkcufdk  
-tecfh 12, 1912
-sq rkdcky thftr fr sc jtskr sictb
+R.M.S. TITANIC
+MARCONI WIRELESS SERVICE
+APRIL 12, 1912
 
-My secret alias is Mr James Moran. It's a bit cramped here in third class!
+My secret alias is Lang, Mr. Fang. It's a bit cramped here in third class!
 
 A Guest of the Deep
 ```
 ### A Mysterious Code 
 
-![Alphabet Grid](./challenge_4_puzzle_images\alpha_cipher_img.png)
+![Encoded Alphabet Grid](./challenge_4_puzzle_images\encoded_alphabet_img.png)
 
 ![Puzzle Cipher](./challenge_4_puzzle_images\bill_cipher_img.png)
 
 ### A Strange Sound 
 ![Morse Alphabet](./challenge_4_puzzle_images\morse_code_alphabet.jpg)
 
-[[PLAY_SOUND]]sound.wav[[END_SOUND]]
+[[PLAY_SOUND]]morse.wav[[END_SOUND]]
+> **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid](./challenge_4_puzzle_images\plaintext_alphabet_img.png)[[END_HINT]]
+> **A Strange Sound Hint:** [[REVEAL_HINT]]....   .   .-..   .-..   ---   [[END_HINT]]
 ---
 ## Game End
 
