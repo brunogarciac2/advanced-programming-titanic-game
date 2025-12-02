@@ -308,6 +308,15 @@ def generate_challenge_2(df):
         "post_impact",    # helping amid chaos
         "lifeboat",       # escaped in lifeboat
     ]
+    event_route_port = [
+        "S",  # early at Southampton
+        "S",  # afternoon boat deck (still early)
+        "C",  # after leaving Cherbourg
+        "Q",  # around reaching Queenstown
+        None, # impact at sea
+        None, # post-impact chaos
+        None, # lifeboat/escape
+    ]
 
     available_indices = list(range(len(event_phrases)))
     pre_indices = [i for i, stage in enumerate(event_stage_map) if stage == "pre_board"]
@@ -321,13 +330,31 @@ def generate_challenge_2(df):
     real_pool = real_labels.copy()
     random.shuffle(real_pool)
 
-    # Assign two pre-board events
+    # Assign two pre-board events with distinct route ports when possible
     random.shuffle(pre_indices)
-    for _ in range(min(2, len(pre_indices), len(real_pool))):
-        lab = real_pool.pop()
-        idx = pre_indices.pop()
-        available_indices.remove(idx)
-        event_order_by_label[lab] = idx
+    selected_pre = []
+    used_ports: set[str] = set()
+    for idx in pre_indices:
+        if not real_pool:
+            break
+        port_hint = event_route_port[idx]
+        if len(selected_pre) >= 2:
+            break
+        if port_hint is None or port_hint not in used_ports:
+            lab = real_pool.pop()
+            selected_pre.append(idx)
+            if port_hint:
+                used_ports.add(port_hint)
+            available_indices.remove(idx)
+            event_order_by_label[lab] = idx
+    # If we still need a second pre-board and only same-port options remain
+    if len(selected_pre) < 2 and real_pool and pre_indices:
+        remaining_pre = [i for i in pre_indices if i not in selected_pre]
+        if remaining_pre:
+            idx = remaining_pre[0]
+            lab = real_pool.pop()
+            available_indices.remove(idx)
+            event_order_by_label[lab] = idx
 
     # Assign impact
     if real_pool and impact_indices:
@@ -467,9 +494,11 @@ def generate_challenge_2(df):
     # Build full timeline ordering for GM reference
     def voyage_stage_rank(echo):
         label = echo['label']
-        port = echo['embarked']
         event_idx = event_order_by_label[label]
         stage = event_stage_map[event_idx]
+        # Use event port hint when available (e.g., "after Cherbourg" -> C)
+        event_port = event_route_port[event_idx]
+        port = event_port or echo['embarked']
 
         # Stage priority: pre-board (1) < impact (2) < post-impact (3) < lifeboat (4)
         stage_rank_map = {
@@ -496,10 +525,12 @@ def generate_challenge_2(df):
     for lab in real_timeline_order:
         row = real_map[lab]
         embark_code = row.get('Embarked')
-        embark_name = embarked_name(embark_code)
+        event_idx = event_order_by_label[lab]
+        stage = event_stage_map[event_idx]
+        route_port = event_route_port[event_idx] or embark_code
+        route_name = embarked_name(route_port)
         event_phrase = event_phrases[event_order_by_label[lab]]
-        stage = event_stage_map[event_order_by_label[lab]]
-        route_reason = "route order S→C→Q" if stage == "pre_board" and embark_code in ['S', 'C', 'Q'] else ""
+        route_reason = "route order S→C→Q" if stage == "pre_board" and route_port in ['S', 'C', 'Q'] else ""
         event_reason = {
             "pre_board": "pre-impact voyage timing",
             "impact": "impact/tilt",
@@ -507,7 +538,7 @@ def generate_challenge_2(df):
             "lifeboat": "lifeboat/escape timing",
         }.get(stage, "timing clue")
         timeline_clues.append(
-            f"{lab}: {embark_name} ({embark_code}) sets base by {route_reason}; event clue: {event_phrase} ({event_reason})"
+            f"{lab}: {route_name} ({route_port}) sets base by {route_reason}; event clue: {event_phrase} ({event_reason})"
         )
 
     timeline_order = [e['label'] for e in echoes]
