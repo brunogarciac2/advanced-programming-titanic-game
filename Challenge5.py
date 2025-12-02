@@ -1,15 +1,16 @@
-import pandas as pd
-import matplotlib.pyplot as plt
-import json, os, re, random
-import string
-from PIL import Image, ImageDraw, ImageFont
-import seaborn as sns
+# import pandas as pd
+# import matplotlib.pyplot as plt
+# import json, os, re, random
+# import string
+# from PIL import Image, ImageDraw, ImageFont
+# import seaborn as sns
+
 
 def generate_challenge_5(df):
     """Generate Challenge 5: Find The Saboteur"""
     
     # Setup directories
-    images_dir = "./hint"
+    images_dir = "./assets/images"
     
     # PARTITION AGES INTO GROUPS FOR RIDDLE
     # _____________________________________________________________________________________
@@ -540,7 +541,7 @@ def generate_challenge_5(df):
         elif riddleName == "Gender Riddle Answer":
             return f"This hints the imposter's Sex is {imposter['Sex']}."
         return ""
-    
+
     # This is For Building Riddle Clues with the image paths
     RiddleClues = []
     for HeadingName in Headings:
@@ -598,7 +599,6 @@ def generate_challenge_5(df):
             "NoteForEscapeRoomRunner": "The saboteur don't show players."
         }
     }
-    
 
     return SaboteurJson
 
@@ -612,4 +612,3 @@ def generate_challenge_5(df):
     
 #     # Print the JSON output
 #     print(json.dumps(challenge_data, indent=2))
-
