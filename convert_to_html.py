@@ -817,7 +817,8 @@ def main():
         format_challenge_1,
         format_challenge_2,
         format_challenge_3,
-        format_challenge_4
+        format_challenge_4,
+        format_challenge_5
     ]
     print("Converting challenges to Markdown...")
     for i, challenge_data in enumerate(game_data['challenges']):
