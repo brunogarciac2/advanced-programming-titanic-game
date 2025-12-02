@@ -4,6 +4,11 @@ import matplotlib.pyplot as plt
 import json, os, re, random
 from pydub import AudioSegment
 
+
+# Generate a key for the substitution cipher
+def generate_key():
+    return random.randint(1,25)
+
 # Encryption algorithm for caeser cipher
 # Key is number between 1 and 25 (inc.)
 def encrypt(plain_text, key):
@@ -18,25 +23,14 @@ def encrypt(plain_text, key):
 
     return encrypted_text
 
-# Decryption algorithm for monoalphabetic substitution cipher
-def decrypt(cipher_text, key):
-    # Have to invert key to decrypt
-    pass
-
-
-# Function to create alphabet sheet, true is encrypted, false is plaintext
-def generate_alphabet_sheet(encrypted=True):
-    if encrypted:
-        letters_dir = "./challenge_4_cipher_components"
-    else:
-        letters_dir = "./challenge_4_alphabet_components"
-
+# Function to create alphabet sheet, pass the directory of the letters you want to use
+def generate_alphabet_sheet(letters_dir):
     # If directory doesn't exist then display while compiling
     if not os.path.isdir(letters_dir):
         print(f"[ERROR] '{letters_dir}' not found.")
 
     # Creates alphabet sheet
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
     fig, axes = plt.subplots(4, 7, figsize=(12, 6))
 
@@ -64,13 +58,11 @@ def generate_alphabet_sheet(encrypted=True):
 
     return fig
 
-def generate_cipher_puzzle_fig(input_string):
+def generate_cipher_puzzle_fig(input_string, cipher_letters_dir):
     ### Turns "survived" or "deceased" into an image of the puzzle
-    cipher_letters_dir = "./challenge_4_cipher_components"
-
     cipher_letters_dir_list = []
     for letter in input_string:
-        cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
+        cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter.upper()}.png")
 
     fig, axes = plt.subplots(1, len(input_string), figsize=(12, 6))
 
@@ -83,45 +75,6 @@ def generate_cipher_puzzle_fig(input_string):
     plt.close()
 
     return fig
-
-
-# For challenge-4 (A Strange Sound) turn plaintext into morse audio segment
-def generate_morse_audio_segment(morse_component_dir, input_string):
-    # If directory doesn't exist then display while compiling
-    if not os.path.isdir(morse_component_dir):
-        print("[ERROR] 'challenge_4_morse_components' not found.")
-
-    output_message = AudioSegment.silent(duration=0)
-
-    for char in input_string:
-        char_path = morse_component_dir + f"/{char.upper()}_morse_code.wav"
-        output_message += AudioSegment.from_wav(char_path)
-        output_message += AudioSegment.silent(duration=2000)
-
-    return output_message
-
-# For challenge-4 (A Strange Sound) hint turn plaintext into morse text
-def generate_morse_text(input_string):
-    morse_dict = {
-        "A": ".-",    "B": "-...",  "C": "-.-.",  "D": "-..",   "E": ".",
-        "F": "..-.",  "G": "--.",   "H": "....",  "I": "..",    "J": ".---",
-        "K": "-.-",   "L": ".-..",  "M": "--",    "N": "-.",    "O": "---",
-        "P": ".--.",  "Q": "--.-",  "R": ".-.",   "S": "...",   "T": "-",
-        "U": "..-",   "V": "...-",  "W": ".--",   "X": "-..-",  "Y": "-.--",
-        "Z": "--.."
-    }
-    output_morse = ""
-
-    for char in input_string:
-        output_morse += morse_dict[char.upper()]
-        output_morse += (' ' * 3)
-
-    print(output_morse)
-    return output_morse
-
-
-def generate_key():
-    return random.randint(1,25)
 
 def convert_dataframe_to_table(df):
     font_size = 20
@@ -155,23 +108,55 @@ def convert_dataframe_to_table(df):
 
     return fig
 
+# For challenge-4 (A Strange Sound) turn plaintext into morse audio segment
+def generate_morse_audio_segment(morse_component_dir, input_string):
+    # If directory doesn't exist then display while compiling
+    if not os.path.isdir(morse_component_dir):
+        print(f"[ERROR] '{morse_component_dir}' not found.")
+
+    output_message = AudioSegment.silent(duration=0)
+
+    for char in input_string:
+        char_path = morse_component_dir + f"/{char.upper()}_morse_code.wav"
+        output_message += AudioSegment.from_wav(char_path)
+        output_message += AudioSegment.silent(duration=2000)
+
+    return output_message
+
+# For challenge-4 (A Strange Sound) hint turn plaintext into morse text
+def generate_morse_text(input_string):
+    morse_dict = {
+        "A": ".-",    "B": "-...",  "C": "-.-.",  "D": "-..",   "E": ".",
+        "F": "..-.",  "G": "--.",   "H": "....",  "I": "..",    "J": ".---",
+        "K": "-.-",   "L": ".-..",  "M": "--",    "N": "-.",    "O": "---",
+        "P": ".--.",  "Q": "--.-",  "R": ".-.",   "S": "...",   "T": "-",
+        "U": "..-",   "V": "...-",  "W": ".--",   "X": "-..-",  "Y": "-.--",
+        "Z": "--.."
+    }
+    output_morse = ""
+
+    for char in input_string:
+        output_morse += morse_dict[char.upper()]
+        output_morse += (' ' * 3)
+
+    return output_morse
 
 
 def generate_challenge_4(df):
     # Generate challenge 4 - Guest of the Deep
 
     story_text = """
-
+    
     The Captain has called you and your group to the deck of the ship with an 
     urgent mission. Telegrams have been intercepted from the ship's Marconi machine
     and it appears there is a stowaway on board! Unfortunately, the dastardly 
     stowaway has managed to scramble one of the telegrams using a mysterious code. 
     The Captain has created a list of 20 suspects. Can you decipher the letter and
     obtain the identity of the suspect before they get away?!
-
+    
     """
 
-    puzzle_img_dir = "./challenge_4_puzzle_images"
+    images_dir = "./assets/images"
 
     # The columns to check for uniqueness
     columns_to_check = ['Pclass', 'Sex', 'Survived']
@@ -215,7 +200,7 @@ def generate_challenge_4(df):
     suspect_table = convert_dataframe_to_table(suspects)
 
     # Save suspect table
-    suspect_table_img_path = os.path.join(puzzle_img_dir, "suspect_table.png")
+    suspect_table_img_path = os.path.join(images_dir, "suspect_table.png")
     suspect_table.savefig(suspect_table_img_path, dpi=300, bbox_inches="tight")
 
     ### Letters from a stowaway puzzle generation
@@ -239,30 +224,35 @@ MARCONI WIRELESS SERVICE
 APRIL 12, 1912
 """
 
-    plaintext_letter_llm_response = "plaintext_letter_llm_response.json"
-    encrypted_letter_llm_response = "encrypted_letter_llm_response.json"
+    llm_response_path = "./assets/llm_responses/"
+
+    plaintext_letter_llm_response_filename = "plaintext_letter_llm_response.json"
+    encrypted_letter_llm_response_filename = "encrypted_letter_llm_response.json"
+
+    plaintext_letter_llm_response_path = os.path.join(llm_response_path, plaintext_letter_llm_response_filename)
+    encrypted_letter_llm_response_path = os.path.join(llm_response_path, encrypted_letter_llm_response_filename)
 
     try:
-        with open(plaintext_letter_llm_response, 'r') as file:
+        with open(plaintext_letter_llm_response_path, 'r') as file:
             data = json.load(file)
             plaintext_body = data.get('response')
             # LLMs like to do \n\n replace with \n
             plaintext_body = re.sub(r'\n+', '\n', plaintext_body)
     except:
-        print(f"File '{encrypted_letter_llm_response}' not found.")
+        print(f"Path: '{plaintext_letter_llm_response_path}' not found.")
 
     try:
-        with open(encrypted_letter_llm_response, 'r') as file:
+        with open(encrypted_letter_llm_response_path, 'r') as file:
             data = json.load(file)
             encrypted_body = data.get('response')
             # LLMs like to do \n\n replace with \n
             encrypted_body = re.sub(r'\n+', '\n', encrypted_body)
     except:
-        print(f"File '{encrypted_letter_llm_response}' not found.")
-
+        print(f"Path: '{encrypted_letter_llm_response_path}' not found.")
+    
     plaintext_letter = header + plaintext_body
     encrypted_letter = header + stowaway_class_line + encrypted_body
-
+    
     # Encrypt the letter
     key = generate_key()
     # Don't encrypt while testing
@@ -271,31 +261,37 @@ APRIL 12, 1912
     caeser_hint = f"Caeser Cipher with key: {key}"
 
     ### Bill Cipher challenge
+    alphabet_components_path = "./assets/images/alphabet_components"
+    cipher_components_path = "./assets/images/cipher_components"
+
     # Generate encoded message
-    encoded_key_fig = generate_cipher_puzzle_fig(stowaway["Survived"].iloc[0])
-    encoded_key_img_path = os.path.join(puzzle_img_dir, "bill_cipher_img.png")
+    encoded_key_fig = generate_cipher_puzzle_fig(stowaway["Survived"].iloc[0], cipher_components_path)
+    encoded_key_img_path = os.path.join(images_dir, "bill_cipher_img.png")
     encoded_key_fig.savefig(encoded_key_img_path, dpi=300, bbox_inches="tight")
 
     # Generate encoded alphabet to display to the user as part of puzzle
-    encoded_alphabet_fig = generate_alphabet_sheet(True)
-    encoded_alphabet_img_path = os.path.join(puzzle_img_dir, "encoded_alphabet_img.png")
+    encoded_alphabet_fig = generate_alphabet_sheet(cipher_components_path)
+    encoded_alphabet_img_path = os.path.join(images_dir, "encoded_alphabet_img.png")
     encoded_alphabet_fig.savefig(encoded_alphabet_img_path, dpi=300, bbox_inches="tight")
 
     # Generate plaintext alphabet to show to user as a hint
-    plaintext_alphabet_fig = generate_alphabet_sheet(False)
-    plaintext_alphabet_img_path = os.path.join(puzzle_img_dir, "plaintext_alphabet_img.png")
+    plaintext_alphabet_fig = generate_alphabet_sheet(alphabet_components_path)
+    plaintext_alphabet_img_path = os.path.join(images_dir, "plaintext_alphabet_img.png")
     plaintext_alphabet_fig.savefig(plaintext_alphabet_img_path, dpi=300, bbox_inches="tight")
 
     ### Morse code challenge
-    morse_components_dir = "./challenge_4_morse_components"
-    morse_alphabet_path = os.path.join(puzzle_img_dir, "morse_code_alphabet.jpg")
+    audio_path = "./assets/audio"
+    morse_components_path = os.path.join(audio_path, "morse_components")
+    print(morse_components_path)
+    morse_alphabet_path = os.path.join(images_dir, "morse_code_alphabet.jpg")
 
     # Turn the sex of the stowaway into morse
     morse_string = stowaway['Sex'].iloc[0]
+    morse_wav_path = os.path.join(audio_path, "morse.wav")
 
     # Turn a string into a morse code wav file
-    morse_wav_audio = generate_morse_audio_segment(morse_components_dir, morse_string)
-    morse_wav_audio.export("./morse.wav", format="wav")
+    morse_wav_audio = generate_morse_audio_segment(morse_components_path, morse_string)
+    morse_wav_audio.export(morse_wav_path, format="wav")
 
     # For hint - Turn string into morse code dots and dashes
     morse_text_hint = generate_morse_text(morse_string)
@@ -306,18 +302,17 @@ APRIL 12, 1912
         "title": "Guest from the Deep",
         "story": story_text,
         "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
-        "suspect_table_img_path": suspect_table_img_path,
-        "plaintext_letter": plaintext_letter,
-        "encrypted_letter": encrypted_letter,
-        "caeser_hint": caeser_hint,
-        "encoded_key_img_path": encoded_key_img_path,
-        "plaintext_alphabet_img_path": plaintext_alphabet_img_path,
-        "encoded_alphabet_img_path": encoded_alphabet_img_path,
-        "alpha_morse_img_path": morse_alphabet_path,
-        "morse_wav_path": "morse.wav",
-        "morse_text_hint": morse_text_hint,
-        "stowaway_name": stowaway_name
+        "suspect_table_img_path" : suspect_table_img_path,
+        "plaintext_letter" : plaintext_letter,
+        "encrypted_letter" : encrypted_letter,
+        "caeser_hint" : caeser_hint,
+        "encoded_key_img_path" : encoded_key_img_path,
+        "plaintext_alphabet_img_path" : plaintext_alphabet_img_path,
+        "encoded_alphabet_img_path" : encoded_alphabet_img_path,
+        "alpha_morse_img_path" : morse_alphabet_path,
+        "morse_wav_path" : morse_wav_path,
+        "morse_text_hint" : morse_text_hint,
+        "stowaway_name" : stowaway_name
     }
 
     return challenge_data
-
