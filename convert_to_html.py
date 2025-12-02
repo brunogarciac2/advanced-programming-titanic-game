@@ -254,6 +254,62 @@ def format_challenge_4(data):
 
     return md
 
+def format_challenge_5(data):
+    md = f"## {data['title']}\n\n**Story:** {data.get('story', '')}\n\n"
+    md += f"**Task:** {data.get('instructions', data.get('task', ''))}\n\n"
+
+    md += "### Passenger Cards (Show to Players)\n\n"
+    for i, passenger in enumerate(data.get('passengers', []), 1):
+        md += f"**Passenger Card {i}**\n```\n" + "\n".join(f"{k}: {v}" for k, v in passenger.items()) + "\n```\n\n"
+
+    md += "---\n### Clue Fragments (Show to Players)\n\n"
+    cluesToShow = data.get('Riddle_Clues', [])
+    for idx, r in enumerate(cluesToShow, 1):
+        md += f"**Clue {idx}**\n\n{r.get('Clue', '')}\n\n"
+
+    md += "---\n### Hints (May Be Hidden Around The Room)\n\n"
+    MappingForDifferentHints = {"anagram": ("Anagram Hint", "Anagram Link"), 
+                "graph": ("Graph Hint", "Graph Link"),
+                "wordsearch": ("Crossword Hint", "WordSearch Link"), 
+                "word search": ("Crossword Hint", "WordSearch Link")}
+    
+    for r in cluesToShow:
+        Title = r.get("Heading", "").lower()
+        for k, (label, link_key) in MappingForDifferentHints.items():
+            if k in Title and (link := r.get(link_key)):
+                md += f"**{label}:** [[REVEAL_HINT]]![{label}]({link})[[END_HINT]] "
+                break
+    md += "\n\n"
+    md += "---\n### GM Guide\n\n> **Hint:** The players must infer the Saboteur's age, gender, and ticket class from the clues, with each hint corresponding to one attribute. Missing-letter clues are completed using the crossword and anagram solutions. The graph is used to determine the passenger's age, gender, or ticket class by matching the clue's survival-related statement to the corresponding pattern shown in the chart.\n\n"
+    PuzzleImages = {}
+    for r in cluesToShow:
+        h = r.get("Heading", "").lower()
+        if "anagram" in h:
+            PuzzleImages["anagram"] = r.get("Anagram Solution Link", "")
+        elif any(x in h for x in ["crossword", "word search", "wordsearch"]):
+            PuzzleImages["crossword"] = r.get("WordSearch Solution Link", "")
+        elif "graph" in h or "chart" in h:
+            PuzzleImages["graph"] = r.get("Graph Solution Link", "")
+
+    for idx, r in enumerate(cluesToShow, 1):
+        h = r.get("Heading", "").lower()
+        answer, clue = r.get("Answer", ""), r.get("Clue", "")
+        
+        ptype = ("anagram" if "anagram" in h else
+                 "crossword" if any(x in h for x in ["crossword", "word search", "wordsearch"]) else
+                 "graph" if "graph" in h or "chart" in h else "puzzle")
+        img = PuzzleImages.get(ptype, "")
+        
+        if ptype == "graph":
+            md += f"> **Clue {idx}:** [[REVEAL_ANSWER]]The answer is {answer}. The survival rate eluded to in: \"{clue}\" matches that of category: {answer} in the graph: ![Graph Solution]({img})[[END_REVEAL]]\n\n"
+        else:
+            md += f"> **Clue {idx}:** [[REVEAL_ANSWER]]The completed sentence is: \"{answer}\" The sentence is completed using the {ptype} solution: ![{ptype.capitalize()} Solution]({img})[[END_REVEAL]]\n\n"
+    sab = data.get("saboteur", {})
+    md += f"> **Answer:** [[REVEAL_ANSWER]]The saboteur is **{sab.get('Name', 'UNKNOWN')}** (Pclass {sab.get('Pclass', 'UNKNOWN')}, {sab.get('Sex', 'UNKNOWN')}, {sab.get('AgeGroup', 'UNKNOWN')}).[[END_REVEAL]]\n\n"
+    md += "> **Obtain:** **Temporal Coordinate Fragment 5** when the players correctly identify the saboteur.\n\n"
+
+    return md
+
 def get_html_template():
     """Return HTML template with embedded CSS"""
     # Use raw strings to avoid double escaping
