@@ -16,64 +16,64 @@
 
 **Card 1**
 ```
-name: Andersson, Miss. Sigrid Elisabeth
+name: Attalah, Miss. Malake
 Pclass: 3
-Age: 11.0
+Age: 17.0
 Sex: female
-Fare: 31.27
-Embarked: S
+Fare: 14.46
+Embarked: C
 ```
 **Card 2**
 ```
-name: Dorking, Mr. Edward Arthur
-Pclass: 3
-Age: 19.0
-Sex: male
-Fare: 8.05
+name: Kenyon, Mrs. Frederick R (Marion)
+Pclass: 1
+Age: nan
+Sex: female
+Fare: 0.94
 Embarked: S
 ```
 **Card 3**
 ```
-name: Doharr, Mr. Tannous
-Pclass: 2
+name: O'Sullivan, Miss. Bridget Mary
+Pclass: 3
 Age: nan
-Sex: male
-Fare: 107.73
-Embarked: C
+Sex: female
+Fare: 7.63
+Embarked: Q
 ```
 **Card 4**
 ```
-name: Wick, Mrs. George Dennick (Mary Hitchcock)
-Pclass: 1
-Age: 45.0
-Sex: female
-Fare: 164.87
+name: Leyson, Mr. Robert William Norman
+Pclass: 2
+Age: 24.0
+Sex: male
+Fare: 10.5
 Embarked: S
 ```
 **Card 5**
 ```
-name: Nye, Mrs. (Elizabeth Ramell)
+name: Leitch, Miss. Jessie Wills
 Pclass: 2
-Age: 29.0
+Age: nan
 Sex: female
-Fare: 10.5
+Fare: 33.0
 Embarked: S
 ```
 **Card 6**
 ```
-name: Nicola-Yarred, Master. Elias
+name: Moor, Mrs. (Beila)
 Pclass: 3
-Age: 12.0
-Sex: male
-Fare: 11.24
-Embarked: C
+Age: 27.0
+Sex: female
+Fare: 12.47
+Embarked: S
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £107.73, which is much higher than typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 3)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £0.94, which is much lower than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 2)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -89,18 +89,18 @@ Embarked: C
 
 ### Echoes (Show to Players)
 
-- Echo A: Lanterns sway as the deck tilts; O'Brien steadies a stranger amid rising alarm.
-- Echo B: In the final chaos, Newell finds space in a lifeboat and slips into the night.
-- Echo C: Toomey boards at Southampton (S); a second-class ticket rustles in hand.
-- Echo D: Connolly boards at Queenstown (Q); a third-class ticket rustles in hand.
-- Echo E: Ross boards at Cherbourg (C); a first-class ticket rustles in hand.
+- Echo A: Farrell boards at Queenstown (Q); a third-class ticket rustles in hand.
+- Echo B: Skoog boards at Southampton (S); a third-class ticket rustles in hand.
+- Echo C: In the final chaos, Fischer finds space in a lifeboat and slips into the night.
+- Echo D: Lanterns sway as the deck tilts; Skoog steadies a stranger amid rising alarm.
+- Echo E: Nicola-Yarred boards at Cherbourg (C); a third-class ticket rustles in hand.
 
 **Task:** Arrange the echoes (A–E) in correct chronological order.
 
 ---
 ### GM Guide
 
-> **Answer:** [[REVEAL_ANSWER]]Correct order: C, E, D, A, B. Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last.[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]Correct order: B, E, A, D, C. Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last.[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 2** revealed when the order is correct.
 
 ---
@@ -118,38 +118,38 @@ Embarked: C
 
 **Card 1**
 ```
-Name: de Pelsmaeker, Mr. Alfons
+Name: O'Brien, Mr. Timothy
 Pclass: 3
-Age: 16
+Age: 39
 Sex: male
-Fare: 9.5
-Embarked: S
+Fare: 7.83
+Embarked: Q
 ```
 **Card 2**
 ```
-Name: Mernagh, Mr. Robert
+Name: Gustafsson, Mr. Karl Gideon
 Pclass: 3
-Age: 33
+Age: 19
 Sex: male
-Fare: 7.75
-Embarked: Q
+Fare: 7.78
+Embarked: S
 ```
 **Card 3**
 ```
-Name: Bissette, Miss. Amelia
+Name: Madill, Miss. Georgette Alexandra
 Pclass: 1
-Age: 35
+Age: 15
 Sex: female
-Fare: 135.63
+Fare: 211.34
 Embarked: S
 ```
 **Card 4**
 ```
-Name: Ford, Mr. William Neal
+Name: Murdlin, Mr. Joseph
 Pclass: 3
-Age: 16
+Age: 23
 Sex: male
-Fare: 34.38
+Fare: 8.05
 Embarked: S
 ```
 
@@ -213,8 +213,8 @@ Someone on board The Titanic```
 ![Morse Alphabet](./assets/images\morse_code_alphabet.jpg)
 
 [[PLAY_SOUND]]./assets/audio\morse.wav[[END_SOUND]]
-> **Letters from a Stowaway:** [[REVEAL_HINT]]Caeser Cipher with key: 17[[END_HINT]] **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid](./assets/images\plaintext_alphabet_img.png)[[END_HINT]] **A Strange Sound Hint:** [[REVEAL_HINT]]--   .-   .-..   .   [[END_HINT]]
-> **Final Answer:** [[REVEAL_ANSWER]]The alias of the Guest from the Deep is: Eklund, Mr. Hans Linus[[END_REVEAL]]---
+> **Letters from a Stowaway:** [[REVEAL_HINT]]Caeser Cipher with key: 15[[END_HINT]] **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid](./assets/images\plaintext_alphabet_img.png)[[END_HINT]] **A Strange Sound Hint:** [[REVEAL_HINT]]--   .-   .-..   .   [[END_HINT]]
+> **Final Answer:** [[REVEAL_ANSWER]]The alias of the Guest from the Deep is: Corn, Mr. Harry[[END_REVEAL]]---
 ## Game End
 
 Congratulations! You've collected all 5 coordinate fragments, restarted the time machine, and successfully escaped from 1912 at the moment the Titanic sank.
