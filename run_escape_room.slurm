@@ -14,7 +14,6 @@ echo "Running..."
 
 ## Generate the required LLM responses for challenge 4
 chmod +x generate_challenge_4_llm_text.sh
-chmod +r plaintext_letter_llm_prompt.txt
 
 ## Start ollama container
 singularity pull ollama.sif docker://ollama/ollama
@@ -32,13 +31,17 @@ bash generate_challenge_4_llm_text.sh "$(cat $ENCRYPTED_LETTER_LLM_PATH)" "encry
 
 echo "[SUCCESS] Text generated."
 
+echo "Initialising Virtual Environment..."
+python3.11 -m venv .venv
+source .venv/bin/activate
+
 echo "Installing Requirements..."
 
 pip install -r requirements.txt
 
 echo "Generating challenges..."
 
-python3.12 convert_to_html.py
+python3.11 convert_to_html.py
 
 echo "Challenge generation complete."
 
