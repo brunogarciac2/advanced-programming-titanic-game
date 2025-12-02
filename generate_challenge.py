@@ -18,6 +18,11 @@ def load_data(filepath='./dataset/Titanic-Dataset.csv'):
         exit()
 
 def generate_game_data():
+    from challenge1 import generate_challenge_1
+    from challenge2 import generate_challenge_2
+    from challenge3 import generate_challenge_3
+    from challenge4 import generate_challenge_4
+    from challenge5 import generate_challenge_5
     """Generate fresh game data from dataset"""
     print("Loading Titanic dataset...")
     df = load_data()
@@ -35,6 +40,9 @@ def generate_game_data():
     print("Generating challenge 4...")
     challenge_4 = generate_challenge_4(df)
 
+    print("Generating challenge 5...")
+    challenge_5 = generate_challenge_5(df)
+
     game_data = {
         "story_background": {
             "theme": "The Temporal Rift on the Titanic",
@@ -45,7 +53,8 @@ def generate_game_data():
             challenge_1,
             challenge_2,
             challenge_3,
-            challenge_4
+            challenge_4,
+            challenge_5
         ]
     }
     

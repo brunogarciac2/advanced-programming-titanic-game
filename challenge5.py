@@ -584,11 +584,6 @@ def generate_challenge_5(df):
         ),
         "passengers": Output,
         "Riddle_Clues": RiddleClues,
-        "wordsearch_puzzle_path": wordsearch_puzzle_path,
-        "wordsearch_solution_path": wordsearch_solution_path,
-        "anagram_puzzle_path": anagram_puzzle_path,
-        "anagram_solution_path": anagram_solution_path,
-        "graph_puzzle_path": graph_puzzle_path,
         "saboteur": {
             "Name": Imposter["Name"],
             "Pclass": Imposter["Pclass"],
@@ -601,15 +596,3 @@ def generate_challenge_5(df):
     
 
     return SaboteurJson
-
-
-# if __name__ == "__main__":
-#     # Load the Titanic dataset
-#     df = pd.read_csv("https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv")
-    
-#     # Generate Challenge 5
-#     challenge_data = generate_challenge_5(df)
-    
-#     # Print the JSON output
-#     print(json.dumps(challenge_data, indent=2))
-
