@@ -145,29 +145,144 @@ def format_challenge_1(data):
 
 
 def format_challenge_2(data):
-    """Format Challenge 2 (Echoes of the Passengers) to Markdown"""
+    """Format Challenge 2 (Echoes of Deck C) to Markdown."""
     md = f"## {data['title']}\n\n"
-    md += f"**Story:** {data['story_intro']}\n\n"
+    md += f"**Story:** {data.get('story_intro', '')}\n\n"
 
-    if 'known_facts' in data and data['known_facts']:
-        md += "**Known Facts**\n"
-        for fact in data['known_facts']:
-            md += f"- {fact}\n"
-        md += "\n"
+    echoes = sorted(data.get('echoes', []), key=lambda e: e.get('label', ''))
 
-    md += "### Echoes (Show to Players)\n\n"
-    for echo in data.get('echoes', []):
-        md += f"- Echo {echo['letter']}: {echo['text']}\n"
+    # Stage descriptions
+    stages = data.get('stages', {})
+    md += "### Puzzle Stages (GM Overview)\n\n"
+    for stage_key in ["stage1", "stage2", "stage3"]:
+        stage = stages.get(stage_key)
+        if not stage:
+            continue
+        md += f"- **{stage.get('name', stage_key.title())}:** {stage.get('task', '')}\n"
     md += "\n"
 
-    md += f"**Task:** {data['task']}\n\n"
+    # Echoes shown to players
+    md += "### Echoes (Show to Players)\n\n"
+    for echo in echoes:
+        lab = echo.get('label', '?')
+        text = echo.get('text', '')
+        md += f"- Echo {lab}: {text}\n"
+    md += "\n"
+
+    # Temporal Signal graph (shown to players)
+    graph = data.get('graph')
+    if graph:
+        md += "### Temporal Signal Graph (Show to Players)\n\n"
+        md += f"**{graph.get('title', 'Graph')}**\n\n"
+        if graph.get('description'):
+            md += graph['description'] + "\n\n"
+
+        image_path = str(graph.get('image', '') or '').strip().replace("\\", "/").replace("'", "")
+        if image_path:
+            md += f"![Temporal Signal Graph]({image_path})\n\n"
+
+    # Optional hints section (for GM; reveal selectively to players)
+    hints = data.get('hints', [])
+    if hints:
+        md += "### Hints (GM Reference)\n\n"
+        for hint in hints:
+            lvl = hint.get('level', '?')
+            stage = hint.get('stage', '?')
+            unlock = hint.get('unlock_condition', 'manual')
+            htype = hint.get('type', 'text')
+
+            prefix = f"- **Level {lvl}**"
+
+            if htype == 'text':
+                content = hint.get('content', '')
+                md += f"{prefix}: [[REVEAL_HINT]]{content}[[END_HINT]]\n"
+            elif htype == 'image':
+                desc = hint.get('description', 'Visual hint')
+                path = str(hint.get('path', '')).strip().replace("\\", "/").replace("'", "")
+                if path:
+                    img_md = f"![{desc}]({path})"
+                    md += f"{prefix}: [[REVEAL_HINT]]{img_md}[[END_HINT]]\n"
+                else:
+                    md += f"{prefix}: [[REVEAL_HINT]]{desc}[[END_HINT]]\n"
+        md += "\n"
 
     md += "---\n"
     md += "### GM Guide\n\n"
-    solution_text = data.get('solution', '')
-    explanation = data.get('explanation', '')
-    md += f"> **Answer:** [[REVEAL_ANSWER]]Correct order: {solution_text}. {explanation}[[END_REVEAL]]\n"
-    md += "> **Obtain:** **Temporal Coordinate Fragment 2** revealed when the order is correct.\n\n"
+
+    meta = data.get('meta', {})
+    if meta.get('allow_direct_final_answer'):
+        md += (
+            "Players can always attempt to jump straight to the final code for this challenge, "
+            "but the intended experience is to solve it progressively: Stage 1 → Stage 2 → Stage 3, "
+            "with hints only revealed after wrong attempts at each stage.\n\n"
+        )
+
+    sol = data.get('solution', {})
+    real_labels = sol.get('real_labels', [])
+    fake_labels = sol.get('fake_labels', [])
+    fake_reasons = sol.get('fake_reasons', {})
+    timeline_order = sol.get('timeline_order', [])
+    scrambled_all = sol.get('scrambled_all', '')
+    scrambled_real = sol.get('scrambled_real', '')
+    real_timeline_order = sol.get('real_timeline_order', [])
+    final_code = sol.get('final_code', '')
+
+    # Build explanation text
+    explanation_lines = []
+    if real_labels:
+        explanation_lines.append(f"Real echoes: {', '.join(real_labels)}.")
+    if fake_labels:
+        reasons = [f"{lab} ({fake_reasons.get(lab, 'inconsistent data')})" for lab in fake_labels]
+        explanation_lines.append("Fake echoes: " + ", ".join(reasons) + ".")
+    if scrambled_all:
+        pass  # GM already has full data; no need to surface scrambled letters including fakes
+    if scrambled_real:
+        explanation_lines.append(
+            "After removing fake echoes, initials from real echoes in timeline order: "
+            + " ".join(scrambled_real)
+            + "."
+        )
+    if real_timeline_order:
+        explanation_lines.append(
+            "Real echoes in timeline order (earliest → latest): "
+            + " → ".join(real_timeline_order)
+            + "."
+        )
+
+    explanation_text = " ".join(explanation_lines)
+
+    answer_text_lines = []
+    if final_code:
+        answer_text_lines.append(f"Final code: {final_code}.")
+
+    # Fake vs real summary
+    if fake_labels:
+        reasons = [f"{lab} ({fake_reasons.get(lab, 'inconsistent data')})" for lab in fake_labels]
+        answer_text_lines.append("Fake echoes: " + ", ".join(sorted(reasons)) + ".")
+    if real_labels:
+        answer_text_lines.append("Real echoes: " + ", ".join(sorted(real_labels)) + ".")
+
+    # Timeline reasoning
+    if real_timeline_order:
+        answer_text_lines.append(
+            "Real echoes in timeline order (earliest → latest): " + " → ".join(real_timeline_order) + "."
+        )
+
+    # Letter extraction detail
+    letter_choices = sol.get('letter_choices', [])
+    if letter_choices:
+        answer_text_lines.append(
+            "Letters pulled from displayed names by birth-year band positions (timeline order): "
+            + " ".join(letter_choices)
+            + "."
+        )
+
+    answer_text = " ".join(answer_text_lines)
+
+    md += f"> **Answer:** [[REVEAL_ANSWER]]{answer_text}[[END_REVEAL]]\n"
+
+    md += "> **Obtain:** **Temporal Coordinate Fragment 2** revealed when all three stages are solved.\n\n"
+
     return md
 
 
