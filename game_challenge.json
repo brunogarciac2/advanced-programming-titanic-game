@@ -12,58 +12,58 @@
             "task": "Out of the following 6 passenger cards, which one is statistically impossible?",
             "passenger_cards": [
                 {
-                    "name": "Attalah, Miss. Malake",
-                    "Pclass": 3,
-                    "Age": 17.0,
+                    "name": "Warren, Mrs. Frank Manley (Anna Sophia Atkinson)",
+                    "Pclass": 2,
+                    "Age": 60.0,
                     "Sex": "female",
-                    "Fare": 14.46,
-                    "Embarked": "C"
-                },
-                {
-                    "name": "Kenyon, Mrs. Frederick R (Marion)",
-                    "Pclass": 1,
-                    "Age": NaN,
-                    "Sex": "female",
-                    "Fare": 0.94,
-                    "Embarked": "S",
+                    "Fare": 107.8,
+                    "Embarked": "C",
                     "_is_fake": true
                 },
                 {
-                    "name": "O'Sullivan, Miss. Bridget Mary",
-                    "Pclass": 3,
-                    "Age": NaN,
-                    "Sex": "female",
-                    "Fare": 7.63,
-                    "Embarked": "Q"
-                },
-                {
-                    "name": "Leyson, Mr. Robert William Norman",
-                    "Pclass": 2,
-                    "Age": 24.0,
+                    "name": "Carrau, Mr. Francisco M",
+                    "Pclass": 1,
+                    "Age": 28.0,
                     "Sex": "male",
-                    "Fare": 10.5,
+                    "Fare": 47.1,
                     "Embarked": "S"
                 },
                 {
-                    "name": "Leitch, Miss. Jessie Wills",
+                    "name": "Hoyt, Mrs. Frederick Maxfield (Jane Anne Forby)",
+                    "Pclass": 1,
+                    "Age": 35.0,
+                    "Sex": "female",
+                    "Fare": 90.0,
+                    "Embarked": "S"
+                },
+                {
+                    "name": "Hocking, Mrs. Elizabeth (Eliza Needs)",
                     "Pclass": 2,
-                    "Age": NaN,
+                    "Age": 54.0,
                     "Sex": "female",
-                    "Fare": 33.0,
+                    "Fare": 23.0,
                     "Embarked": "S"
                 },
                 {
-                    "name": "Moor, Mrs. (Beila)",
+                    "name": "Novel, Mr. Mansouer",
                     "Pclass": 3,
-                    "Age": 27.0,
+                    "Age": 28.5,
+                    "Sex": "male",
+                    "Fare": 7.23,
+                    "Embarked": "C"
+                },
+                {
+                    "name": "Yasbeck, Mrs. Antoni (Selini Alexander)",
+                    "Pclass": 3,
+                    "Age": 15.0,
                     "Sex": "female",
-                    "Fare": 12.47,
-                    "Embarked": "S"
+                    "Fare": 14.45,
+                    "Embarked": "C"
                 }
             ],
             "hint": "GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.",
             "hint_chart": "hint\\challenge_1_boxplot.png",
-            "answer": "The forged card: 1st class (Pclass=1) but paying £0.94, which is much lower than typical 1st class fares (£5.00-512.33)."
+            "answer": "The forged card: 2nd class (Pclass=2) but paying £107.80, which is much higher than typical 2nd class fares (£10.50-73.50)."
         },
         {
             "id": 2,
@@ -72,23 +72,23 @@
             "echoes": [
                 {
                     "letter": "A",
-                    "text": "Farrell boards at Queenstown (Q); a third-class ticket rustles in hand."
+                    "text": "Lurette boards at Cherbourg (C); a first-class ticket rustles in hand."
                 },
                 {
                     "letter": "B",
-                    "text": "Skoog boards at Southampton (S); a third-class ticket rustles in hand."
+                    "text": "In the final chaos, Fortune finds space in a lifeboat and slips into the night."
                 },
                 {
                     "letter": "C",
-                    "text": "In the final chaos, Fischer finds space in a lifeboat and slips into the night."
+                    "text": "Hoyt boards at Southampton (S); a first-class ticket rustles in hand."
                 },
                 {
                     "letter": "D",
-                    "text": "Lanterns sway as the deck tilts; Skoog steadies a stranger amid rising alarm."
+                    "text": "Kilgannon boards at Queenstown (Q); a third-class ticket rustles in hand."
                 },
                 {
                     "letter": "E",
-                    "text": "Nicola-Yarred boards at Cherbourg (C); a third-class ticket rustles in hand."
+                    "text": "Lanterns sway as the deck tilts; Lang steadies a stranger amid rising alarm."
                 }
             ],
             "known_facts": [
@@ -98,7 +98,7 @@
                 "Mentions of 'escaped' or 'lifeboat' happen last."
             ],
             "task": "Arrange the echoes (A–E) in correct chronological order.",
-            "solution": "B, E, A, D, C",
+            "solution": "C, A, D, E, B",
             "explanation": "Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last."
         },
         {
@@ -108,35 +108,35 @@
             "instructions": "Predict which of the 4 passengers survived (1) or perished (0). Use the survival clues provided.",
             "passengers": [
                 {
-                    "Name": "O'Brien, Mr. Timothy",
+                    "Name": "Kallio, Mr. Nikolai Erland",
                     "Pclass": 3,
-                    "Age": 39,
+                    "Age": 17,
                     "Sex": "male",
-                    "Fare": 7.83,
-                    "Embarked": "Q"
-                },
-                {
-                    "Name": "Gustafsson, Mr. Karl Gideon",
-                    "Pclass": 3,
-                    "Age": 19,
-                    "Sex": "male",
-                    "Fare": 7.78,
+                    "Fare": 7.12,
                     "Embarked": "S"
                 },
                 {
-                    "Name": "Madill, Miss. Georgette Alexandra",
-                    "Pclass": 1,
-                    "Age": 15,
+                    "Name": "Haas, Miss. Aloisia",
+                    "Pclass": 3,
+                    "Age": 24,
                     "Sex": "female",
-                    "Fare": 211.34,
+                    "Fare": 8.85,
                     "Embarked": "S"
                 },
                 {
-                    "Name": "Murdlin, Mr. Joseph",
-                    "Pclass": 3,
-                    "Age": 23,
-                    "Sex": "male",
-                    "Fare": 8.05,
+                    "Name": "Chambers, Mrs. Norman Campbell (Bertha Griggs)",
+                    "Pclass": 1,
+                    "Age": 33,
+                    "Sex": "female",
+                    "Fare": 53.1,
+                    "Embarked": "S"
+                },
+                {
+                    "Name": "West, Miss. Constance Mirium",
+                    "Pclass": 2,
+                    "Age": 5,
+                    "Sex": "female",
+                    "Fare": 27.75,
                     "Embarked": "S"
                 }
             ],
@@ -154,24 +154,24 @@
                 "hint\\challenge_3_sex_pclass.png",
                 "hint\\challenge_3_age_group.png"
             ],
-            "correct_code": "0010"
+            "correct_code": "0011"
         },
         {
             "id": 4,
             "title": "Guest from the Deep",
-            "story": "\n    \n    The Captain has called you and your group to the deck of the ship with an \n    urgent mission. Telegrams have been intercepted from the ship's Marconi machine\n    and it appears there is a stowaway on board! Unfortunately, the dastardly \n    stowaway has managed to scramble one of the telegrams using a mysterious code. \n    The Captain has created a list of 20 suspects. Can you decipher the letter and\n    obtain the identity of the suspect before they get away?!\n    \n    ",
-            "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
+            "story": "\n    \n    The Captain has contact you and your group with an urgent mission. He claims there \n    is a stowaway on board and he is calling himself the 'Guest of the Deep'! \n    Leading you into a strange room, he tells you this is the stowaway's base of operations.\n    The Captain has created a list of suspects, however, unfortunately the captain isn't sure\n    which one of the suspects is the darstadly stowaway. Can you use your deductive powers\n    to decipher the puzzles and obtain the identity of this 'Guest of the Deep' \n    before they get away?!\n    \n    ",
+            "instructions": "Solve the puzzles and find the identity of the stowaway.",
             "suspect_table_img_path": "./assets/images\\suspect_table.png",
-            "plaintext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\nDear Reader,\nLife aboard our magnificent vessel, The Titanic, was nothing less than extraordinary as we sailed through crystal-clear waters under an endless azure sky.\nOur daily routine included enjoying the lavish onboard amenities such as luxurious dining halls serving gourmet meals prepared by skilled chefs; elegant lounges filled with conversation and laughter echoing off polished floors. Families gathered in cozy suites while young travelers marveled at interactive exhibits designed to educate them about our journey across oceans, all surrounded by sumptuous decor that spoke of opulence.\nEvenings were reserved for entertainment as performers showcased stunning dances on decks adorned with glittering lights or captivated audiences during captivating plays told through vivid set designs. We also took time each day aboard the ship's swimming pool and gymnasium to maintain a healthy balance amidst our travels, all while basking in an atmosphere of comfort that made every moment feel like paradise.\nAs we sailed onward towards distant shores filled with promise for new adventures yet unknown, life on board The Titanic was nothing short of spectacular.",
-            "encrypted_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\nIt's a bit cramped here in third class! Dear Friend,\nI hope this message finds you well.\nLife aboard The Titanic has been an extraordinary experience so far! From dawn until dusk we spend our days enjoying luxurious amenities that cater to every whimâ€”fine dining with delectable meals prepared by skilled chefs, relaxing in the opulent suites furnished with plush carpets and elegant decor. Guests can unwind at lavish spas offering massages or soak up sunrises on deck while taking advantage of state-of-the-art entertainment options like live performances.\nThe ship is equipped with modern conveniences including Wi-Fi throughout its vast corridors so passengers are always connected to friends, family members back home as well as the latest news and events. The staff go out of their way ensuring our comfort from room service attendants offering delicious meals at every meal all day long right up until midnight on certain nights.\nWe have also been treated with endless entertainment choices such as Broadway shows or exciting sports like tennis matches taking place just a few steps away! With so many activities to enjoy, itâ€™s easy not wanting even think about getting bored during our time aboard!\nLife onboard The Titanic is truly beyond anything I could ever imagine before arriving here. We are fortunate enough that we have access to such luxury and comfort while traveling across the world.\nWarm regards,\nSomeone on board The Titanic",
-            "caeser_hint": "Caeser Cipher with key: 15",
+            "plaintext_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\nDear Reader,\nLife aboard The Titanic unfolds with luxury befitting its grandeur as passengers enjoy sumptuous meals in elegantly appointed dining rooms while engaging in social activities ranging from glamorous balls to quiet evenings by the piano. Leisure seekers partake in excursions exploring exotic locations along our scenic routes, indulging in first-class comforts that promise an unparalleled voyage.\nWarm regards,\nAboard The Titanic\nYours, sincerely\n\n    The Guest of the Deep.\n",
+            "encrypted_letter": "\nR.M.S. TITANIC\nMARCONI WIRELESS SERVICE\nAPRIL 12, 1912\nIt's a bit cramped here in third class! Dear Reader,\nLife aboard the RMS Titanic offers an unparalleled sense of luxury as we sail through serene waters across uncharted seas.\nPassengers enjoy gourmet meals served at our elegant dining rooms with breathtaking views from grand balconies stretching along both sides of the vessel's imposing decks, while first-class guests lounge in plush armchairs adorned by exquisite artwork and hand-knitted carpets. Second- and third-class passengers are catered to as well through meticulously maintained dining areas that boast an array of delightful dishes crafted for every palate.\nEntertainment is abundant with opulent theaters hosting lavish shows such as enchanting operas performed nightly, complemented by lively jazz bands filling the airwaves during our leisurely cruises at sea or casual gatherings on deck. Guests can indulge in swimming pools located strategically around both public and private sections; these are ideal spots to unwind while basking under golden sun rays.\nStaying active aboard this magnificent vessel is effortless with a plethora of activities available for guests aged eighteen years plus, including an Olympic-standard gymnasium featuring the latest equipment as well as numerous other indoor spaces perfect suited for engaging games or even hosting intimate social events. \nThe ship's staff remains committed to delivering exceptional service at every turn during our voyage; we strive tirelessly through endless hours spent ensuring that all aspects of passenger comfort are met and exceeded.\nAs Titanic glides gracefully across the open ocean, life onboard presents guests with an unforgettable experience unparalleled by any other mode of travel ever conceived. The promise it holds for countless memorable adventures is truly extraordinaryâ€”one simply cannot match!\nBest regards,\nAboard RMS Titanic\nYours, sincerely\n\n    The Guest of the Deep.\n",
+            "caeser_key": 11,
             "encoded_key_img_path": "./assets/images\\bill_cipher_img.png",
             "plaintext_alphabet_img_path": "./assets/images\\plaintext_alphabet_img.png",
             "encoded_alphabet_img_path": "./assets/images\\encoded_alphabet_img.png",
             "alpha_morse_img_path": "./assets/images\\morse_code_alphabet.jpg",
             "morse_wav_path": "./assets/audio\\morse.wav",
             "morse_text_hint": "--   .-   .-..   .   ",
-            "stowaway_name": "Corn, Mr. Harry"
+            "stowaway_name": "Rice, Master. Eugene"
         }
     ]
 }

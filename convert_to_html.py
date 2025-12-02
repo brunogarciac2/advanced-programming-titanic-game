@@ -324,7 +324,7 @@ def format_challenge_4(data):
     """Format Challenge 4 (Letters from a Stowaway) to markdown"""
     md = f"## {data['title']}\n\n"
     md += f"**Story:** {data.get('story', '')}\n\n"
-    md += f"**Task:** {data.get('instructions', data.get('task', ''))}\n\n"
+    md += f"\n\n**Task:** {data.get('instructions', data.get('task', ''))}\n\n"
 
     md += '### Possible suspects \n\n'
 
@@ -333,7 +333,9 @@ def format_challenge_4(data):
 
     md += "### Letters from the Stowaway \n\n"
 
-    md += "**Plaintext Letter**"
+    md += f"The captain hands you two letters. You have no problem reading the first but the second appears to be written in some sort of code. Maybe the encoded letter contains some sort of clue as to the identity of this mysterious Guest of the Deep?\n"
+
+    md += "\n**Plaintext Letter**"
     md += "```"
     md += f"{data['plaintext_letter']}"
     md += "```\n"
@@ -345,6 +347,8 @@ def format_challenge_4(data):
 
     md += '### A Mysterious Code \n\n'
 
+    md += f"As you work to decipher the letters, you look across the stowaway's desk and find a notebook containing the following patterns. Can you make any sense of it?"
+
     if "encoded_alphabet_img_path" in data and data["encoded_alphabet_img_path"]:
         md += f"![Encoded Alphabet Grid]({data['encoded_alphabet_img_path']})\n\n"
 
@@ -353,16 +357,25 @@ def format_challenge_4(data):
 
     md += "### A Strange Sound \n"
 
+    md += "As you try to decipher the mysterious code. The ship's Marconni Machine begins to whir. Rushing to the Radio Room, you hear a strange message."
+
     if "alpha_morse_img_path" in data and data["alpha_morse_img_path"]:
         md += f"![Morse Alphabet]({data['alpha_morse_img_path']})\n\n"
 
     md += f"[[PLAY_SOUND]]{data['morse_wav_path']}[[END_SOUND]]\n"
 
-    md += f"> **Letters from a Stowaway:** [[REVEAL_HINT]]{data['caeser_hint']}[[END_HINT]]"
-    md += f" **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid]({data['plaintext_alphabet_img_path']})[[END_HINT]]"
-    md += f" **A Strange Sound Hint:** [[REVEAL_HINT]]{data['morse_text_hint']}[[END_HINT]]\n"
+    md += "### Hints\n"
 
-    md += f"> **Final Answer:** [[REVEAL_ANSWER]]The alias of the Guest from the Deep is: {data['stowaway_name']}[[END_REVEAL]]"
+    md += f"> **Letters from a Stowaway Hint:** [[REVEAL_HINT]]Compare the headers of each letter. Maybe you'll be able to decipher a pattern.[[END_HINT]]"
+    md += f" **Letters from a Stowaway Further Hint:** [[REVEAL_HINT]]Moving each letter around the alphabet by {data['caeser_key']}, gives it an encrypted letter. Move each letter back by {data['caeser_key']} and you will have the decrypted letter. If you go past the letter 'a' loop back around to 'z'[[END_HINT]]"
+    md += f" **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid]({data['plaintext_alphabet_img_path']})[[END_HINT]]"
+    md += f" **A Mysterious Code Further Hint:** [[REVEAL_HINT]]Align the alphabet with the encoded alphabet. Each symbol refers to a unique letter.[[END_HINT]]"
+    md += f" **A Strange Sound Hint:** [[REVEAL_HINT]]{data['morse_text_hint']}[[END_HINT]]"
+    md += f" **A Strange Sound Further Hint:** [[REVEAL_HINT]]Each of the morse symbols refers to a letter of the alphabet, with a space to differentiate letters.[[END_HINT]]\n"
+
+    md += "### Final Answer\n"
+
+    md += f"> **Final Answer:** [[REVEAL_ANSWER]]The alias of the Guest from the Deep is: **{data['stowaway_name']}**[[END_REVEAL]]"
 
     return md
 
