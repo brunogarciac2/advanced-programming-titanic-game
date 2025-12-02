@@ -209,13 +209,10 @@ def format_challenge_2(data):
     md += "---\n"
     md += "### GM Guide\n\n"
 
-    meta = data.get('meta', {})
-    if meta.get('allow_direct_final_answer'):
-        md += (
-            "Players can always attempt to jump straight to the final code for this challenge, "
-            "but the intended experience is to solve it progressively: Stage 1 → Stage 2 → Stage 3, "
-            "with hints only revealed after wrong attempts at each stage.\n\n"
-        )
+    md += (
+        "The final answer for this challenge is a 4-letter code derived from the birth-year band chart; "
+        "solve the stages in order to reveal it.\n\n"
+    )
 
     sol = data.get('solution', {})
     real_labels = sol.get('real_labels', [])
@@ -269,11 +266,11 @@ def format_challenge_2(data):
         )
 
     # Letter extraction detail
-    letter_choices = sol.get('letter_choices', [])
-    if letter_choices:
+    letter_details = sol.get('letter_details') or sol.get('letter_choices', [])
+    if letter_details:
         answer_text_lines.append(
             "Letters pulled from displayed names by birth-year band positions (timeline order): "
-            + " ".join(letter_choices)
+            + " ".join(letter_details)
             + "."
         )
 

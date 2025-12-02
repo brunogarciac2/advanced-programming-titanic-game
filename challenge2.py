@@ -312,6 +312,7 @@ def generate_challenge_2(df):
     initial_by_label: dict[str, str] = {}
     birth_year_by_label: dict[str, int] = {}
     letter_pos_by_label: dict[str, int] = {}
+    band_by_label: dict[str, str] = {}
 
     # Real echoes (A–D)
     for lab in real_labels:
@@ -326,6 +327,7 @@ def generate_challenge_2(df):
 
         band = birth_year_band(birth_year_by_label[lab])
         letter_pos_by_label[lab] = band_to_position.get(band, 4)
+        band_by_label[lab] = band
 
         echoes.append({
             "label": lab,
@@ -390,6 +392,8 @@ def generate_challenge_2(df):
 
         band = birth_year_band(birth_year_by_label[lab]) if birth_year_by_label.get(lab) is not None else None
         letter_pos_by_label[lab] = band_to_position.get(band, 4) if band else 4
+        if band:
+            band_by_label[lab] = band
 
         echoes.append({
             "label": lab,
@@ -421,19 +425,24 @@ def generate_challenge_2(df):
     scrambled_real = [f"{lab}:{initial_by_label.get(lab, '?')}" for lab in real_timeline_order]
 
     letter_pick_by_label: dict[str, str] = {}
+    letter_detail_list: list[str] = []
     final_letters = []
     for lab in real_timeline_order:
         row = real_map[lab]
         surname = _last_name(row.get('Name', 'Passenger'))
         pos = letter_pos_by_label[lab]
+        band = band_by_label.get(lab, "?")
+        birth_year = birth_year_by_label.get(lab, "?")
         if not surname:
             letter_pick_by_label[lab] = "?"
             final_letters.append("?")
+            letter_detail_list.append(f"{lab}:? (index {pos}, band {band}, birth year {birth_year})")
             continue
         idx = min(pos - 1, len(surname) - 1)
         picked = surname[idx].upper()
         letter_pick_by_label[lab] = picked
         final_letters.append(picked)
+        letter_detail_list.append(f"{lab}:{picked} (index {pos}, band {band}, birth year {birth_year})")
 
     final_code = ''.join(final_letters)
 
@@ -557,6 +566,8 @@ def generate_challenge_2(df):
             "letter_positions": letter_pos_by_label,
             "real_timeline_order": real_timeline_order,
             "letter_choices": [f"{lab}:{letter_pick_by_label.get(lab, '?')}" for lab in real_timeline_order],
+            "letter_details": letter_detail_list,
+            "bands": band_by_label,
             "final_code": final_code,
         },
         "meta": {
