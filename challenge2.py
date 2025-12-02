@@ -229,25 +229,35 @@ def generate_challenge_2(df):
     fake_labels = random.sample(labels, 3)
     real_labels = [lab for lab in labels if lab not in fake_labels]
 
-    # Ensure at least two real passengers embark at S or C to make S→C→Q ordering matter
+    # Ensure real echoes cover multiple ports and give two distinct pre-board ports for ordering
     real_map = {}
     embark_priority = ['S', 'C', 'Q']
+    port_groups = {p: clean_df[clean_df['Embarked'] == p] for p in embark_priority}
 
-    for lab in real_labels:
-        chosen_row = None
+    # Choose up to two ports for the pre-board real echoes (prefer distinct)
+    available_ports = [p for p in embark_priority if not port_groups[p].empty]
+    pre_ports = available_ports[:]
+    random.shuffle(pre_ports)
+    pre_ports = pre_ports[:2]
 
-        # tenta pegar alguém de S, depois C, depois Q
-        for port in embark_priority:
-            subset = clean_df[clean_df['Embarked'] == port]
-            if not subset.empty:
-                chosen_row = subset.sample(1).iloc[0]
-                break
+    remaining_labels = real_labels.copy()
+    random.shuffle(remaining_labels)
 
-        # se não encontrar (dataset esquisito), pega qualquer um
-        if chosen_row is None:
-            chosen_row = clean_df.sample(1).iloc[0]
+    # Assign pre-board labels to distinct ports when possible
+    pre_labels: list[str] = []
+    for port in pre_ports:
+        if not remaining_labels:
+            break
+        lab = remaining_labels.pop()
+        pre_labels.append(lab)
+        real_map[lab] = port_groups[port].sample(1).iloc[0]
 
-        real_map[lab] = chosen_row
+    # Assign any remaining real labels from the route pool; fallback to any passenger
+    route_pool = clean_df[clean_df['Embarked'].isin(embark_priority)]
+    if route_pool.empty:
+        route_pool = clean_df
+    for lab in remaining_labels:
+        real_map[lab] = route_pool.sample(1).iloc[0]
 
                 # if lab not in real_map.values():
                   #  real_map[lab] = row
@@ -289,9 +299,58 @@ def generate_challenge_2(df):
         "near the very end, after we escaped into a lifeboat and watched the ship in the distance."
     ]
 
+    event_stage_map = [
+        "pre_board",      # early calm at Southampton
+        "pre_board",      # afternoon boat deck
+        "pre_board",      # evening after Cherbourg, calm
+        "pre_board",      # around Queenstown, calm
+        "impact",         # jolt/tilt
+        "post_impact",    # helping amid chaos
+        "lifeboat",       # escaped in lifeboat
+    ]
+
     available_indices = list(range(len(event_phrases)))
+    pre_indices = [i for i, stage in enumerate(event_stage_map) if stage == "pre_board"]
+    impact_indices = [i for i, stage in enumerate(event_stage_map) if stage == "impact"]
+    post_indices = [i for i, stage in enumerate(event_stage_map) if stage == "post_impact"]
+    lifeboat_indices = [i for i, stage in enumerate(event_stage_map) if stage == "lifeboat"]
+
     event_order_by_label: dict[str, int] = {}
+
+    # Build a deterministic structure for real echoes: two pre-board (distinct ports), one impact, one post-impact
+    real_pool = real_labels.copy()
+    random.shuffle(real_pool)
+
+    # Assign two pre-board events
+    random.shuffle(pre_indices)
+    for _ in range(min(2, len(pre_indices), len(real_pool))):
+        lab = real_pool.pop()
+        idx = pre_indices.pop()
+        available_indices.remove(idx)
+        event_order_by_label[lab] = idx
+
+    # Assign impact
+    if real_pool and impact_indices:
+        idx = impact_indices[0]
+        if idx in available_indices:
+            lab = real_pool.pop()
+            available_indices.remove(idx)
+            event_order_by_label[lab] = idx
+
+    # Assign post-impact (prefer post_impact, fallback to lifeboat)
+    if real_pool:
+        post_list = post_indices or lifeboat_indices
+        if post_list:
+            idx = post_list[0]
+            if idx in available_indices:
+                lab = real_pool.pop()
+                available_indices.remove(idx)
+                event_order_by_label[lab] = idx
+
+    # Assign remaining labels (fake or leftover real) randomly
     for lab in labels:
+        if lab in event_order_by_label:
+            continue
         idx = available_indices.pop(random.randrange(len(available_indices)))
         event_order_by_label[lab] = idx
 
@@ -407,17 +466,49 @@ def generate_challenge_2(df):
 
     # Build full timeline ordering for GM reference
     def voyage_stage_rank(echo):
+        label = echo['label']
         port = echo['embarked']
-        event_idx = event_order_by_label[echo['label']]
+        event_idx = event_order_by_label[label]
+        stage = event_stage_map[event_idx]
+
+        # Stage priority: pre-board (1) < impact (2) < post-impact (3) < lifeboat (4)
+        stage_rank_map = {
+            "pre_board": 1,
+            "impact": 2,
+            "post_impact": 3,
+            "lifeboat": 4,
+        }
+        stage_base = stage_rank_map.get(stage, 5)
+
+        # Within pre-board, respect S→C→Q route order
         route_order = {'S': 1, 'C': 2, 'Q': 3}
-        base = route_order.get(port, 4)
-        return base * 10 + event_idx
+        route_rank = route_order.get(port, 4) if stage == "pre_board" else 4
+
+        return stage_base * 100 + route_rank * 10 + event_idx
 
     real_timeline_order = [
         e['label']
         for e in sorted(echoes, key=voyage_stage_rank)
         if not e['is_fake']
     ]
+
+    timeline_clues = []
+    for lab in real_timeline_order:
+        row = real_map[lab]
+        embark_code = row.get('Embarked')
+        embark_name = embarked_name(embark_code)
+        event_phrase = event_phrases[event_order_by_label[lab]]
+        stage = event_stage_map[event_order_by_label[lab]]
+        route_reason = "route order S→C→Q" if stage == "pre_board" and embark_code in ['S', 'C', 'Q'] else ""
+        event_reason = {
+            "pre_board": "pre-impact voyage timing",
+            "impact": "impact/tilt",
+            "post_impact": "post-impact chaos",
+            "lifeboat": "lifeboat/escape timing",
+        }.get(stage, "timing clue")
+        timeline_clues.append(
+            f"{lab}: {embark_name} ({embark_code}) sets base by {route_reason}; event clue: {event_phrase} ({event_reason})"
+        )
 
     timeline_order = [e['label'] for e in echoes]
 
@@ -568,6 +659,7 @@ def generate_challenge_2(df):
             "letter_choices": [f"{lab}:{letter_pick_by_label.get(lab, '?')}" for lab in real_timeline_order],
             "letter_details": letter_detail_list,
             "bands": band_by_label,
+            "timeline_clues": timeline_clues,
             "final_code": final_code,
         },
         "meta": {

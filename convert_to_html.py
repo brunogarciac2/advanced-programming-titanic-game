@@ -264,6 +264,13 @@ def format_challenge_2(data):
         answer_text_lines.append(
             "Real echoes in timeline order (earliest → latest): " + " → ".join(real_timeline_order) + "."
         )
+    timeline_clues = sol.get('timeline_clues', [])
+    if timeline_clues:
+        answer_text_lines.append(
+            "Ordering clues (route S→C→Q where possible, then event timing): "
+            + " | ".join(timeline_clues)
+            + "."
+        )
 
     # Letter extraction detail
     letter_details = sol.get('letter_details') or sol.get('letter_choices', [])
