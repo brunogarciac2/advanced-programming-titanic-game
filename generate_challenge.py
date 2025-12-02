@@ -1,5 +1,9 @@
 import json
 import pandas as pd
+from challenge1 import generate_challenge_1
+from challenge2 import generate_challenge_2
+from challenge3 import generate_challenge_3
+from challenge4 import generate_challenge_4
 
 def load_data(filepath='./dataset/Titanic-Dataset.csv'):
     """Load Titanic dataset"""
@@ -13,12 +17,7 @@ def load_data(filepath='./dataset/Titanic-Dataset.csv'):
         print(f"{filepath} not found")
         exit()
 
-
 def generate_game_data():
-    from challenge1 import generate_challenge_1
-    from challenge2 import generate_challenge_2
-    from challenge3 import generate_challenge_3
-    from challenge4 import generate_challenge_4
     """Generate fresh game data from dataset"""
     print("Loading Titanic dataset...")
     df = load_data()
