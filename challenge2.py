@@ -668,8 +668,8 @@ def generate_challenge_2(df):
                 "unlock_condition": "first_wrong_attempt",
                 "content": (
                     "Remember Titanic sailed in 1912. Cheat sheet so you don't have to subtract: "
-                    "ages 38+ → birth year before 1875; ages 27–37 → birth years 1875–1885; "
-                    "ages 17–26 → birth years 1886–1895; ages 0–16 → birth years 1896 or later. "
+                    "ages 38+ → birth year before 1875 (index 2); ages 27–37 → birth years 1875–1885 (index 2); "
+                    "ages 17–26 → birth years 1886–1895 (index 1); ages 0–16 → birth years 1896 or later (index 4). "
                     "Use those birth-year bands on the **Survival Rate by Birth-Year Band** chart. Order the bands "
                     "from lowest to highest survival rate: lowest uses the 1st letter of the name, next uses the "
                     "2nd, then the 3rd, and the highest uses the 4th. Only use passengers from echoes you marked as "
