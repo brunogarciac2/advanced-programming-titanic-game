@@ -30,7 +30,7 @@ def generate_alphabet_sheet(letters_dir):
         print(f"[ERROR] '{letters_dir}' not found.")
 
     # Creates alphabet sheet
-    alphabet = "abcdefghijklmnopqrstuvwxyz"
+    alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
     fig, axes = plt.subplots(4, 7, figsize=(12, 6))
 
@@ -61,9 +61,8 @@ def generate_alphabet_sheet(letters_dir):
 def generate_cipher_puzzle_fig(input_string, cipher_letters_dir):
     ### Turns "survived" or "deceased" into an image of the puzzle
     cipher_letters_dir_list = []
-    input_string = input_string.upper()
     for letter in input_string:
-        cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter}.png")
+        cipher_letters_dir_list.append(cipher_letters_dir + f"/Letter_{letter.upper()}.png")
 
     fig, axes = plt.subplots(1, len(input_string), figsize=(12, 6))
 
