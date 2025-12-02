@@ -147,12 +147,13 @@ def generate_challenge_4(df):
 
     story_text = """
     
-    The Captain has called you and your group to the deck of the ship with an 
-    urgent mission. Telegrams have been intercepted from the ship's Marconi machine
-    and it appears there is a stowaway on board! Unfortunately, the dastardly 
-    stowaway has managed to scramble one of the telegrams using a mysterious code. 
-    The Captain has created a list of 20 suspects. Can you decipher the letter and
-    obtain the identity of the suspect before they get away?!
+    The Captain has contact you and your group with an urgent mission. He claims there 
+    is a stowaway on board and he is calling himself the 'Guest of the Deep'! 
+    Leading you into a strange room, he tells you this is the stowaway's base of operations.
+    The Captain has created a list of suspects, however, unfortunately the captain isn't sure
+    which one of the suspects is the darstadly stowaway. Can you use your deductive powers
+    to decipher the puzzles and obtain the identity of this 'Guest of the Deep' 
+    before they get away?!
     
     """
 
@@ -164,9 +165,12 @@ def generate_challenge_4(df):
     # Randomly choose the stowaway
     stowaway = df.sample(1)
 
+    # Select the row to compare (e.g., row 0)
+    row_to_compare = stowaway.iloc[0]
+
     # Find the indices in the relevant categories that don't match that of the stowaway
     # So that the stowaway is unique from the clues presented
-    idx_not_same_as_stowaway = ~(df[columns_to_check].eq(stowaway[columns_to_check]).all(axis=1))
+    idx_not_same_as_stowaway = ~(df[columns_to_check].eq(row_to_compare[columns_to_check]).all(axis=1))
 
     # Select rows that are not identical to the stowaway in the clue columns
     possible_rows = df[idx_not_same_as_stowaway]
@@ -224,6 +228,11 @@ MARCONI WIRELESS SERVICE
 APRIL 12, 1912
 """
 
+    footer = """\nYours, sincerely
+
+    The Guest of the Deep.
+"""
+
     llm_response_path = "./assets/llm_responses/"
 
     plaintext_letter_llm_response_filename = "plaintext_letter_llm_response.json"
@@ -250,15 +259,13 @@ APRIL 12, 1912
     except:
         print(f"Path: '{encrypted_letter_llm_response_path}' not found.")
     
-    plaintext_letter = header + plaintext_body
-    encrypted_letter = header + stowaway_class_line + encrypted_body
+    plaintext_letter = header + plaintext_body + footer
+    encrypted_letter = header + stowaway_class_line + encrypted_body + footer
     
     # Encrypt the letter
     key = generate_key()
     # Don't encrypt while testing
     # encrypted_letter = encrypt(encrypted_letter, cipher_key)
-
-    caeser_hint = f"Caeser Cipher with key: {key}"
 
     ### Bill Cipher challenge
     alphabet_components_path = "./assets/images/alphabet_components"
@@ -301,11 +308,11 @@ APRIL 12, 1912
         "id": 4,
         "title": "Guest from the Deep",
         "story": story_text,
-        "instructions": "Decode the encrypted letter and select the name from the list of suspects.",
+        "instructions": "Solve the puzzles and find the identity of the stowaway.",
         "suspect_table_img_path" : suspect_table_img_path,
         "plaintext_letter" : plaintext_letter,
         "encrypted_letter" : encrypted_letter,
-        "caeser_hint" : caeser_hint,
+        "caeser_key" : key,
         "encoded_key_img_path" : encoded_key_img_path,
         "plaintext_alphabet_img_path" : plaintext_alphabet_img_path,
         "encoded_alphabet_img_path" : encoded_alphabet_img_path,

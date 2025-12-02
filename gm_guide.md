@@ -16,64 +16,64 @@
 
 **Card 1**
 ```
-name: Attalah, Miss. Malake
-Pclass: 3
-Age: 17.0
+name: Warren, Mrs. Frank Manley (Anna Sophia Atkinson)
+Pclass: 2
+Age: 60.0
 Sex: female
-Fare: 14.46
+Fare: 107.8
 Embarked: C
 ```
 **Card 2**
 ```
-name: Kenyon, Mrs. Frederick R (Marion)
+name: Carrau, Mr. Francisco M
 Pclass: 1
-Age: nan
-Sex: female
-Fare: 0.94
+Age: 28.0
+Sex: male
+Fare: 47.1
 Embarked: S
 ```
 **Card 3**
 ```
-name: O'Sullivan, Miss. Bridget Mary
-Pclass: 3
-Age: nan
+name: Hoyt, Mrs. Frederick Maxfield (Jane Anne Forby)
+Pclass: 1
+Age: 35.0
 Sex: female
-Fare: 7.63
-Embarked: Q
+Fare: 90.0
+Embarked: S
 ```
 **Card 4**
 ```
-name: Leyson, Mr. Robert William Norman
+name: Hocking, Mrs. Elizabeth (Eliza Needs)
 Pclass: 2
-Age: 24.0
-Sex: male
-Fare: 10.5
+Age: 54.0
+Sex: female
+Fare: 23.0
 Embarked: S
 ```
 **Card 5**
 ```
-name: Leitch, Miss. Jessie Wills
-Pclass: 2
-Age: nan
-Sex: female
-Fare: 33.0
-Embarked: S
+name: Novel, Mr. Mansouer
+Pclass: 3
+Age: 28.5
+Sex: male
+Fare: 7.23
+Embarked: C
 ```
 **Card 6**
 ```
-name: Moor, Mrs. (Beila)
+name: Yasbeck, Mrs. Antoni (Selini Alexander)
 Pclass: 3
-Age: 27.0
+Age: 15.0
 Sex: female
-Fare: 12.47
-Embarked: S
+Fare: 14.45
+Embarked: C
 ```
 
 ---
 ### GM Guide
 
 > **Hint:** GM Hint: Refer to the box plot above. The forged card has a fare that doesn't match its class - either much higher or much lower than typical for that class. Players should compare each card's fare with the distribution shown in the chart for that card's class.
-> **Answer:** [[REVEAL_ANSWER]]The forged card: 1st class (Pclass=1) but paying £0.94, which is much lower than typical 1st class fares (£5.00-512.33). **(In this game, this card is Card 2)**[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]The forged card: 2nd class (Pclass=2) but paying £107.80, which is much higher than typical 2nd class fares (£10.50-73.50). **(In this game, this card is Card 1)**[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 1** hidden under the forged card.
 
 ---
@@ -89,18 +89,18 @@ Embarked: S
 
 ### Echoes (Show to Players)
 
-- Echo A: Farrell boards at Queenstown (Q); a third-class ticket rustles in hand.
-- Echo B: Skoog boards at Southampton (S); a third-class ticket rustles in hand.
-- Echo C: In the final chaos, Fischer finds space in a lifeboat and slips into the night.
-- Echo D: Lanterns sway as the deck tilts; Skoog steadies a stranger amid rising alarm.
-- Echo E: Nicola-Yarred boards at Cherbourg (C); a third-class ticket rustles in hand.
+- Echo A: Lurette boards at Cherbourg (C); a first-class ticket rustles in hand.
+- Echo B: In the final chaos, Fortune finds space in a lifeboat and slips into the night.
+- Echo C: Hoyt boards at Southampton (S); a first-class ticket rustles in hand.
+- Echo D: Kilgannon boards at Queenstown (Q); a third-class ticket rustles in hand.
+- Echo E: Lanterns sway as the deck tilts; Lang steadies a stranger amid rising alarm.
 
 **Task:** Arrange the echoes (A–E) in correct chronological order.
 
 ---
 ### GM Guide
 
-> **Answer:** [[REVEAL_ANSWER]]Correct order: B, E, A, D, C. Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last.[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]Correct order: C, A, D, E, B. Boarding echoes come first and follow port order S → C → Q; post-impact echoes (tilted/helping/chaos) follow; the lifeboat escape is last.[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 2** revealed when the order is correct.
 
 ---
@@ -118,38 +118,38 @@ Embarked: S
 
 **Card 1**
 ```
-Name: O'Brien, Mr. Timothy
+Name: Kallio, Mr. Nikolai Erland
 Pclass: 3
-Age: 39
+Age: 17
 Sex: male
-Fare: 7.83
-Embarked: Q
+Fare: 7.12
+Embarked: S
 ```
 **Card 2**
 ```
-Name: Gustafsson, Mr. Karl Gideon
+Name: Haas, Miss. Aloisia
 Pclass: 3
-Age: 19
-Sex: male
-Fare: 7.78
+Age: 24
+Sex: female
+Fare: 8.85
 Embarked: S
 ```
 **Card 3**
 ```
-Name: Madill, Miss. Georgette Alexandra
+Name: Chambers, Mrs. Norman Campbell (Bertha Griggs)
 Pclass: 1
-Age: 15
+Age: 33
 Sex: female
-Fare: 211.34
+Fare: 53.1
 Embarked: S
 ```
 **Card 4**
 ```
-Name: Murdlin, Mr. Joseph
-Pclass: 3
-Age: 23
-Sex: male
-Fare: 8.05
+Name: West, Miss. Constance Mirium
+Pclass: 2
+Age: 5
+Sex: female
+Fare: 27.75
 Embarked: S
 ```
 
@@ -157,7 +157,7 @@ Embarked: S
 ### GM Guide
 
 > **Hint:** Use the survival charts above to infer the 4-digit lifeboat code.
-> **Answer:** [[REVEAL_ANSWER]]0010[[END_REVEAL]]
+> **Answer:** [[REVEAL_ANSWER]]0011[[END_REVEAL]]
 > **Obtain:** **Temporal Coordinate Fragment 3** hidden within the lifeboat control panel.
 
 ---
@@ -165,16 +165,19 @@ Embarked: S
 
 **Story:** 
     
-    The Captain has called you and your group to the deck of the ship with an 
-    urgent mission. Telegrams have been intercepted from the ship's Marconi machine
-    and it appears there is a stowaway on board! Unfortunately, the dastardly 
-    stowaway has managed to scramble one of the telegrams using a mysterious code. 
-    The Captain has created a list of 20 suspects. Can you decipher the letter and
-    obtain the identity of the suspect before they get away?!
+    The Captain has contact you and your group with an urgent mission. He claims there 
+    is a stowaway on board and he is calling himself the 'Guest of the Deep'! 
+    Leading you into a strange room, he tells you this is the stowaway's base of operations.
+    The Captain has created a list of suspects, however, unfortunately the captain isn't sure
+    which one of the suspects is the darstadly stowaway. Can you use your deductive powers
+    to decipher the puzzles and obtain the identity of this 'Guest of the Deep' 
+    before they get away?!
     
     
 
-**Task:** Decode the encrypted letter and select the name from the list of suspects.
+
+
+**Task:** Solve the puzzles and find the identity of the stowaway.
 
 ### Possible suspects 
 
@@ -182,39 +185,51 @@ Embarked: S
 
 ### Letters from the Stowaway 
 
+The captain hands you two letters. You have no problem reading the first but the second appears to be written in some sort of code. Maybe the encoded letter contains some sort of clue as to the identity of this mysterious Guest of the Deep?
+
 **Plaintext Letter**```
 R.M.S. TITANIC
 MARCONI WIRELESS SERVICE
 APRIL 12, 1912
 Dear Reader,
-Life aboard our magnificent vessel, The Titanic, was nothing less than extraordinary as we sailed through crystal-clear waters under an endless azure sky.
-Our daily routine included enjoying the lavish onboard amenities such as luxurious dining halls serving gourmet meals prepared by skilled chefs; elegant lounges filled with conversation and laughter echoing off polished floors. Families gathered in cozy suites while young travelers marveled at interactive exhibits designed to educate them about our journey across oceans, all surrounded by sumptuous decor that spoke of opulence.
-Evenings were reserved for entertainment as performers showcased stunning dances on decks adorned with glittering lights or captivated audiences during captivating plays told through vivid set designs. We also took time each day aboard the ship's swimming pool and gymnasium to maintain a healthy balance amidst our travels, all while basking in an atmosphere of comfort that made every moment feel like paradise.
-As we sailed onward towards distant shores filled with promise for new adventures yet unknown, life on board The Titanic was nothing short of spectacular.```
+Life aboard The Titanic unfolds with luxury befitting its grandeur as passengers enjoy sumptuous meals in elegantly appointed dining rooms while engaging in social activities ranging from glamorous balls to quiet evenings by the piano. Leisure seekers partake in excursions exploring exotic locations along our scenic routes, indulging in first-class comforts that promise an unparalleled voyage.
+Warm regards,
+Aboard The Titanic
+Yours, sincerely
+
+    The Guest of the Deep.
+```
 **Encrypted Letter**```
 R.M.S. TITANIC
 MARCONI WIRELESS SERVICE
 APRIL 12, 1912
-It's a bit cramped here in third class! Dear Friend,
-I hope this message finds you well.
-Life aboard The Titanic has been an extraordinary experience so far! From dawn until dusk we spend our days enjoying luxurious amenities that cater to every whimâ€”fine dining with delectable meals prepared by skilled chefs, relaxing in the opulent suites furnished with plush carpets and elegant decor. Guests can unwind at lavish spas offering massages or soak up sunrises on deck while taking advantage of state-of-the-art entertainment options like live performances.
-The ship is equipped with modern conveniences including Wi-Fi throughout its vast corridors so passengers are always connected to friends, family members back home as well as the latest news and events. The staff go out of their way ensuring our comfort from room service attendants offering delicious meals at every meal all day long right up until midnight on certain nights.
-We have also been treated with endless entertainment choices such as Broadway shows or exciting sports like tennis matches taking place just a few steps away! With so many activities to enjoy, itâ€™s easy not wanting even think about getting bored during our time aboard!
-Life onboard The Titanic is truly beyond anything I could ever imagine before arriving here. We are fortunate enough that we have access to such luxury and comfort while traveling across the world.
-Warm regards,
-Someone on board The Titanic```
+It's a bit cramped here in third class! Dear Reader,
+Life aboard the RMS Titanic offers an unparalleled sense of luxury as we sail through serene waters across uncharted seas.
+Passengers enjoy gourmet meals served at our elegant dining rooms with breathtaking views from grand balconies stretching along both sides of the vessel's imposing decks, while first-class guests lounge in plush armchairs adorned by exquisite artwork and hand-knitted carpets. Second- and third-class passengers are catered to as well through meticulously maintained dining areas that boast an array of delightful dishes crafted for every palate.
+Entertainment is abundant with opulent theaters hosting lavish shows such as enchanting operas performed nightly, complemented by lively jazz bands filling the airwaves during our leisurely cruises at sea or casual gatherings on deck. Guests can indulge in swimming pools located strategically around both public and private sections; these are ideal spots to unwind while basking under golden sun rays.
+Staying active aboard this magnificent vessel is effortless with a plethora of activities available for guests aged eighteen years plus, including an Olympic-standard gymnasium featuring the latest equipment as well as numerous other indoor spaces perfect suited for engaging games or even hosting intimate social events. 
+The ship's staff remains committed to delivering exceptional service at every turn during our voyage; we strive tirelessly through endless hours spent ensuring that all aspects of passenger comfort are met and exceeded.
+As Titanic glides gracefully across the open ocean, life onboard presents guests with an unforgettable experience unparalleled by any other mode of travel ever conceived. The promise it holds for countless memorable adventures is truly extraordinaryâ€”one simply cannot match!
+Best regards,
+Aboard RMS Titanic
+Yours, sincerely
+
+    The Guest of the Deep.
+```
 ### A Mysterious Code 
 
-![Encoded Alphabet Grid](./assets/images\encoded_alphabet_img.png)
+As you work to decipher the letters, you look across the stowaway's desk and find a notebook containing the following patterns. Can you make any sense of it?![Encoded Alphabet Grid](./assets/images\encoded_alphabet_img.png)
 
 ![Puzzle Cipher](./assets/images\bill_cipher_img.png)
 
 ### A Strange Sound 
-![Morse Alphabet](./assets/images\morse_code_alphabet.jpg)
+As you try to decipher the mysterious code. The ship's Marconni Machine begins to whir. Rushing to the Radio Room, you hear a strange message.![Morse Alphabet](./assets/images\morse_code_alphabet.jpg)
 
 [[PLAY_SOUND]]./assets/audio\morse.wav[[END_SOUND]]
-> **Letters from a Stowaway:** [[REVEAL_HINT]]Caeser Cipher with key: 15[[END_HINT]] **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid](./assets/images\plaintext_alphabet_img.png)[[END_HINT]] **A Strange Sound Hint:** [[REVEAL_HINT]]--   .-   .-..   .   [[END_HINT]]
-> **Final Answer:** [[REVEAL_ANSWER]]The alias of the Guest from the Deep is: Corn, Mr. Harry[[END_REVEAL]]---
+### Hints
+> **Letters from a Stowaway Hint:** [[REVEAL_HINT]]Compare the headers of each letter. Maybe you'll be able to decipher a pattern.[[END_HINT]] **Letters from a Stowaway Further Hint:** [[REVEAL_HINT]]Moving each letter around the alphabet by 11, gives it an encrypted letter. Move each letter back by 11 and you will have the decrypted letter. If you go past the letter 'a' loop back around to 'z'[[END_HINT]] **A Mysterious Code Hint:** [[REVEAL_HINT]]![Plaintext Alphabet Grid](./assets/images\plaintext_alphabet_img.png)[[END_HINT]] **A Mysterious Code Further Hint:** [[REVEAL_HINT]]Align the alphabet with the encoded alphabet. Each symbol refers to a unique letter.[[END_HINT]] **A Strange Sound Hint:** [[REVEAL_HINT]]--   .-   .-..   .   [[END_HINT]] **A Strange Sound Further Hint:** [[REVEAL_HINT]]Each of the morse symbols refers to a letter of the alphabet, with a space to differentiate letters.[[END_HINT]]
+### Final Answer
+> **Final Answer:** [[REVEAL_ANSWER]]The alias of the Guest from the Deep is: **Rice, Master. Eugene**[[END_REVEAL]]---
 ## Game End
 
 Congratulations! You've collected all 5 coordinate fragments, restarted the time machine, and successfully escaped from 1912 at the moment the Titanic sank.
