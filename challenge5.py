@@ -428,7 +428,7 @@ def generate_challenge_5(df):
         if RiddleName == "Age Riddle Answer":
             SurvivalByAge = DataDf.groupby("AgeGroup")["Survived"].mean().sort_values()
             Colors = [Blue if Val < 0.5 else Orange for Val in SurvivalByAge.values]
-            Bars = sns.barplot(x=SurvivalByAge.index, y=SurvivalByAge.values, palette=Colors, ax=Ax, edgecolor="None", errorbar=None)
+            Bars = sns.barplot(x=SurvivalByAge.index, y=SurvivalByAge.values, hue=SurvivalByAge.index, palette=Colors, legend=False, ax=Ax, edgecolor="None", errorbar=None)
             Ax.set_xlabel("Age Group", fontsize=12, fontweight="bold")
             Ax.set_ylabel("Survival Rate", fontsize=12, fontweight="bold")
             Ax.set_title("Titanic Survival Rates by Age Group", fontsize=14, fontweight="bold")
