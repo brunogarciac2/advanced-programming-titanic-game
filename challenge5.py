@@ -6,11 +6,10 @@ from PIL import Image, ImageDraw, ImageFont
 import seaborn as sns
 
 def generate_challenge_5(df):
-    """Generate Challenge 5: Find The Saboteur"""
-    
-    # Setup directories
+    # The author of this code is Thomas England (Krrx24)
+    # This code generates Challenge 5: Find The Saboteur
     images_dir = "./hint"
-    
+
     # PARTITION AGES INTO GROUPS FOR RIDDLE
     # _____________________________________________________________________________________
     def AddAgeGroupColumn(Df: pd.DataFrame) -> pd.DataFrame:
@@ -18,11 +17,11 @@ def generate_challenge_5(df):
         Df = Df[Df["Age"].notna()].copy()
         Df["AgeGroup"] = pd.cut(Df["Age"], bins=GroupsForAge, labels=Labels, include_lowest=True, right=True)
         return Df
-    
     Df = AddAgeGroupColumn(df)
 
     # PICKING 6 PASSENGERS
     # _____________________________________________________________________________________
+    # This code randomly selects 6 passengers from the titanic dataset, with differing Age, Sex, and Pclass
     def PickDifferentiablePassengers(Df: pd.DataFrame, Seed=None) -> pd.DataFrame:
         RequiredCols = ["AgeGroup", "Sex", "Pclass"]; Filtered = Df.dropna(subset=RequiredCols).copy()
         Shuffled = Filtered.sample(frac=1, random_state=Seed); ChosenRows, SeenCombos = [], set()
@@ -37,15 +36,16 @@ def generate_challenge_5(df):
         if len(ChosenRows) < TargetTotal or any(C != TargetPerClass for C in ClassCounts.values()):
             raise ValueError("Could not find 6 passengers with 2 from each class and unique (AgeGroup, Sex, Pclass).")
         return pd.DataFrame(ChosenRows)
-
     SeedNumber = random.randint(0, 320000)
     Passengers = PickDifferentiablePassengers(Df, Seed=SeedNumber)
     Output = []
     for _, Row in Passengers.iterrows():
         Output.append({"Name": Row["Name"], "Pclass": int(Row["Pclass"]), "Age": float(Row["Age"]), "AgeGroup": str(Row["AgeGroup"]), "Sex": Row["Sex"]})
+        
 
-    # CLUE TEXT
+    # Clues to be displayed depending on the imposter
     # _____________________________________________________________________________________
+    # Clue Text for anagram and wordsearch
     Imposter = random.choice(Output)
     RiddlesForAge = {"old": "Their eyes have watched more years than the calendar dares to count, yet they still sparkle.",
         "middle": "They stand at life's midpoint with yesterday's wisdom in their pocket and tomorrow's plans in their hand.",
@@ -64,12 +64,35 @@ def generate_challenge_5(df):
         "Age Riddle Answer": RiddlesForAge[Key1],
         "Passenger Class Riddle Answer": RiddlesForClass[Imposter["Pclass"]],
         "Gender Riddle Answer": RiddlesForGender[Imposter["Sex"]]}
+    
+    # clue text for graph
+    RiddlesForAge_Graph = {"old": "Their survival bar on the graph barely rises—almost the lowest of all the age groups.",
+        "middle": "Their survival sits somewhere in the middle of the graph, neither notably high nor low.",
+        "teen": "Their bar is higher than many adults, but not as strong as the youngest group.",
+        "child": "Their survival bar stands among the tallest, nearly reaching the top of the chart."}
+
+    RiddlesForClass_Graph = {1: "On the chart, their survival bar reaches one of the highest positions compared to all others.",
+        2: "Their bar sits in the middle not the highest, not the lowest—steadily between the extremes.",
+        3: "Their survival bar is among the shortest, nearly touching the bottom of the graph."}
+
+    RiddlesForGender_Graph = {"male": "Their bar drops sharply downward the lowest of all the groups on the chart.",
+        "female": "Their bar rises dramatically high, clearly towering over the opposite group."
+    }
+
+    GraphHintLookup = {
+        "Age Riddle Answer": RiddlesForAge_Graph,
+        "Passenger Class Riddle Answer": RiddlesForClass_Graph,
+        "Gender Riddle Answer": RiddlesForGender_Graph
+    }
 
     # REDACT THE SENTENCES 
     # _____________________________________________________________________________________
+    # Randomly removes words from riddle sentences, also removes gender pronouns.
+    # Stores removed words to be used wordsearch and anagrams.
     ListOfRedactedWords = {"Age Riddle Answer": [],"Passenger Class Riddle Answer": [],"Gender Riddle Answer": []}
     GenderPronounToBeRemoved = {"he", "him", "his", "she", "her", "hers"}
     
+    # This is for Replacing words with ___ 
     def RiddleRedactor(sentence, WordRedactList, dropProb=0.6, minLen=4, isGender=False):
         def CutWord(match):
             word = match.group(0)
@@ -86,7 +109,6 @@ def generate_challenge_5(df):
                     return "___"
             return word
         return re.sub(r"[A-Za-z]+", CutWord, sentence) 
-
     RedactedRiddles = {}
     for riddleName, riddleText in imposterriddles.items():
         RedactedRiddles[riddleName] = RiddleRedactor(
@@ -96,71 +118,45 @@ def generate_challenge_5(df):
             minLen=4,
             isGender=(riddleName == "Gender Riddle Answer")
         )
-    
+    # This is to randomly assign age/Pclass/gender to anagram/wordsearch/graph clues
     RiddleKeys = list(imposterriddles.keys())
     Headings = ["Anagram Riddle", "WordSearch Riddle", "Graph Riddle"]
     random.shuffle(RiddleKeys)
     random.shuffle(Headings)
-
     AssignedMasked = {}
     AssignedRedacted = {}
     HeadingToRiddleName = {}
-    
     for heading, key in zip(Headings, RiddleKeys):
         AssignedMasked[heading] = RedactedRiddles[key]
         AssignedRedacted[heading] = ListOfRedactedWords[key]
         HeadingToRiddleName[heading] = key
 
-    # CLUE TEXT Graph
-    # _____________________________________________________________________________________
-    RiddlesForAge_Graph = {
-        "old": "Their survival bar on the graph barely rises—almost the lowest of all the age groups.",
-        "middle": "Their survival sits somewhere in the middle of the graph, neither notably high nor low.",
-        "teen": "Their bar is higher than many adults, but not as strong as the youngest group.",
-        "child": "Their survival bar stands among the tallest, nearly reaching the top of the chart."
-    }
 
-    RiddlesForClass_Graph = {
-        1: "On the chart, their survival bar reaches one of the highest positions compared to all others.",
-        2: "Their bar sits in the middle not the highest, not the lowest—steadily between the extremes.",
-        3: "Their survival bar is among the shortest, nearly touching the bottom of the graph."
-    }
 
-    RiddlesForGender_Graph = {
-        "male": "Their bar drops sharply downward the lowest of all the groups on the chart.",
-        "female": "Their bar rises dramatically high, clearly towering over the opposite group."
-    }
-
-    GraphHintLookup = {
-        "Age Riddle Answer": RiddlesForAge_Graph,
-        "Passenger Class Riddle Answer": RiddlesForClass_Graph,
-        "Gender Riddle Answer": RiddlesForGender_Graph
-    }
 
     # WordSearch Code
     # _____________________________________________________________________________________
     WordSearchWords = AssignedRedacted["WordSearch Riddle"]
 
-    def PrepareWords(Words):
+    # This section creates a wordsearch grid with randomly placed words and fills the rest with random letters.
+    def PrepareTheWords(Words):
         return [Word.strip().upper() for Word in Words]
 
     def CreateGrid(Words, Size=15):
         Grid = [[None for _ in range(Size)] for _ in range(Size)]
         Directions = [(0, 1), (1, 0), (1, 1), (1, -1)]
         PlacedWordsInfo = []
-
         for Word in Words:
             Placed = False
             Attempts = 0
             MaxAttempts = 100
-
+            # this is to safeguard in case the word is not able to be placed into the wordsearch
             while not Placed and Attempts < MaxAttempts:
                 Row = random.randint(0, Size - 1)
                 Col = random.randint(0, Size - 1)
                 Dr, Dc = random.choice(Directions)
                 EndRow = Row + Dr * (len(Word) - 1)
                 EndCol = Col + Dc * (len(Word) - 1)
-
                 if 0 <= EndRow < Size and 0 <= EndCol < Size:
                     CanPlace = True
                     for I, Letter in enumerate(Word):
@@ -169,7 +165,6 @@ def generate_challenge_5(df):
                         if Grid[R][C] is not None and Grid[R][C] != Letter:
                             CanPlace = False
                             break
-
                     if CanPlace:
                         Positions = []
                         for I, Letter in enumerate(Word):
@@ -185,14 +180,13 @@ def generate_challenge_5(df):
                             "direction": (Dr, Dc),
                         })
                 Attempts += 1
-
         for I in range(Size):
             for J in range(Size):
                 if Grid[I][J] is None:
                     Grid[I][J] = random.choice(string.ascii_uppercase)
-
         return Grid, PlacedWordsInfo
-
+    
+    # This functionuses the previously generated grid to create an image to be displayed
     def CreatePuzzleImage(Grid, WordsToFind):
         Size = len(Grid)
         CellSize = 50
@@ -269,7 +263,7 @@ def generate_challenge_5(df):
             Draw.text(((ImgWidth - Ww) // 2, FooterY + I * 25), Line, fill="darkgreen", font=TextFont)
 
         return Img
-
+    # This function uses the previously generated grid to create a solution image to be displayed
     def CreateSolutionImage(Grid, PlacedWordsInfo):
         Size = len(Grid)
         CellSize = 50
@@ -360,14 +354,12 @@ def generate_challenge_5(df):
 
         return Img
 
-    # Generate WordSearch
-    Words = PrepareWords(WordSearchWords)
+    # initialise wordsearch and generate images
+    Words = PrepareTheWords(WordSearchWords)
     Grid, PlacedWordsInfo = CreateGrid(Words, Size=15)
     PlacedWords = [W["word"] for W in PlacedWordsInfo]
     PuzzleImage = CreatePuzzleImage(Grid, PlacedWords)
     SolutionImage = CreateSolutionImage(Grid, PlacedWordsInfo)
-    
-    # Save WordSearch images
     wordsearch_puzzle_path = os.path.join(images_dir, "wordsearch_puzzle.png")
     wordsearch_solution_path = os.path.join(images_dir, "wordsearch_solution.png")
     PuzzleImage.save(wordsearch_puzzle_path)
@@ -375,6 +367,7 @@ def generate_challenge_5(df):
 
     # Riddle Anagram Code
     # _____________________________________________________________________________________
+    # Scrmbles missing words 
     AnagramWords = AssignedRedacted["Anagram Riddle"]
     FONT_PATH = "/usr/share/fonts/truetype/liberation/LiberationSerif-Regular.ttf"
 
@@ -389,7 +382,7 @@ def generate_challenge_5(df):
             if Result != Original:
                 return Result
         return "".join(Shuffled)
-
+    # creates an image to show player or solution
     def CreateWordImage(Words, Title, Filename, font_size=28):
         W, Pad, Gap = 1000, 70, 28
         try:
@@ -414,23 +407,24 @@ def generate_challenge_5(df):
             CurrY += LineH
         Img.save(Filename)
 
+    # Initialse Anagram and generate images
     Words = [str(W).strip() for W in AnagramWords if str(W).strip()]
     Scrambled = [scramble_word(W) for W in Words]
-    
     anagram_puzzle_path = os.path.join(images_dir, "anagram_puzzle.png")
     anagram_solution_path = os.path.join(images_dir, "anagram_solution.png")
-    
     CreateWordImage(Scrambled, "Unscramble Words To Fill In The Blanks", anagram_puzzle_path)
     CreateWordImage(Words, "Solution", anagram_solution_path)
 
     # Riddle Graph Generator
     # _____________________________________________________________________________________
+    # This generates a bar chart of survival with selected attribute
     def GenerateSurvivalGraph(RiddleName, DataDf):
+        # Visual graph section
         sns.set_theme(style="whitegrid", context="talk")
         Fig, Ax = plt.subplots(figsize=(10, 6))
         Blue = "#4C72B0"
         Orange = "#DD8452"
-
+        # Different graphs for different attributes
         if RiddleName == "Age Riddle Answer":
             SurvivalByAge = DataDf.groupby("AgeGroup")["Survived"].mean().sort_values()
             Colors = [Blue if Val < 0.5 else Orange for Val in SurvivalByAge.values]
@@ -511,6 +505,8 @@ def generate_challenge_5(df):
             "solution_url": graph_puzzle_path
         }
     }
+
+    # This riddle hint functions generates visualisations, extracts correct & create explanation text
 
     def GetGraphHint(riddleName, imposter):
         if riddleName == "Age Riddle Answer":
