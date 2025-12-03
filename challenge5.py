@@ -426,7 +426,7 @@ def generate_challenge_5(df):
         Orange = "#DD8452"
         # Different graphs for different attributes
         if RiddleName == "Age Riddle Answer":
-            SurvivalByAge = DataDf.groupby("AgeGroup")["Survived"].mean().sort_values()
+            SurvivalByAge = DataDf.groupby("AgeGroup", observed=False)["Survived"].mean().sort_values()
             Colors = [Blue if Val < 0.5 else Orange for Val in SurvivalByAge.values]
             Bars = sns.barplot(x=SurvivalByAge.index, y=SurvivalByAge.values, hue=SurvivalByAge.index, palette=Colors, legend=False, ax=Ax, edgecolor="None", errorbar=None)
             Ax.set_xlabel("Age Group", fontsize=12, fontweight="bold")
@@ -444,7 +444,7 @@ def generate_challenge_5(df):
             SurvivalByClass = DataDf.groupby("Pclass")["Survived"].mean().sort_values()
             Colors = [Blue if Val < 0.5 else Orange for Val in SurvivalByClass.values]
             ClassLabels = [f"Class {int(C)}" for C in SurvivalByClass.index]
-            Bars = sns.barplot(x=ClassLabels, y=SurvivalByClass.values, palette=Colors, ax=Ax, edgecolor="None", errorbar=None)
+            Bars = sns.barplot(x=ClassLabels, y=SurvivalByClass.values, hue=ClassLabels, palette=Colors, legend=False, ax=Ax, edgecolor="None", errorbar=None)
             Ax.set_xlabel("Passenger Class", fontsize=12, fontweight="bold")
             Ax.set_ylabel("Survival Rate", fontsize=12, fontweight="bold")
             Ax.set_title("Titanic Survival Rates by Passenger Class", fontsize=14, fontweight="bold")
@@ -460,7 +460,7 @@ def generate_challenge_5(df):
             SurvivalByGender = DataDf.groupby("Sex")["Survived"].mean().sort_values()
             Colors = [Blue if Val < 0.5 else Orange for Val in SurvivalByGender.values]
             GenderLabels = [S.capitalize() for S in SurvivalByGender.index]
-            Bars = sns.barplot(x=GenderLabels, y=SurvivalByGender.values, palette=Colors, ax=Ax, edgecolor="None", errorbar=None)
+            Bars = sns.barplot(x=GenderLabels, y=SurvivalByGender.values, hue=GenderLabels, palette=Colors, legend=False, ax=Ax, edgecolor="None", errorbar=None)
             Ax.set_xlabel("Gender", fontsize=12, fontweight="bold")
             Ax.set_ylabel("Survival Rate", fontsize=12, fontweight="bold")
             Ax.set_title("Titanic Survival Rates by Gender", fontsize=14, fontweight="bold")
